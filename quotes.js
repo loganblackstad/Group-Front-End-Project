@@ -1,8 +1,10 @@
 $('#quoteButton').on('click' , function(e) {
   e.preventDefault();
-  axios.get("https://quote-garden.herokuapp.com/api/v2/quotes/random")
+  axios.get("https://favqs.com/api/qotd")
     .then(response => {
-      console.log(response)
-      $('#quote').html(response.data.quote.quoteText);
+      $('#quote').html((`
+        <div>${response.data.quote.body}</div>
+        <div>-${response.data.quote.author}</div>
+      `));
   });
 });
