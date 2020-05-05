@@ -28,3 +28,7 @@ nav {
 input {
   display: inline-block
 }
+
+img {
+  height: 125px;
+}
