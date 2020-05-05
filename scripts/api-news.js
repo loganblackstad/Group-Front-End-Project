@@ -6,7 +6,7 @@
 // Upon Page Load, set api url, then fetch a promise, and render headlines
 document.addEventListener("DOMContentLoaded", function (e) {
   var url =
-    "http://newsapi.org/v2/top-headlines?" +
+    "https://newsapi.org/v2/top-headlines?" +
     "country=us&" +
     "apiKey=bb4227ec350a41dba251dadcd757dcae";
 
