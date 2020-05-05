@@ -44,8 +44,11 @@
         <div class="col-12 col-sm-12 col-md-4 col-lg-4 border border-dark d-flex align-items-center justify-content-center">
           <div class="card p-5 m-3 d-flex">Air Quality</div>
         </div>
-        <div class="col-12 col-sm-12 col-md-4 col-lg-4 border border-dark d-flex align-items-center justify-content-center">
-          <div class="card p-5 m-3 d-flex">Something Else</div>
+        <div class="col-12 col-sm-12 col-md-4 col-lg-4 border border-dark d-flex flex-column align-items-center justify-content-center">
+          <div class="card p-2 w-100 d-flex align-items-center justify-content-center">
+            <div id="quote"></div>
+            <div><button class="d-flex btn btn-dark m-1 mt-2" id="quoteButton">Get quote</button></div>
+          </div>
         </div>
         <div class="col-12 col-sm-12 col-md-6 col-lg-6 border border-dark d-flex flex-column align-items-center justify-content-center p-4">
           <div class="card p-2 w-100 d-flex align-items-center justify-content-center">
@@ -58,6 +61,12 @@
           <div class="card p-5 m-3 d-flex">News</div>
         </div>
       </div>
+      <div class="col-12 col-sm-12 col-md-6 col-lg-6 border border-dark d-flex flex-column align-items-center justify-content-center p-4">
+        <div class="card p-2 w-100 d-flex align-items-center justify-content-center">
+          <p>I could use a laugh.</p>
+          <div><button class="d-flex btn btn-dark" id="jokeButton">Tell me a joke.</button></div>
+          <div id="joke" class="mt-3"></div>
+      </div>
 
     </main>
   </div>
@@ -67,5 +76,6 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script> 
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="scripts/index.js"></script>
+<script src="quotes.js"></script>
 </body>
 </html>
