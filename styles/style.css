@@ -11,7 +11,7 @@ body {
 
 .container {
   background-color: lightgray;
-  height: 100vh;
+  height: 100%;
   width: 100vw;
 }
 
