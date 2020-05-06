@@ -14,16 +14,20 @@ document.addEventListener("DOMContentLoaded", function (e) {
     .then((response) => response.json())
     .then((json) => {
       // Render the top 3 US news stories to the <div id="card-news"> element
-      $("#card-news").html(
-        `<b>Top US News</b>
-        <br/>
-        <a href="${json.articles[0].url}" target="_blank">${json.articles[0].title}</a>
-        <br/>
-        <a href="${json.articles[1].url}" target="_blank">${json.articles[1].title}</a>
-        <br/>
-        <a href="${json.articles[2].url}" target="_blank">${json.articles[2].title}</a>
-        `
-      );
+
+      var numArticlesToRender = 3;
+      var templateStr = `<b> Top US News</b><br />`;
+      for (i = 0; i < numArticlesToRender; i++) {
+        var arrNewsHeadline = json.articles[i].title.split(" - ");
+        var srcNewsHeadline = arrNewsHeadline.pop();
+        var titleNewsHeadline = "".concat(arrNewsHeadline);
+        let tempStr = `<a href="${json.articles[i].url}" target="_blank">${titleNewsHeadline}</a>
+        <span class="news-source"><i>${srcNewsHeadline}</i></span>
+        <br/>`;
+        templateStr += tempStr;
+      }
+
+      $("#card-news").html(templateStr);
     });
 });
 
