@@ -13,7 +13,7 @@
     humid_pct: humid percentage
     windspd_mph: windspeed mph
 */
-    axios.get(`http://api.weatherunlocked.com/api/current/us.30313?app_id=c79e9451&app_key=d70ebebfb9b22a539c6fff4537050eb1`)
+    axios.get(`https://api.weatherunlocked.com/api/current/us.30326?app_id=c79e9451&app_key=d70ebebfb9b22a539c6fff4537050eb1`)
     .then(function (response) {
         console.log(response);
         const weatherCard = `
