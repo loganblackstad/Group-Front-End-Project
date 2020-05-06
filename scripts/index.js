@@ -21,7 +21,7 @@ $('.quoteClose').on('click', function(e) {
 // Get user input from the Modal
 function getInput(e) {
   e.preventDefault();
-  document.getElementById("red").innerHTML = (`${document.getElementById("userName").value}'s Dashboard`)
+  $('#red').html(`${$("#userName").val()}'s Dashboard`)
   var radios = document.getElementsByName('decks');
 }
 
