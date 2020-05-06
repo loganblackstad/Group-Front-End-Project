@@ -35,12 +35,18 @@
           <div class="grid-stack-item-content card d-flex justify-content-start align-items-start m-2 border border-danger overflow-auto" id="home">
             <h1>YOUi</h1>
             <p id="greeting" class="mt-1"></p>
-            <p><span id="datetime"></span></p>
+            <p><span id="date"></span><span id="clock"></span></p>
             <div class="btn-group dropright">
               <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Widgets
               </button>
-              <div class="dropdown-menu ml-5 overflow-auto">
+              <div class="dropdown-menu ml-5 overflow-auto scrollable-menu">
+                <a href="#" class="nav-link" id="addQuotes">Quotes</a>
+                <a href="#" class="nav-link" id="addBored">Bored</a>
+                <a href="#" class="nav-link" id="addJoke">Joke</a>
+                <a href="#" class="nav-link" id="addWeather">Weather</a>
+                <a href="#" class="nav-link" id="addNews">News</a>
+                <a href="#" class="nav-link" id="addAQ">Air Quality</a>
                 <a href="#" class="nav-link" id="addQuotes">Quotes</a>
                 <a href="#" class="nav-link" id="addBored">Bored</a>
                 <a href="#" class="nav-link" id="addJoke">Joke</a>
@@ -128,7 +134,7 @@
     </script>
     <script>
       var dt = new Date();
-      document.getElementById("datetime").innerHTML = ("0" + (dt.getMonth() + 1)).slice(-2) + "." + ("0" + dt.getDate()).slice(-2) + "." + dt.getFullYear() + " " + ("0" + dt.getHours()).slice(-2) + ":" + ("0" + dt.getMinutes()).slice(-2);
-    </script>
+      document.getElementById("date").innerHTML = (("0"+(dt.getMonth()+1)).slice(-2)) +"."+ (("0"+(dt.getDate())).slice(-2)) +"."+ (dt.getFullYear()) + " ";
+      </script>
   </body>
 </html>

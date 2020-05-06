@@ -52,7 +52,7 @@ $('#addNews').on('click', function() {
   let newsWidget = {
     "title": "News.",
     "divID": "newsDiv",
-    "cardID": "news",
+    "cardID": "card-news",
     "class": "newsClose",
   };
   let newNewsWidget = renderNoButton(newsWidget);

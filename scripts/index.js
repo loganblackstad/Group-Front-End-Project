@@ -23,8 +23,20 @@ function renderNoButton(widget) {
   return renderedWidget;
 }
 
-$(document).on("click", ".boredClose", function () {
-  grid.removeWidget($("#boredDiv").get(0));
+var clock = document.getElementById('clock');
+
+function time() {
+  var d = new Date();
+  var s = d.getSeconds();
+  var m = d.getMinutes();
+  var h = d.getHours();
+  clock.textContent = h + ":" + m + ":" + s;
+}
+
+setInterval(time, 1000);
+
+$(document).on('click', '.boredClose', function () {
+  grid.removeWidget($('#boredDiv').get(0));
 });
 
 $(document).on("click", ".quoteClose", function () {
