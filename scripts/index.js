@@ -1,11 +1,27 @@
-$('#boredButton').on('click', function(e) {
-  e.preventDefault();
-  axios.get("https://www.boredapi.com/api/activity/")
-    .then(response => {
-      console.log(response)
-      $('#bored').html(response.data.activity + "!");
-  });
-});
+function renderWidgets(widget) {
+  let renderedWidget = (`
+    <div class="grid-stack-item border border-dark" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="2" id=${widget.divID}>
+      <div class="grid-stack-item-content">
+        <div class="d-flex"><p>${widget.title}</p><span class="ml-auto ${widget.class}">✖️</span></div>
+        <div id=${widget.cardID} class="card mt-1"></div>
+        <div><button class="d-flex btn btn-dark mt-3" id=${widget.buttonID}>${widget.buttonText}</button></div>
+      </div>
+    </div>
+  `);
+  return renderedWidget;
+};
+
+function renderNoButton(widget) {
+  let renderedWidget = (`
+    <div class="grid-stack-item border border-dark" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="2" id=${widget.divID}>
+      <div class="grid-stack-item-content">
+        <div class="d-flex"><p>${widget.title}</p><span class="ml-auto ${widget.class}">✖️</span></div>
+        <div id=${widget.cardID}></div>
+      </div>
+    </div>
+  `);
+  return renderedWidget;
+};
 
 $(document).on('click', '.boredClose', function () {
   grid.removeWidget($('#boredDiv').get(0));
