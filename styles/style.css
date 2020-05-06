@@ -32,3 +32,13 @@ input {
 img {
   height: 125px;
 }
+
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.close:hover {
+  cursor: pointer;
+}
