@@ -7,22 +7,34 @@ $('#boredButton').on('click', function(e) {
   });
 });
 
-$('.boredClose').on('click', function(e) {
-  e.preventDefault();
-  $('#boredDiv').hide();
+$('.boredClose').on('click', function() {
+  grid.removeWidget($('#boredDiv').get(0));
 })
 
-$('.quoteClose').on('click', function(e) {
-  e.preventDefault();
-  $('#quoteDiv').remove();
-  // removeFromWidgetList("Quote")
+$('.quoteClose').on('click', function() {
+  grid.removeWidget($('#quoteDiv').get(0));
+})
+
+$('.weatherClose').on('click', function() {
+  grid.removeWidget($('#weatherDiv').get(0));
+})
+
+$('.aqClose').on('click', function() {
+  grid.removeWidget($('#aqDiv').get(0));
+})
+
+$('.jokeClose').on('click', function() {
+  grid.removeWidget($('#jokeDiv').get(0));
+})
+
+$('.newsClose').on('click', function() {
+  grid.removeWidget($('#newsDiv').get(0));
 })
 
 // Get user input from the Modal
 function getInput(e) {
   e.preventDefault();
-  $('#red').html(`${$("#userName").val()}'s Dashboard`)
-  var radios = document.getElementsByName('decks');
+  $('#greeting').html(`Hello, ${$("#userName").val()}`)
 }
 
 // Add event listeners to the form to call functions when form is submitted
