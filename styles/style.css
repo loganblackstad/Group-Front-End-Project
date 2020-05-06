@@ -49,6 +49,12 @@ span:hover {
   cursor: pointer;
 }
 
+.scrollable-menu {
+  height: auto;
+  max-height: 200px;
+  overflow-x: hidden;
+}
+
 /* Modal */
 /* The Modal (background) */
 .modal {
