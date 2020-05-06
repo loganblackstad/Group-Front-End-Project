@@ -30,7 +30,7 @@ function time() {
   var s = d.getSeconds();
   var m = d.getMinutes();
   var h = d.getHours();
-  clock.textContent = h + ":" + m + ":" + s;
+  clock.textContent = new Date().toLocaleString();
 }
 
 setInterval(time, 1000);
