@@ -7,29 +7,29 @@ $('#boredButton').on('click', function(e) {
   });
 });
 
-$('.boredClose').on('click', function() {
+$(document).on('click', '.boredClose', function () {
   grid.removeWidget($('#boredDiv').get(0));
-})
+});
 
-$('.quoteClose').on('click', function() {
+$(document).on('click', '.quoteClose', function () {
   grid.removeWidget($('#quoteDiv').get(0));
-})
+});
 
-$('.weatherClose').on('click', function() {
+$(document).on('click', '.weatherClose', function () {
   grid.removeWidget($('#weatherDiv').get(0));
-})
+});
 
-$('.aqClose').on('click', function() {
+$(document).on('click', '.aqClose', function () {
   grid.removeWidget($('#aqDiv').get(0));
-})
+});
 
-$('.jokeClose').on('click', function() {
+$(document).on('click', '.jokeClose', function () {
   grid.removeWidget($('#jokeDiv').get(0));
-})
+});
 
-$('.newsClose').on('click', function() {
+$(document).on('click', '.newsClose', function () {
   grid.removeWidget($('#newsDiv').get(0));
-})
+});
 
 // Get user input from the Modal
 function getInput(e) {
