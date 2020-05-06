@@ -36,7 +36,8 @@
       <div class="grid-stack mt-2 border border-danger">
         <div class="grid-stack-item border border-dark" data-gs-x="0" data-gs-y="0" data-gs-width="5" data-gs-height="5" data-gs-locked="true" data-gs-noMove="true" data-gs-noResize="true">
           <div class="grid-stack-item-content card d-flex justify-content-start align-items-start m-2 border border-danger overflow-auto" id="home">
-            <p id="greeting" class="mt-4"></p>
+            <h1>YOUi</h1>
+            <p id="greeting" class="mt-1"></p>
             <p><span id="datetime"></span></p>
             <div class="btn-group dropright">
               <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -52,16 +53,22 @@
             </div>
           </div>
         </div>
-        <div class="grid-stack-item border border-dark" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="2">
-          <div class="grid-stack-item-content card d-flex" id="weather">Daily Forecast</div>
+        <div class="grid-stack-item border border-dark" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="2" id="weatherDiv">
+          <div class="grid-stack-item-content card d-flex" id="weather">
+            <div class="d-flex"><p>Daily Forecast</p><span class="ml-auto weatherClose">✖️</span></div>
+            <div id="weather"></div>
+          </div>
         </div>
-        <div class="grid-stack-item border border-dark" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="2">
-          <div class="grid-stack-item-content">Air Quality</div>
-        </div>
-        <div class="grid-stack-item border border-dark" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="2">
+        <div class="grid-stack-item border border-dark" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="2" id="aqDiv">
           <div class="grid-stack-item-content">
-            <p>I need some inspiration.</p>
-            <div id="quote"></div>
+            <div class="d-flex"><p>Air Quality</p><span class="ml-auto aqClose">✖️</span></div>
+            <div id="airQuality"></div>
+          </div>
+        </div>
+        <div class="grid-stack-item border border-dark" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="2" id="quoteDiv">
+          <div class="grid-stack-item-content">
+            <div class="d-flex"><p>I need some inspiration.</p><span class="ml-auto quoteClose">✖️</span></div>
+            <div id="quote" class="card mt-1"></div>
             <div><button class="d-flex btn btn-dark m-1 mt-2" id="quoteButton">Get quote</button></div>
           </div>
         </div>
@@ -72,14 +79,17 @@
             <div><button class="d-flex btn btn-dark mt-3" id="boredButton">Do something</button></div>
           </div>
         </div>
-        <div class="grid-stack-item border border-dark" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="2">
-          <div class="grid-stack-item-content" id="card-news">News</div>
-        </div>
-        <div class="grid-stack-item border border-dark" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="2">
+        <div class="grid-stack-item border border-dark" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="2" id="newsDiv">
           <div class="grid-stack-item-content">
-            <p>I could use a laugh.</p>
-            <div><button class="d-flex btn btn-dark" id="jokeButton">Tell me a joke.</button></div>
-            <div id="joke" class="mt-3"></div>
+            <div class="d-flex"><p>News.</p><span class="ml-auto newsClose">✖️</span></div>
+            <div id="card-news"></div>
+          </div>
+        </div>
+        <div class="grid-stack-item border border-dark" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="2" id="jokeDiv">
+          <div class="grid-stack-item-content">
+            <div class="d-flex"><p>I could use a laugh.</p><span class="ml-auto jokeClose">✖️</span></div>
+            <div id="joke" class="card mt-1"></div>
+            <div><button class="d-flex btn btn-dark m-1 mt-2" id="jokeButton">Tell me a joke.</button></div>
           </div>
         </div>
       </div>

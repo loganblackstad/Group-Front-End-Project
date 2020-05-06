@@ -8,15 +8,27 @@ $('#boredButton').on('click', function(e) {
 });
 
 $('.boredClose').on('click', function() {
-  // e.preventDefault();
-  // $('#boredDiv').remove();
   grid.removeWidget($('#boredDiv').get(0));
 })
 
-$('.quoteClose').on('click', function(e) {
-  e.preventDefault();
-  $('#quoteDiv').remove();
-  // removeFromWidgetList("Quote")
+$('.quoteClose').on('click', function() {
+  grid.removeWidget($('#quoteDiv').get(0));
+})
+
+$('.weatherClose').on('click', function() {
+  grid.removeWidget($('#weatherDiv').get(0));
+})
+
+$('.aqClose').on('click', function() {
+  grid.removeWidget($('#aqDiv').get(0));
+})
+
+$('.jokeClose').on('click', function() {
+  grid.removeWidget($('#jokeDiv').get(0));
+})
+
+$('.newsClose').on('click', function() {
+  grid.removeWidget($('#newsDiv').get(0));
 })
 
 // Get user input from the Modal
