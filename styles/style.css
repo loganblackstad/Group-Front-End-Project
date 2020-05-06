@@ -10,13 +10,11 @@ body {
 }
 
 .container {
-  background-color: lightgray;
   height: 100%;
   width: 100vw;
 }
 
 nav {
-  background-color: darkgray;
   color: red;
 }
 

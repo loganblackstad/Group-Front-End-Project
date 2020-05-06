@@ -32,64 +32,55 @@
           <span class="close">&times;</span>
         </div>
       </div>
-      <navbar>
-        <nav class="navbar navbar-expand-md navbar-light">
-          <a href="#" class="navbar-brand" id="red">Dashboard</a>
-          <button class="navbar-toggler" data-toggle="collapse"
-            data-target="#navbarMenu">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarMenu">
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item" id="addQuotes">
-                <a href="#" class="nav-link">Quotes</a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">Weather</a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">News</a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">Air Quality</a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">Activities</a>
-              </li>
-            </ul>
-          </div>
-        </nav>
-      </navbar>
     <main>
-      <div class="grid-stack mt-2">
-          <div class="grid-stack-item border border-dark" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="2">
-            <div class="grid-stack-item-content card d-flex" id="weather">Daily Forecast</div>
-          </div>
-          <div class="grid-stack-item border border-dark" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="2">
-            <div class="grid-stack-item-content">Air Quality</div>
-          </div>
-          <div class="grid-stack-item border border-dark" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="2">
-            <div class="grid-stack-item-content">
-              <p>I need some inspiration.</p>
-              <div id="quote"></div>
-              <div><button class="d-flex btn btn-dark m-1 mt-2" id="quoteButton">Get quote</button></div>
+      <div class="grid-stack mt-2 border border-danger">
+        <div class="grid-stack-item border border-dark" data-gs-x="0" data-gs-y="0" data-gs-width="5" data-gs-height="5" data-gs-locked="true" data-gs-noMove="true" data-gs-noResize="true">
+          <div class="grid-stack-item-content card d-flex justify-content-start align-items-start m-2 border border-danger overflow-auto" id="home">
+            <p id="greeting" class="mt-4"></p>
+            <p><span id="datetime"></span></p>
+            <div class="btn-group dropright">
+              <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Widgets
+              </button>
+              <div class="dropdown-menu ml-5 overflow-auto">
+                <a href="#" class="nav-link" id="addQuotes">Quotes</a>
+                <a href="#" class="nav-link">Weather</a>
+                <a href="#" class="nav-link">News</a>
+                <a href="#" class="nav-link">Air Quality</a>
+                <a href="#" class="nav-link">Activities</a>
+              </div>
             </div>
           </div>
-          <div class="grid-stack-item border border-dark" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="2" id="boredDiv">
-            <div class="grid-stack-item-content">
-              <div class="d-flex"><p>Today is my day off and I am bored.</p><span class="ml-auto boredClose">✖️</span></div>
-              <div id="bored" class="card mt-1"></div>
-              <div><button class="d-flex btn btn-dark mt-3" id="boredButton">Do something</button></div>
-            </div>
+        </div>
+        <div class="grid-stack-item border border-dark" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="2">
+          <div class="grid-stack-item-content card d-flex" id="weather">Daily Forecast</div>
+        </div>
+        <div class="grid-stack-item border border-dark" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="2">
+          <div class="grid-stack-item-content">Air Quality</div>
+        </div>
+        <div class="grid-stack-item border border-dark" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="2">
+          <div class="grid-stack-item-content">
+            <p>I need some inspiration.</p>
+            <div id="quote"></div>
+            <div><button class="d-flex btn btn-dark m-1 mt-2" id="quoteButton">Get quote</button></div>
           </div>
-          <div class="grid-stack-item border border-dark" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="2">
-            <div class="grid-stack-item-content" id="card-news">News</div>
+        </div>
+        <div class="grid-stack-item border border-dark" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="2" id="boredDiv">
+          <div class="grid-stack-item-content">
+            <div class="d-flex"><p>Today is my day off and I am bored.</p><span class="ml-auto boredClose">✖️</span></div>
+            <div id="bored" class="card mt-1"></div>
+            <div><button class="d-flex btn btn-dark mt-3" id="boredButton">Do something</button></div>
           </div>
+        </div>
+        <div class="grid-stack-item border border-dark" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="2">
+          <div class="grid-stack-item-content" id="card-news">News</div>
+        </div>
         <div class="grid-stack-item border border-dark" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="2">
           <div class="grid-stack-item-content">
             <p>I could use a laugh.</p>
             <div><button class="d-flex btn btn-dark" id="jokeButton">Tell me a joke.</button></div>
             <div id="joke" class="mt-3"></div>
+          </div>
         </div>
       </div>
     </main>
@@ -115,5 +106,9 @@
     <script type="text/javascript">
       var grid = GridStack.init();
     </script>
+    <script>
+      var dt = new Date();
+      document.getElementById("datetime").innerHTML = (("0"+(dt.getMonth()+1)).slice(-2)) +"."+ (("0"+(dt.getDate())).slice(-2)) +"."+ (dt.getFullYear()) +" "+ (("0"+dt.getHours()).slice(-2)) +":"+ (("0"+dt.getMinutes()).slice(-2));
+      </script>
   </body>
 </html>

@@ -7,9 +7,10 @@ $('#boredButton').on('click', function(e) {
   });
 });
 
-$('.boredClose').on('click', function(e) {
-  e.preventDefault();
-  $('#boredDiv').hide();
+$('.boredClose').on('click', function() {
+  // e.preventDefault();
+  // $('#boredDiv').remove();
+  grid.removeWidget($('#boredDiv').get(0));
 })
 
 $('.quoteClose').on('click', function(e) {
@@ -21,8 +22,7 @@ $('.quoteClose').on('click', function(e) {
 // Get user input from the Modal
 function getInput(e) {
   e.preventDefault();
-  $('#red').html(`${$("#userName").val()}'s Dashboard`)
-  var radios = document.getElementsByName('decks');
+  $('#greeting').html(`Hello, ${$("#userName").val()}`)
 }
 
 // Add event listeners to the form to call functions when form is submitted
