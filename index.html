@@ -43,24 +43,6 @@
         </nav>
       </navbar>
     <main>
-<<<<<<< HEAD
-      <div class="d-flex align-items-center flex-wrap mt-5">
-        <div class="col-12 col-sm-12 col-md-4 col-lg-4 border border-dark d-flex">
-          <div class="card d-flex w-100" id="weather">Daily Forecast</div>
-        </div>
-        <div class="col-12 col-sm-12 col-md-4 col-lg-4 border border-dark d-flex align-items-center justify-content-center">
-          <div class="card p-5 m-3 d-flex">Air Quality</div>
-        </div>
-        <div class="col-12 col-sm-12 col-md-4 col-lg-4 border border-dark d-flex align-items-center justify-content-center">
-          <div class="card p-5 m-3 d-flex">Something Else</div>
-        </div>
-        <div class="col-12 col-sm-12 col-md-6 col-lg-6 border border-dark d-flex flex-column align-items-center justify-content-center p-4">
-          <div class="card p-2 w-100 d-flex align-items-center justify-content-center">
-            <p>Today is my day off and I am bored.</p>
-            <div><button class="d-flex btn btn-dark" id="boredButton">Do something</button></div>
-            <div id="bored" class="mt-3"></div>
-        </div>
-=======
       <form class="d-flex align-items-center mt-2">
         <input class="rounded" type="text" placeholder="zip code">
         <button class="btn btn-dark ml-2" type="button">submit</button>
@@ -68,13 +50,12 @@
       <div class="grid-stack">
         <!-- <div class="grid-stack-item" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="2">
           <div class="grid-stack-item-content">my first widget</div>
->>>>>>> 9e7bd7b4f9ffa88edf1a5f5860780c87f543b490
         </div>
         <div class="grid-stack-item" data-gs-x="4" data-gs-y="0" data-gs-width="4" data-gs-height="4">
           <div class="grid-stack-item-content">another widget!</div>
         </div> -->
           <div class="grid-stack-item border border-dark" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="2">
-            <div class="grid-stack-item-content">Weather Update</div>
+            <div id='weather' class="grid-stack-item-content">Weather Update</div>
           </div>
           <div class="grid-stack-item border border-dark" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="2">
             <div class="grid-stack-item-content">Air Quality</div>
@@ -96,11 +77,16 @@
           <div class="grid-stack-item border border-dark" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="2">
             <div class="grid-stack-item-content" id="card-news">News</div>
           </div>
-        <div class="grid-stack-item border border-dark" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="2">
+          <div class="grid-stack-item border border-dark" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="2">
           <div class="grid-stack-item-content">
             <p>I could use a laugh.</p>
             <div><button class="d-flex btn btn-dark" id="jokeButton">Tell me a joke.</button></div>
             <div id="joke" class="mt-3"></div>
+          </div>
+        </div>
+          <div class="grid-stack-item border border-dark" data-gs-x="0" data-gs-y="0" data-gs-width="5" data-gs-height="2">
+          <div class="grid-stack-item-content" id="corona"><b>COVID-19 Daily News</b></div>
+          </div>
         </div>
       </div>
     </main>
@@ -122,6 +108,7 @@
     <script src="scripts/api-quotes.js"></script>
     <script src="scripts/jokes.js"></script>
     <script src="scripts/api-weather.js"></script>
+    <script src="scripts/api-corona.js"></script>
     <script type="text/javascript">
       var grid = GridStack.init();
     </script>
