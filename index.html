@@ -45,16 +45,17 @@
               </button>
               <div class="dropdown-menu ml-5 overflow-auto">
                 <a href="#" class="nav-link" id="addQuotes">Quotes</a>
-                <a href="#" class="nav-link">Weather</a>
-                <a href="#" class="nav-link">News</a>
-                <a href="#" class="nav-link">Air Quality</a>
-                <a href="#" class="nav-link">Activities</a>
+                <a href="#" class="nav-link" id="addBored">Bored</a>
+                <a href="#" class="nav-link" id="addJoke">Joke</a>
+                <a href="#" class="nav-link" id="addWeather">Weather</a>
+                <a href="#" class="nav-link" id="addNews">News</a>
+                <a href="#" class="nav-link" id="addAQ">Air Quality</a>
               </div>
             </div>
           </div>
         </div>
         <div class="grid-stack-item border border-dark" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="2" id="weatherDiv">
-          <div class="grid-stack-item-content card d-flex" id="weather">
+          <div class="grid-stack-item-content card d-flex">
             <div class="d-flex"><p>Daily Forecast</p><span class="ml-auto weatherClose">✖️</span></div>
             <div id="weather"></div>
           </div>
@@ -69,14 +70,14 @@
           <div class="grid-stack-item-content">
             <div class="d-flex"><p>I need some inspiration.</p><span class="ml-auto quoteClose">✖️</span></div>
             <div id="quote" class="card mt-1"></div>
-            <div><button class="d-flex btn btn-dark m-1 mt-2" id="quoteButton">Get quote</button></div>
+            <div><button class="d-flex btn btn-dark m-1 mt-2" id="quoteButton">Motivational quote</button></div>
           </div>
         </div>
         <div class="grid-stack-item border border-dark" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="2" id="boredDiv">
           <div class="grid-stack-item-content">
             <div class="d-flex"><p>Today is my day off and I am bored.</p><span class="ml-auto boredClose">✖️</span></div>
             <div id="bored" class="card mt-1"></div>
-            <div><button class="d-flex btn btn-dark mt-3" id="boredButton">Do something</button></div>
+            <div><button class="d-flex btn btn-dark mt-3" id="boredButton">Find an activity</button></div>
           </div>
         </div>
         <div class="grid-stack-item border border-dark" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="2" id="newsDiv">
@@ -108,6 +109,7 @@
       crossorigin="anonymous"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="scripts/index.js"></script>
+    <script src="scripts/api-bored.js"></script>
     <script src="scripts/api-news.js"></script>
     <script src="scripts/api-quotes.js"></script>
     <script src="scripts/api-jokes.js"></script>

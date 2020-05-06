@@ -1,4 +1,4 @@
-$('#quoteButton').on('click' , function(e) {
+$(document).on('click', '#quoteButton', function(e) {
   e.preventDefault();
   axios.get("https://favqs.com/api/qotd")
     .then(response => {
