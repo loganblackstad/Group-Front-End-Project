@@ -36,7 +36,8 @@ input {
 }
 
 img {
-  height: 125px;
+  width: 185px;
+  margin-bottom: 0.7em;
 }
 
 .content {
@@ -137,6 +138,10 @@ span:hover {
   overflow: hidden;
   padding: 3px 10px;
   word-break: normal;
+}
+.tg .tg-lqy6 {
+  text-align: right;
+  vertical-align: top;
 }
 .tg .tg-0lax {
   text-align: left;
