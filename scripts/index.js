@@ -1,6 +1,6 @@
 function renderWidgets(widget) {
   let renderedWidget = `
-    <div class="grid-stack-item border border-dark" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="2" id=${widget.divID}>
+    <div class="grid-stack-item border border-dark" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="3" id=${widget.divID}>
       <div class="grid-stack-item-content">
         <div class="d-flex"><p>${widget.title}</p><span class="ml-auto ${widget.class}">✖️</span></div>
         <div id=${widget.cardID} class="card mt-1"></div>
@@ -17,6 +17,60 @@ function renderNoButton(widget) {
       <div class="grid-stack-item-content">
         <div class="d-flex"><p>${widget.title}</p><span class="ml-auto ${widget.class}">✖️</span></div>
         <div id=${widget.cardID}></div>
+      </div>
+    </div>
+  `;
+  return renderedWidget;
+}
+
+function renderNews(widget) {
+  let renderedWidget = `
+    <div class="grid-stack-item border border-dark" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="4" id=${widget.divID}>
+      <div class="grid-stack-item-content">
+        <div class="d-flex"><p>${widget.title}</p><span class="ml-auto ${widget.class}">✖️</span></div>
+        <div id=${widget.cardID}></div>
+      </div>
+    </div>
+  `;
+  return renderedWidget;
+}
+
+function renderRona(widget) {
+  let renderedWidget = `
+    <div class="grid-stack-item border border-dark" data-gs-x="0" data-gs-y="0" data-gs-width="5" data-gs-height="5" id=${widget.divID}>
+      <div class="grid-stack-item-content">
+        <div><center>
+          <div class="d-flex">
+            <p>CoronaVirus</p><span class="ml-auto ${widget.class}">✖️</span>
+          </div>
+          <div>
+            <h4><em>${widget.title}</em></h4>
+          </div>
+          <div>
+            <h1><b>${widget.stats.data.country}</b></h1>
+          </div>
+          <div>
+            <img src="https://corona.lmao.ninja/assets/img/flags/us.png">
+          </div>
+          <div>
+            <p><b>Cases:</b> ${widget.stats.data.cases}</p>
+          </div>
+          <div>
+            <p><b>Cases Today:</b> ${widget.stats.data.todayCases}</p>
+          </div>
+          <div>
+            <p><b>Deaths:</b> ${widget.stats.data.deaths}</p>
+          </div>
+          <div>
+            <p><b>Deaths Today:</b> ${widget.stats.data.todayDeaths}</p>
+          </div> 
+          <div>
+            <p><b>Recovered:</b> ${widget.stats.data.recovered}</p>
+          </div>
+          <div>
+            <p><b>Total Test:</b> ${widget.stats.data.tests}</p>
+          </div>
+        </center></div>
       </div>
     </div>
   `;
@@ -57,6 +111,14 @@ $(document).on("click", ".jokeClose", function () {
 
 $(document).on("click", ".newsClose", function () {
   grid.removeWidget($("#newsDiv").get(0));
+});
+
+$(document).on("click", ".coronaClose", function () {
+  grid.removeWidget($("#coronaDiv").get(0));
+});
+
+$(document).on("click", ".adviceClose", function () {
+  grid.removeWidget($("#adviceDiv").get(0));
 });
 
 // Get user input from the Modal
