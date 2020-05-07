@@ -80,7 +80,7 @@ span:hover {
   margin: 15% auto; /* 15% from the top and centered */
   padding: 20px;
   border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
+  width: 25%; /* Could be more or less, depending on screen size */
 }
 
 /* The Close Button */
@@ -111,7 +111,7 @@ span:hover {
 /* News Article headline div spacing*/
 .grid-stack-item {
   border-radius: 5px;
-  border-color: rgba(150, 50, 50, 1);
+  border: 1px solid rgba(50, 50, 50, 0.5);
 }
 
 /* Corona Daily Update Table formatting CSS*/
@@ -146,4 +146,36 @@ span:hover {
 .tg .tg-0lax {
   text-align: left;
   vertical-align: top;
+}
+
+/* Widget header div spacing*/
+.widget-header {
+  margin-top: 0.5em;
+}
+
+#hhmm {
+  font-size: 96px;
+  height: 96px;
+}
+
+#ss {
+  font-size: 48px;
+  height: 48px;
+}
+
+#ampm {
+  font-size: 96px;
+  height: 96px;
+}
+
+#date-span {
+  font-size: 20px;
+}
+
+.date-time {
+  line-height: 1;
+}
+
+.welcome {
+  font-size: 20px;
 }

@@ -25,7 +25,9 @@ function renderNoButton(widget) {
 
 function renderRona(widget) {
   let renderedWidget = `
-    <div class="grid-stack-item border border-dark" data-gs-x="0" data-gs-y="0" data-gs-width="5" data-gs-height="5" id=${widget.divID}>
+    <div class="grid-stack-item border border-dark" data-gs-x="0" data-gs-y="0" data-gs-width="5" data-gs-height="5" id=${
+      widget.divID
+    }>
       <div class="grid-stack-item-content">
         <div class="d-flex"> 
           <p><b>COVID-19 Daily Update</b></p>
@@ -69,12 +71,12 @@ function renderRona(widget) {
 }
 
 function renderNews() {
-  console.log("news!")
+  console.log("news!");
   var url =
-  "https://newsapi.org/v2/top-headlines?" +
-  "country=us&" +
-  "apiKey=bb4227ec350a41dba251dadcd757dcae";
-  
+    "https://newsapi.org/v2/top-headlines?" +
+    "country=us&" +
+    "apiKey=bb4227ec350a41dba251dadcd757dcae";
+
   let widgetHeader = `
   <div class="grid-stack-item border border-dark" data-gs-x="0" data-gs-y="4" data-gs-width="5" data-gs-height="4" id="newsDiv">
     <div class="grid-stack-item-content">
@@ -83,52 +85,65 @@ function renderNews() {
         <span class="ml-auto newsClose">✖️</span>
       </div>
       <div id="card-news">
-      `
-  let widgetFooter =  `
+      `;
+  let widgetFooter = `
       </div>
     </div>
   </div>
   `;
 
   fetch(url)
-  .then((response) => response.json())
-  .then((json) => {
-    // Render the top 3 US news stories to the <div id="card-news"> element
+    .then((response) => response.json())
+    .then((json) => {
+      // Render the top 3 US news stories to the <div id="card-news"> element
 
-    var numArticlesToRender = 3;
-    var templateStr = ``;
-    for (i = 0; i < numArticlesToRender; i++) {
-      var arrNewsHeadline = json.articles[i].title.split(" - ");
-      var srcNewsHeadline = arrNewsHeadline.pop();
-      var titleNewsHeadline = "".concat(arrNewsHeadline);
-      let tempStr = `
+      var numArticlesToRender = 3;
+      var templateStr = ``;
+      for (i = 0; i < numArticlesToRender; i++) {
+        var arrNewsHeadline = json.articles[i].title.split(" - ");
+        var srcNewsHeadline = arrNewsHeadline.pop();
+        var titleNewsHeadline = "".concat(arrNewsHeadline);
+        let tempStr = `
             <div class="headline">
               <a href="${json.articles[i].url}" target="_blank">${titleNewsHeadline}</a><br/>
               <span class="news-source"><i>${srcNewsHeadline}</i></span>
               <br/>  
             </div>
-            `
-      templateStr += tempStr;
-    }
-    console.log(templateStr)
-    grid.addWidget(widgetHeader + templateStr + widgetFooter)
-  });
-};
+            `;
+        templateStr += tempStr;
+      }
+      console.log(templateStr);
+      grid.addWidget(widgetHeader + templateStr + widgetFooter);
+    });
+}
 
-var clock = document.getElementById('clock');
+// Date Time Generator /* ------------- */
+var dateSpan = document.getElementById("date-span");
+var timehhmm = document.getElementById("hhmm");
+var timess = document.getElementById("ss");
+var timeampm = document.getElementById("ampm");
 
 function time() {
   var d = new Date();
-  var s = d.getSeconds();
-  var m = d.getMinutes();
-  var h = d.getHours();
-  clock.textContent = new Date().toLocaleString();
+  var optionWeekdayOnly = { weekday: "long" };
+  var optionDateOnly = { year: "numeric", month: "long", day: "numeric" };
+  var weekdayOnly = d.toLocaleDateString("en-US", optionWeekdayOnly);
+  var dateOnly = d.toLocaleDateString("en-US", optionDateOnly);
+  var timeOnly = d.toLocaleString().slice(9, 14);
+  var secondsOnly = d.toLocaleString().slice(15, 17);
+  var ampmOnly = d.toLocaleString().slice(18, 20);
+
+  dateSpan.textContent = weekdayOnly + " " + dateOnly;
+  timehhmm.textContent = timeOnly;
+  // timess.textContent = secondsOnly;
+  timeampm.textContent = ampmOnly.toUpperCase();
 }
 
 setInterval(time, 1000);
+/* ------------------------------------ */
 
-$(document).on('click', '.boredClose', function () {
-  grid.removeWidget($('#boredDiv').get(0));
+$(document).on("click", ".boredClose", function () {
+  grid.removeWidget($("#boredDiv").get(0));
 });
 
 $(document).on("click", ".quoteClose", function () {

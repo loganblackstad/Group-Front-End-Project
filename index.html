@@ -21,82 +21,99 @@
       <div id="myModal" class="modal">
         <div class="modal-content d-flex justify-content-center
           align-items-center">
-          <p>Welcome to YOUi!</p>
+          <span class="close">&times;</span>
+          <p class="welcome mt-3">Welcome to <b>YOUi!</b></p>
           <form id="theform" onsubmit="return false" class="d-flex flex-column
             justify-content-center align-items-center">
             <div id="name" class="d-flex flex-column justify-content-center
               align-items-center">
               <label for="userName">What is your name?</label>
-              <input type="text" id="userName" placeholder="User name" />
+              <input type="text" id="userName" class="pl-2" placeholder="John
+                Doe" />
             </div>
             <div id="zip" class="d-flex flex-column justify-content-center
               align-items-center mt-3">
               <label for="userZip">What is your zip code?</label>
-              <input type="text" id="userZip" placeholder="User zip code" />
+              <input type="text" id="userZip" class="pl-2" placeholder="zip
+                code" />
             </div>
-            <input type="submit" class="btn btn-dark mt-2" id="subButton" />
+            <input type="submit" class="btn btn-dark mt-4" id="subButton" />
           </form>
-          <span class="close">&times;</span>
         </div>
       </div>
-    <main>
-      <div class="grid-stack mt-2 border border-danger">
-        <div class="grid-stack-item border border-dark" data-gs-x="0" data-gs-y="0" data-gs-width="5" data-gs-height="6" data-gs-locked="true" data-gs-noMove="true" data-gs-noResize="true">
-          <div class="grid-stack-item-content card d-flex justify-content-start align-items-start m-2 p-1 border border-danger overflow-auto" id="home">
-            <h1>YOUi</h1>
-            <p id="greeting" class="mt-1"></p>
-            <p><span id="clock"></span></p>
-            <div class="dropdown show">
-              <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Widgets
-              </a>
-              <div class="dropdown-menu overflow-auto scrollable-menu" aria-labelledby="dropdownMenuLink">
-                <a href="#" class="nav-link" id="addQuotes">Quotes</a>
-                <a href="#" class="nav-link" id="addBored">Bored</a>
-                <a href="#" class="nav-link" id="addJoke">Jokes</a>
-                <a href="#" class="nav-link" id="addAdvice">Advice</a>
-                <a href="#" class="nav-link" id="addNews">News</a>
-                <a href="#" class="nav-link" id="addAQ">Air Quality</a>
-                <a href="#" class="nav-link" id="addCorona">Coronavirus</a>
-                <a href="#" class="nav-link" id="addYeezy">Kanye Quotes</a>
+      <main>
+        <div class="grid-stack mt-2 border border-danger">
+          <div class="grid-stack-item" data-gs-x="0" data-gs-y="0"
+            data-gs-width="5" data-gs-height="6" data-gs-locked="true"
+            data-gs-noMove="true" data-gs-noResize="true">
+            <div class="grid-stack-item-content card d-flex
+              justify-content-start align-items-start m-2 p-1 border
+              border-danger overflow-auto" id="home">
+              <!-- <h1>YOUi</h1> -->
+              <p id="greeting" class="mt-1"></p>
+              <div class="date-time m-0 mb-3">
+                <p class="m-0"><span id="date-span" class="m-0"></span></p>
+                <p class="d-flex align-content-top m-0" id="time-span">
+                  <span id="hhmm" class="mr-2"></span>
+                  <span id="ss" class="mr-2"></span>
+                  <span id="ampm"></span>
+                </p>
+              </div>
+              <div class="dropdown show">
+                <a class="btn btn-primary dropdown-toggle" href="#"
+                  role="button" id="dropdownMenuLink" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">
+                  Add Widget
+                </a>
+                <div class="dropdown-menu overflow-auto scrollable-menu"
+                  aria-labelledby="dropdownMenuLink">
+                  <a href="#" class="nav-link" id="addQuotes">Quotes</a>
+                  <a href="#" class="nav-link" id="addBored">Bored</a>
+                  <a href="#" class="nav-link" id="addJoke">Jokes</a>
+                  <a href="#" class="nav-link" id="addAdvice">Advice</a>
+                  <a href="#" class="nav-link" id="addNews">News</a>
+                  <a href="#" class="nav-link" id="addAQ">Air Quality</a>
+                  <a href="#" class="nav-link" id="addCorona">Coronavirus</a>
+                  <a href="#" class="nav-link" id="addYeezy">Kanye Quotes</a>
+                </div>
               </div>
             </div>
           </div>
-        </div>
           <div class="grid-stack-item border border-dark" data-gs-x="10"
             data-gs-y="6" data-gs-width="2" data-gs-height="5" id="aqDiv">
             <div class="grid-stack-item-content">
-              <div class="d-flex">
+              <div class="d-flex widget-header">
                 <p>Air Quality</p>
                 <span class="ml-auto aqClose">✖️</span>
                 <div id="airQuality" class="card mt-1"></div>
               </div>
             </div>
           </div>
-          <div class="grid-stack-item border border-dark" data-gs-x="9"
+          <div class="grid-stack-item" data-gs-x="9"
             data-gs-y="8" data-gs-width="3" data-gs-height="3" id="quoteDiv">
             <div class="grid-stack-item-content">
-              <div class="d-flex"><p>I need some inspiration.</p><span
+              <div class="d-flex widget-header"><p>I need some inspiration.</p><span
                   class="ml-auto quoteClose">✖️</span></div>
               <div id="quote" class="card mt-1"></div>
               <div><button class="d-flex btn btn-dark m-1 mt-2"
                   id="quoteButton">Motivational quote</button></div>
             </div>
           </div>
-          <div class="grid-stack-item border border-dark" data-gs-x="5"
+          <div class="grid-stack-item" data-gs-x="5"
             data-gs-y="8" data-gs-width="4" data-gs-height="3" id="boredDiv">
             <div class="grid-stack-item-content">
-              <div class="d-flex"><p>Today is my day off and I am bored.</p><span
+              <div class="d-flex widget-header"><p>Today is my day off and I am
+                  bored.</p><span
                   class="ml-auto boredClose">✖️</span></div>
               <div id="bored" class="card mt-1"></div>
               <div><button class="d-flex btn btn-dark mt-3" id="boredButton">Find
                   an activity</button></div>
             </div>
           </div>
-          <div class="grid-stack-item border border-dark" data-gs-x="0"
+          <div class="grid-stack-item" data-gs-x="0"
             data-gs-y="4" data-gs-width="5" data-gs-height="4" id="newsDiv">
             <div class="grid-stack-item-content">
-              <div class="d-flex">
+              <div class="d-flex widget-header">
                 <p><b>Top US News</b></p>
                 <span class="ml-auto newsClose">✖️</span>
               </div>
@@ -106,17 +123,17 @@
           <div class="grid-stack-item border" data-gs-x="5"
             data-gs-y="6" data-gs-width="5" data-gs-height="5" id="coronaDiv">
             <div class="grid-stack-item-content">
-              <div class="d-flex"> 
+              <div class="d-flex widget-header">
                 <p><b>COVID-19 Daily Update</b></p>
                 <span class="ml-auto coronaClose">✖️</span>
               </div>
               <div id="card-corona"></div>
             </div>
           </div>
-          <div class="grid-stack-item border" data-gs-x="5"
+          <div class="grid-stack-item" data-gs-x="5"
             data-gs-y="12" data-gs-width="7" data-gs-height="2" id="jokeDiv">
             <div class="grid-stack-item-content">
-              <div class="d-flex">
+              <div class="d-flex widget-header">
                 <p>I could use a laugh.</p>
                 <span class="ml-auto jokeClose">✖️</span>
               </div>
