@@ -106,3 +106,39 @@ span:hover {
 .headline {
   margin-bottom: 0.5em;
 }
+
+/* News Article headline div spacing*/
+.grid-stack-item {
+  border-radius: 5px;
+  border-color: rgba(150, 50, 50, 1);
+}
+
+/* Corona Daily Update Table formatting CSS*/
+.tg {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+.tg td {
+  border-style: solid;
+  border-width: 0px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  overflow: hidden;
+  padding: 3px 10px;
+  word-break: normal;
+}
+.tg th {
+  border-style: solid;
+  border-width: 0px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  overflow: hidden;
+  padding: 3px 10px;
+  word-break: normal;
+}
+.tg .tg-0lax {
+  text-align: left;
+  vertical-align: top;
+}
