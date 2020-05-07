@@ -24,6 +24,19 @@ $('#addBored').on('click', function() {
   grid.addWidget(newBoredWidget)
 });
 
+$('#addYeezy').on('click', function() {
+  let yeezyWidget = {
+    "title": "I need Yeezus in my life.",
+    "divID": "yeezyDiv",
+    "cardID": "yeezy",
+    "buttonID": "yeezyButton",
+    "class": "yeezyClose",
+    "buttonText": "Give me Kanye",
+  };
+  let newYeezyWidget = renderWidgets(yeezyWidget);
+  grid.addWidget(newYeezyWidget)
+});
+
 $('#addJoke').on('click', function() {
   let jokeWidget = {
     "title": "I could use a laugh.",
@@ -50,38 +63,18 @@ $('#addAdvice').on('click', function() {
   grid.addWidget(newAdviceWidget)
 });
 
-// $('#addWeather').on('click', function() {
-//   let weatherWidget = {
-//     "title": "Daily Forecast.",
-//     "divID": "weatherDiv",
-//     "cardID": "weather",
-//     "class": "weatherClose",
-//   };
-//   let newWeatherWidget = renderNoButton(weatherWidget);
-//   grid.addWidget(newWeatherWidget)
-// });
-
 $('#addNews').on('click', function() {
-  let newsWidget = {
-    "title": "News.",
-    "divID": "newsDiv",
-    "cardID": "card-news",
-    "class": "newsClose",
-  };
-  let newNewsWidget = renderNews(newsWidget);
-  grid.addWidget(newNewsWidget)
+  renderNews();
 });
 
-$('#addAQ').on('click', function() {
-  let newsWidget = {
-    "title": "Local Air Quality.",
-    "divID": "aqDiv",
-    "cardID": "airQuality",
-    "class": "aqClose",
-  };
-  let newNewsWidget = renderNoButton(newsWidget);
-  grid.addWidget(newNewsWidget)
-});
+// $('#addAQ').on('click', function() {
+//   let newsWidget = {
+//     "title": "Local Air Quality.",
+//     "divID": "aqDiv",
+//     "cardID": "airQuality",
+//     "class": "aqClose",
+//   };
+// });
 
 $('#addCorona').on('click', function() {
   axios.get("https://disease.sh/v2/countries/United%20States?yesterday=true#")
