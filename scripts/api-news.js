@@ -16,14 +16,14 @@ document.addEventListener("DOMContentLoaded", function (e) {
       // Render the top 3 US news stories to the <div id="card-news"> element
 
       var numArticlesToRender = 3;
-      var templateStr = `<b> Top US News</b><br />`;
+      var templateStr = ``;
       for (i = 0; i < numArticlesToRender; i++) {
         var arrNewsHeadline = json.articles[i].title.split(" - ");
         var srcNewsHeadline = arrNewsHeadline.pop();
         var titleNewsHeadline = "".concat(arrNewsHeadline);
-        let tempStr = `<a href="${json.articles[i].url}" target="_blank">${titleNewsHeadline}</a>
+        let tempStr = `<div class="headline"><a href="${json.articles[i].url}" target="_blank">${titleNewsHeadline}</a><br/>
         <span class="news-source"><i>${srcNewsHeadline}</i></span>
-        <br/>`;
+        <br/></div>`;
         templateStr += tempStr;
       }
 
@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
     });
 });
 
-// TO BE ADDED:
+// FEATURES THAT COULD BE ADDED:
 // Add News Filters for:
 // - media outlet (source)
 // - popularity
