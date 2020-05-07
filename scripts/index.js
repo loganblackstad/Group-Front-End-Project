@@ -80,6 +80,53 @@ function renderRona(widget) {
   return renderedWidget;
 }
 
+async function renderNews() {
+  console.log("news!")
+  var url =
+  "https://newsapi.org/v2/top-headlines?" +
+  "country=us&" +
+  "apiKey=bb4227ec350a41dba251dadcd757dcae";
+  
+  let widgetHeader = `
+  <div class="grid-stack-item border border-dark" data-gs-x="0"data-gs-y="4" data-gs-width="5" data-gs-height="4" id="newsDiv">
+    <div class="grid-stack-item-content">
+      <div class="d-flex">
+        <p><b>Top US News</b></p>
+        <span class="ml-auto newsClose">✖️</span>
+      </div>
+      <div id="card-news">
+      `
+  let widgetFooter =  `
+      </div>
+    </div>
+  </div>
+  `;
+
+  fetch(url)
+  .then((response) => response.json())
+  .then((json) => {
+    // Render the top 3 US news stories to the <div id="card-news"> element
+
+    var numArticlesToRender = 3;
+    var templateStr = ``;
+    for (i = 0; i < numArticlesToRender; i++) {
+      var arrNewsHeadline = json.articles[i].title.split(" - ");
+      var srcNewsHeadline = arrNewsHeadline.pop();
+      var titleNewsHeadline = "".concat(arrNewsHeadline);
+      let tempStr = `
+            <div class="headline">
+              <a href="${json.articles[i].url}" target="_blank">${titleNewsHeadline}</a><br/>
+              <span class="news-source"><i>${srcNewsHeadline}</i></span>
+              <br/>  
+            </div>
+            `
+      templateStr += tempStr;
+    }
+    console.log(templateStr)
+    grid.addWidget(widgetHeader + templateStr + widgetFooter)
+  });
+};
+
 var clock = document.getElementById('clock');
 
 function time() {
