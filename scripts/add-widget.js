@@ -38,7 +38,6 @@ $('#addJoke').on('click', function() {
 });
 
 $('#addAdvice').on('click', function() {
-  console.log("heard ya")
   let adviceWidget = {
     "title": "I really need some life advice.",
     "divID": "adviceDiv",
