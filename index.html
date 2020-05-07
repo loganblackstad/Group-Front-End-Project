@@ -35,7 +35,7 @@
           <div class="grid-stack-item-content card d-flex justify-content-start align-items-start m-2 border border-danger overflow-auto" id="home">
             <h1>YOUi</h1>
             <p id="greeting" class="mt-1"></p>
-            <p><span id="date"></span><span id="clock"></span></p>
+            <p><span id="clock"></span></p>
             <div class="btn-group dropright">
               <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Widgets
@@ -47,12 +47,7 @@
                 <a href="#" class="nav-link" id="addWeather">Weather</a>
                 <a href="#" class="nav-link" id="addNews">News</a>
                 <a href="#" class="nav-link" id="addAQ">Air Quality</a>
-                <a href="#" class="nav-link" id="addQuotes">Quotes</a>
-                <a href="#" class="nav-link" id="addBored">Bored</a>
-                <a href="#" class="nav-link" id="addJoke">Joke</a>
-                <a href="#" class="nav-link" id="addWeather">Weather</a>
-                <a href="#" class="nav-link" id="addNews">News</a>
-                <a href="#" class="nav-link" id="addAQ">Air Quality</a>
+                <a href="#" class="nav-link" id="addCorona">Coronavirus</a>
               </div>
             </div>
           </div>
@@ -132,9 +127,5 @@
     <script type="text/javascript">
       var grid = GridStack.init();
     </script>
-    <script>
-      var dt = new Date();
-      document.getElementById("date").innerHTML = (("0"+(dt.getMonth()+1)).slice(-2)) +"."+ (("0"+(dt.getDate())).slice(-2)) +"."+ (dt.getFullYear()) + " ";
-      </script>
   </body>
 </html>
