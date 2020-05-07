@@ -23,18 +23,6 @@ function renderNoButton(widget) {
   return renderedWidget;
 }
 
-function renderNews(widget) {
-  let renderedWidget = `
-    <div class="grid-stack-item border border-dark" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="4" id=${widget.divID}>
-      <div class="grid-stack-item-content">
-        <div class="d-flex"><p>${widget.title}</p><span class="ml-auto ${widget.class}">✖️</span></div>
-        <div id=${widget.cardID}></div>
-      </div>
-    </div>
-  `;
-  return renderedWidget;
-}
-
 function renderRona(widget) {
   let renderedWidget = `
     <div class="grid-stack-item border border-dark" data-gs-x="0" data-gs-y="0" data-gs-width="5" data-gs-height="5" id=${widget.divID}>
@@ -80,7 +68,7 @@ function renderRona(widget) {
   return renderedWidget;
 }
 
-async function renderNews() {
+function renderNews() {
   console.log("news!")
   var url =
   "https://newsapi.org/v2/top-headlines?" +
@@ -88,7 +76,7 @@ async function renderNews() {
   "apiKey=bb4227ec350a41dba251dadcd757dcae";
   
   let widgetHeader = `
-  <div class="grid-stack-item border border-dark" data-gs-x="0"data-gs-y="4" data-gs-width="5" data-gs-height="4" id="newsDiv">
+  <div class="grid-stack-item border border-dark" data-gs-x="0" data-gs-y="4" data-gs-width="5" data-gs-height="4" id="newsDiv">
     <div class="grid-stack-item-content">
       <div class="d-flex">
         <p><b>Top US News</b></p>
