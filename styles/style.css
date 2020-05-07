@@ -109,10 +109,16 @@ span:hover {
 }
 
 /* News Article headline div spacing*/
-.grid-stack-item {
+/* .grid-stack-item {
+  border-radius: 5px;
+  border: 1px solid rgba(50, 50, 50, 0.5);
+} */
+
+.bor {
   border-radius: 5px;
   border: 1px solid rgba(50, 50, 50, 0.5);
 }
+
 
 /* Corona Daily Update Table formatting CSS*/
 .tg {
@@ -151,10 +157,11 @@ span:hover {
 /* Widget header div spacing*/
 .widget-header {
   margin-top: 0.5em;
+  background-color: skyblue;
 }
 
 #hhmm {
-  font-size: 96px;
+  font-size: 90px;
   height: 96px;
 }
 
@@ -164,7 +171,7 @@ span:hover {
 }
 
 #ampm {
-  font-size: 96px;
+  font-size: 90px;
   height: 96px;
 }
 
