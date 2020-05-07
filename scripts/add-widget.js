@@ -24,6 +24,19 @@ $('#addBored').on('click', function() {
   grid.addWidget(newBoredWidget)
 });
 
+$('#addYeezy').on('click', function() {
+  let yeezyWidget = {
+    "title": "I need Yeezus in my life.",
+    "divID": "yeezyDiv",
+    "cardID": "yeezy",
+    "buttonID": "yeezyButton",
+    "class": "yeezyClose",
+    "buttonText": "Give me Kanye",
+  };
+  let newYeezyWidget = renderWidgets(yeezyWidget);
+  grid.addWidget(newYeezyWidget)
+});
+
 $('#addJoke').on('click', function() {
   let jokeWidget = {
     "title": "I could use a laugh.",

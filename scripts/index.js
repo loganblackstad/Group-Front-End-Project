@@ -121,6 +121,10 @@ $(document).on("click", ".adviceClose", function () {
   grid.removeWidget($("#adviceDiv").get(0));
 });
 
+$(document).on("click", ".yeezyClose", function () {
+  grid.removeWidget($("#yeezyDiv").get(0));
+});
+
 // Get user input from the Modal
 function getInput(e) {
   e.preventDefault();
