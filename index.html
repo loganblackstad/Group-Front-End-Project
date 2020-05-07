@@ -4,23 +4,33 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+    <link rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous" />
     <link rel="stylesheet" href="styles/style.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gridstack@1.1.1/dist/gridstack.min.css" />
-    <script src="https://cdn.jsdelivr.net/npm/gridstack@1.1.1/dist/gridstack.all.js"></script>
+    <link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/gridstack@1.1.1/dist/gridstack.min.css"
+      />
+    <script
+      src="https://cdn.jsdelivr.net/npm/gridstack@1.1.1/dist/gridstack.all.js"></script>
   </head>
   <body>
     <div class="container">
       <!-- Modal content -->
       <div id="myModal" class="modal">
-        <div class="modal-content d-flex justify-content-center align-items-center">
+        <div class="modal-content d-flex justify-content-center
+          align-items-center">
           <p>Welcome to YOUi!</p>
-          <form id="theform" onsubmit="return false" class="d-flex flex-column justify-content-center align-items-center">
-            <div id="name" class="d-flex flex-column justify-content-center align-items-center">
+          <form id="theform" onsubmit="return false" class="d-flex flex-column
+            justify-content-center align-items-center">
+            <div id="name" class="d-flex flex-column justify-content-center
+              align-items-center">
               <label for="userName">What is your name?</label>
               <input type="text" id="userName" placeholder="User name" />
             </div>
-            <div id="zip" class="d-flex flex-column justify-content-center align-items-center mt-3">
+            <div id="zip" class="d-flex flex-column justify-content-center
+              align-items-center mt-3">
               <label for="userZip">What is your zip code?</label>
               <input type="text" id="userZip" placeholder="User zip code" />
             </div>
@@ -29,71 +39,90 @@
           <span class="close">&times;</span>
         </div>
       </div>
-    <main>
-      <div class="grid-stack mt-2 border border-danger">
-        <div class="grid-stack-item border border-dark" data-gs-x="0" data-gs-y="0" data-gs-width="5" data-gs-height="5" data-gs-locked="true" data-gs-noMove="true" data-gs-noResize="true">
-          <div class="grid-stack-item-content card d-flex justify-content-start align-items-start m-2 border border-danger overflow-auto" id="home">
-            <h1>YOUi</h1>
-            <p id="greeting" class="mt-1"></p>
-            <p><span id="clock"></span></p>
-            <div class="btn-group dropright">
-              <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Widgets
-              </button>
-              <div class="dropdown-menu ml-5 overflow-auto scrollable-menu">
-                <a href="#" class="nav-link" id="addQuotes">Quotes</a>
-                <a href="#" class="nav-link" id="addBored">Bored</a>
-                <a href="#" class="nav-link" id="addJoke">Joke</a>
-                <a href="#" class="nav-link" id="addWeather">Weather</a>
-                <a href="#" class="nav-link" id="addNews">News</a>
-                <a href="#" class="nav-link" id="addAQ">Air Quality</a>
-                <a href="#" class="nav-link" id="addCorona">Coronavirus</a>
+      <main>
+        <div class="grid-stack mt-2 border border-danger">
+          <div class="grid-stack-item border border-dark" data-gs-x="0"
+            data-gs-y="0" data-gs-width="5" data-gs-height="5"
+            data-gs-locked="true" data-gs-noMove="true" data-gs-noResize="true">
+            <div class="grid-stack-item-content card d-flex
+              justify-content-start align-items-start m-2 border border-danger
+              overflow-auto" id="home">
+              <h1>YOUi</h1>
+              <p id="greeting" class="mt-1"></p>
+              <p><span id="clock"></span></p>
+              <div class="btn-group dropright">
+                <button type="button" class="btn btn-secondary dropdown-toggle"
+                  data-toggle="dropdown" aria-haspopup="true"
+                  aria-expanded="false">
+                  Widgets
+                </button>
+                <div class="dropdown-menu ml-5 overflow-auto scrollable-menu">
+                  <a href="#" class="nav-link" id="addQuotes">Quotes</a>
+                  <a href="#" class="nav-link" id="addBored">Bored</a>
+                  <a href="#" class="nav-link" id="addJoke">Joke</a>
+                  <a href="#" class="nav-link" id="addWeather">Weather</a>
+                  <a href="#" class="nav-link" id="addNews">News</a>
+                  <a href="#" class="nav-link" id="addAQ">Air Quality</a>
+                  <a href="#" class="nav-link" id="addCorona">Coronavirus</a>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="grid-stack-item border border-dark" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="2" id="weatherDiv">
-          <div class="grid-stack-item-content card d-flex">
-            <div class="d-flex"><p>Daily Forecast</p><span class="ml-auto weatherClose">✖️</span></div>
-            <div id="weather"></div>
-          </div>
-        </div>
-        <div class="grid-stack-item border border-dark" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="2" id="aqDiv">
-          <div class="grid-stack-item-content">
-            <div class="d-flex">
-              <p>Air Quality</p>
-              <span class="ml-auto aqClose">✖️</span>
+          <div class="grid-stack-item border border-dark" data-gs-x="0"
+            data-gs-y="0" data-gs-width="4" data-gs-height="2" id="weatherDiv">
+            <div class="grid-stack-item-content card d-flex">
+              <div class="d-flex"><p>Daily Forecast</p><span class="ml-auto
+                  weatherClose">✖️</span></div>
+              <div id="weather"></div>
             </div>
-            <div id="airQuality"></div>
           </div>
-        </div>
-        <div class="grid-stack-item border border-dark" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="2" id="quoteDiv">
-          <div class="grid-stack-item-content">
-            <div class="d-flex"><p>I need some inspiration.</p><span class="ml-auto quoteClose">✖️</span></div>
-            <div id="quote" class="card mt-1"></div>
-            <div><button class="d-flex btn btn-dark m-1 mt-2" id="quoteButton">Motivational quote</button></div>
-          </div>
-        </div>
-        <div class="grid-stack-item border border-dark" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="2" id="boredDiv">
-          <div class="grid-stack-item-content">
-            <div class="d-flex"><p>Today is my day off and I am bored.</p><span class="ml-auto boredClose">✖️</span></div>
-            <div id="bored" class="card mt-1"></div>
-            <div><button class="d-flex btn btn-dark mt-3" id="boredButton">Find an activity</button></div>
-          </div>
-        </div>
-          <div class="grid-stack-item border border-dark" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="2" id="newsDiv">
+          <div class="grid-stack-item border border-dark" data-gs-x="0"
+            data-gs-y="0" data-gs-width="4" data-gs-height="2" id="aqDiv">
             <div class="grid-stack-item-content">
               <div class="d-flex">
-                <p>News.</p>
+                <p>Air Quality</p>
+                <span class="ml-auto aqClose">✖️</span>
+              </div>
+              <div id="airQuality"></div>
+            </div>
+          </div>
+          <div class="grid-stack-item border border-dark" data-gs-x="0"
+            data-gs-y="0" data-gs-width="4" data-gs-height="2" id="quoteDiv">
+            <div class="grid-stack-item-content">
+              <div class="d-flex"><p>I need some inspiration.</p><span
+                  class="ml-auto quoteClose">✖️</span></div>
+              <div id="quote" class="card mt-1"></div>
+              <div><button class="d-flex btn btn-dark m-1 mt-2"
+                  id="quoteButton">Motivational quote</button></div>
+            </div>
+          </div>
+          <div class="grid-stack-item border border-dark" data-gs-x="0"
+            data-gs-y="0" data-gs-width="4" data-gs-height="2" id="boredDiv">
+            <div class="grid-stack-item-content">
+              <div class="d-flex"><p>Today is my day off and I am bored.</p><span
+                  class="ml-auto boredClose">✖️</span></div>
+              <div id="bored" class="card mt-1"></div>
+              <div><button class="d-flex btn btn-dark mt-3" id="boredButton">Find
+                  an activity</button></div>
+            </div>
+          </div>
+          <div class="grid-stack-item border border-dark" data-gs-x="0"
+            data-gs-y="0" data-gs-width="4" data-gs-height="4" id="newsDiv">
+            <div class="grid-stack-item-content">
+              <div class="d-flex">
+                <p class="pt-2"><b>Top US News</b></p>
                 <span class="ml-auto newsClose">✖️</span>
               </div>
               <div id="card-news"></div>
             </div>
           </div>
-        <div class="grid-stack-item border border-dark" data-gs-x="0" data-gs-y="0" data-gs-width="5" data-gs-height="2">
-          <div class="grid-stack-item-content" id="corona"><b>COVID-19 Daily News</b></div>
-        </div>
-          <div class="grid-stack-item border border-dark" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="2" id="jokeDiv">
+          <div class="grid-stack-item border border-dark" data-gs-x="0"
+            data-gs-y="0" data-gs-width="5" data-gs-height="2">
+            <div class="grid-stack-item-content" id="corona"><b>COVID-19 Daily
+                News</b></div>
+          </div>
+          <div class="grid-stack-item border border-dark" data-gs-x="0"
+            data-gs-y="0" data-gs-width="4" data-gs-height="2" id="jokeDiv">
             <div class="grid-stack-item-content">
               <div class="d-flex">
                 <p>I could use a laugh.</p>
@@ -110,9 +139,17 @@
         </div>
       </main>
     </div>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="scripts/index.js"></script>
     <script src="scripts/api-bored.js"></script>
