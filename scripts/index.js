@@ -1,6 +1,6 @@
 function renderWidgets(widget) {
   let renderedWidget = `
-    <div class="grid-stack-item border border-dark" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="2" id=${widget.divID}>
+    <div class="grid-stack-item border border-dark" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="3" id=${widget.divID}>
       <div class="grid-stack-item-content">
         <div class="d-flex"><p>${widget.title}</p><span class="ml-auto ${widget.class}">✖️</span></div>
         <div id=${widget.cardID} class="card mt-1"></div>
@@ -22,6 +22,125 @@ function renderNoButton(widget) {
   `;
   return renderedWidget;
 }
+
+function renderRona(widget) {
+  let renderedWidget = `
+    <div class="grid-stack-item border border-dark" data-gs-x="0" data-gs-y="0" data-gs-width="5" data-gs-height="5" id=${
+      widget.divID
+    }>
+      <div class="grid-stack-item-content">
+        <div class="d-flex"> 
+          <p><b>COVID-19 Daily Update</b></p>
+          <span class="ml-auto ${widget.class}">✖️</span>
+        </div>
+        <div><center>
+            <img src="https://corona.lmao.ninja/assets/img/flags/us.png">
+            <table class="tg">
+            <tbody>
+            <tr>
+                <td class="tg-0lax">Cases :</td>
+                <td class="tg-lqy6">${widget.stats.data.cases.toLocaleString()}</td>
+            </tr>
+            <tr>
+                <td class="tg-0lax">Cases (today) :</td>
+                <td class="tg-lqy6">${widget.stats.data.todayCases.toLocaleString()}</td>
+            </tr>
+            <tr>
+                <td class="tg-0lax">Deaths :</td>
+                <td class="tg-lqy6">${widget.stats.data.deaths.toLocaleString()}</td>
+            </tr>
+            <tr>
+                <td class="tg-0lax">Deaths (today) :</td>
+                <td class="tg-lqy6">${widget.stats.data.todayDeaths.toLocaleString()}</td>
+            </tr>
+            <tr>
+                <td class="tg-0lax">Recovered :</td>
+                <td class="tg-lqy6">${widget.stats.data.recovered.toLocaleString()}</td>
+            </tr>
+            <tr>
+                <td class="tg-0lax">Total Tested :</td>
+                <td class="tg-lqy6">${widget.stats.data.tests.toLocaleString()}</td>
+            </tr>
+            </tbody>
+            </table>
+        </center></div>
+      </div>
+    </div>
+  `;
+  return renderedWidget;
+}
+
+function renderNews() {
+  console.log("news!");
+  var url =
+    "https://newsapi.org/v2/top-headlines?" +
+    "country=us&" +
+    "apiKey=bb4227ec350a41dba251dadcd757dcae";
+
+  let widgetHeader = `
+  <div class="grid-stack-item border border-dark" data-gs-x="0" data-gs-y="4" data-gs-width="5" data-gs-height="4" id="newsDiv">
+    <div class="grid-stack-item-content">
+      <div class="d-flex">
+        <p><b>Top US News</b></p>
+        <span class="ml-auto newsClose">✖️</span>
+      </div>
+      <div id="card-news">
+      `;
+  let widgetFooter = `
+      </div>
+    </div>
+  </div>
+  `;
+
+  fetch(url)
+    .then((response) => response.json())
+    .then((json) => {
+      // Render the top 3 US news stories to the <div id="card-news"> element
+
+      var numArticlesToRender = 3;
+      var templateStr = ``;
+      for (i = 0; i < numArticlesToRender; i++) {
+        var arrNewsHeadline = json.articles[i].title.split(" - ");
+        var srcNewsHeadline = arrNewsHeadline.pop();
+        var titleNewsHeadline = "".concat(arrNewsHeadline);
+        let tempStr = `
+            <div class="headline">
+              <a href="${json.articles[i].url}" target="_blank">${titleNewsHeadline}</a><br/>
+              <span class="news-source"><i>${srcNewsHeadline}</i></span>
+              <br/>  
+            </div>
+            `;
+        templateStr += tempStr;
+      }
+      console.log(templateStr);
+      grid.addWidget(widgetHeader + templateStr + widgetFooter);
+    });
+}
+
+// Date Time Generator /* ------------- */
+var dateSpan = document.getElementById("date-span");
+var timehhmm = document.getElementById("hhmm");
+var timess = document.getElementById("ss");
+var timeampm = document.getElementById("ampm");
+
+function time() {
+  var d = new Date();
+  var optionWeekdayOnly = { weekday: "long" };
+  var optionDateOnly = { year: "numeric", month: "long", day: "numeric" };
+  var weekdayOnly = d.toLocaleDateString("en-US", optionWeekdayOnly);
+  var dateOnly = d.toLocaleDateString("en-US", optionDateOnly);
+  var timeOnly = d.toLocaleString().slice(9, 14);
+  var secondsOnly = d.toLocaleString().slice(15, 17);
+  var ampmOnly = d.toLocaleString().slice(18, 20);
+
+  dateSpan.textContent = weekdayOnly + " " + dateOnly;
+  timehhmm.textContent = timeOnly;
+  // timess.textContent = secondsOnly;
+  timeampm.textContent = ampmOnly.toUpperCase();
+}
+
+setInterval(time, 1000);
+/* ------------------------------------ */
 
 $(document).on("click", ".boredClose", function () {
   grid.removeWidget($("#boredDiv").get(0));
@@ -45,6 +164,18 @@ $(document).on("click", ".jokeClose", function () {
 
 $(document).on("click", ".newsClose", function () {
   grid.removeWidget($("#newsDiv").get(0));
+});
+
+$(document).on("click", ".coronaClose", function () {
+  grid.removeWidget($("#coronaDiv").get(0));
+});
+
+$(document).on("click", ".adviceClose", function () {
+  grid.removeWidget($("#adviceDiv").get(0));
+});
+
+$(document).on("click", ".yeezyClose", function () {
+  grid.removeWidget($("#yeezyDiv").get(0));
 });
 
 // Get user input from the Modal
