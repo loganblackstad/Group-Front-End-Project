@@ -37,16 +37,29 @@ $('#addJoke').on('click', function() {
   grid.addWidget(newJokeWidget)
 });
 
-$('#addWeather').on('click', function() {
-  let weatherWidget = {
-    "title": "Daily Forecast.",
-    "divID": "weatherDiv",
-    "cardID": "weather",
-    "class": "weatherClose",
+$('#addAdvice').on('click', function() {
+  let adviceWidget = {
+    "title": "I really need some life advice.",
+    "divID": "adviceDiv",
+    "cardID": "advice",
+    "buttonID": "adviceButton",
+    "class": "adviceClose",
+    "buttonText": "Advise Me",
   };
-  let newWeatherWidget = renderNoButton(weatherWidget);
-  grid.addWidget(newWeatherWidget)
+  let newAdviceWidget = renderWidgets(adviceWidget);
+  grid.addWidget(newAdviceWidget)
 });
+
+// $('#addWeather').on('click', function() {
+//   let weatherWidget = {
+//     "title": "Daily Forecast.",
+//     "divID": "weatherDiv",
+//     "cardID": "weather",
+//     "class": "weatherClose",
+//   };
+//   let newWeatherWidget = renderNoButton(weatherWidget);
+//   grid.addWidget(newWeatherWidget)
+// });
 
 $('#addNews').on('click', function() {
   let newsWidget = {
@@ -55,7 +68,7 @@ $('#addNews').on('click', function() {
     "cardID": "card-news",
     "class": "newsClose",
   };
-  let newNewsWidget = renderNoButton(newsWidget);
+  let newNewsWidget = renderNews(newsWidget);
   grid.addWidget(newNewsWidget)
 });
 
@@ -68,4 +81,19 @@ $('#addAQ').on('click', function() {
   };
   let newNewsWidget = renderNoButton(newsWidget);
   grid.addWidget(newNewsWidget)
+});
+
+$('#addCorona').on('click', function() {
+  axios.get("https://disease.sh/v2/countries/United%20States?yesterday=true#")
+  .then(response => {
+    let coronaWidget = {
+      "title": "COVID-19 Daily News",
+      "divID": "coronaDiv",
+      "cardID": "corona",
+      "class": "coronaClose",
+      "stats": response
+    };
+    let newCoronaWidget = renderRona(coronaWidget);
+    grid.addWidget(newCoronaWidget)
+  });
 });
