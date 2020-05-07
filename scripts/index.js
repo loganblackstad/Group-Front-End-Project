@@ -77,20 +77,31 @@ function renderRona(widget) {
   return renderedWidget;
 }
 
-var clock = document.getElementById('clock');
+var dateSpan = document.getElementById("date-span");
+var timehhmm = document.getElementById("hhmm");
+var timess = document.getElementById("ss");
+var timeampm = document.getElementById("ampm");
 
 function time() {
   var d = new Date();
-  var s = d.getSeconds();
-  var m = d.getMinutes();
-  var h = d.getHours();
-  clock.textContent = new Date().toLocaleString();
+  var optionWeekdayOnly = { weekday: "long" };
+  var optionDateOnly = { year: "numeric", month: "long", day: "numeric" };
+  var weekdayOnly = d.toLocaleDateString("en-US", optionWeekdayOnly);
+  var dateOnly = d.toLocaleDateString("en-US", optionDateOnly);
+  var timeOnly = d.toLocaleString().slice(9, 14);
+  var secondsOnly = d.toLocaleString().slice(15, 17);
+  var ampmOnly = d.toLocaleString().slice(18, 20);
+
+  dateSpan.textContent = weekdayOnly + " " + dateOnly;
+  timehhmm.textContent = timeOnly + " ";
+  // timess.textContent = secondsOnly + " ";
+  timeampm.textContent = ampmOnly.toUpperCase();
 }
 
 setInterval(time, 1000);
 
-$(document).on('click', '.boredClose', function () {
-  grid.removeWidget($('#boredDiv').get(0));
+$(document).on("click", ".boredClose", function () {
+  grid.removeWidget($("#boredDiv").get(0));
 });
 
 $(document).on("click", ".quoteClose", function () {
