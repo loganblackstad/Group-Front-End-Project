@@ -1,6 +1,6 @@
 //https://disease.sh/v2/states/Georgia?yesterday=true
 //countryInfo.flag
-
+//university.logo_.small_.vertical.white_.png
 axios
   .get("https://disease.sh/v2/countries/United%20States?yesterday=true#")
   .then((response) => {
