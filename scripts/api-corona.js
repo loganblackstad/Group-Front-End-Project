@@ -5,7 +5,7 @@ axios.get("https://disease.sh/v2/countries/United%20States?yesterday=true#")
     .then(response => {
         console.log(response)
         const coronaUSA= `
-            <div><center>
+            <div id="corona"><center>
                 <div>
                     <h4><em>COVID-19 Daily News</em></h4>
                 </div>
