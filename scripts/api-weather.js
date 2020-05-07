@@ -1,11 +1,25 @@
 //Weather API
 
 //OMW api key: 1c2750404739686fb5929a48b32c2766
-    //api.openweathermap.org/data/2.5/weather?zip={zip code},us&appid={your api key}
-    
+//api.openweathermap.org/data/2.5/weather?zip={zip code},us&appid={your api key}
+
 //Zipcode api
 
-//https://www.zipcodeapi.com/rest/cwwCqhQAVldh2MPIHShpgtWh0kRoiSL0fofzi1pxIsNMfdO5Zt9QdlITyADOWcTy/info.json/30542/degrees
+var zipcode = localStorage.getItem('zip');
+console.log(zipcode);
+
+$(document).on('DOMContentLoaded', function (e) {
+    e.preventDefault();
+    axios.get(`https://api.openweathermap.org/data/2.5/weather?zip=${zipcode},us&appid=1c2750404739686fb5929a48b32c2766`)
+        .then(response => {
+            console.log(response)
+            // $('.weather').html(response.data.joke);
+        });
+});
+
+
+var weatherAPIURL = "https://www.zipcodeapi.com/rest/cwwCqhQAVldh2MPIHShpgtWh0kRoiSL0fofzi1pxIsNMfdO5Zt9QdlITyADOWcTy/info.json/" + localStorage.get('zip') + "/degrees";
+
 
 /* -take the value from user zip
     -input value into /(zipcode)/degree
@@ -13,15 +27,31 @@
 
 
 
-
+*/
 
 //Weather Widget
 
-/*      <div>
-            <div id="openweathermap-widget-5"></div>
-            <script>window.myWidgetParam ? window.myWidgetParam : window.myWidgetParam = [];  window.myWidgetParam.push({id: 5,cityid: '4180439',appid: '1c2750404739686fb5929a48b32c2766',units: 'imperial',containerid: 'openweathermap-widget-5',  });  (function() {var script = document.createElement('script');script.async = true;script.charset = "utf-8";script.src = "//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/weather-widget-generator.js";var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(script, s);  })();</script>
-        </div>
-*/
+{/* <div>
+    <div id="openweathermap-widget-5"></div>
+    <script>
+        window.myWidgetParam ? window.myWidgetParam : window.myWidgetParam = [];
+        window.myWidgetParam.push({
+            id: 5,
+            cityid: '420006353',
+            appid: '1c2750404739686fb5929a48b32c2766',
+            units: 'imperial',
+            containerid: 'openweathermap-widget-5',  
+            });  
+        (function() {
+            var script = document.createElement('script');
+            script.async = true;
+            script.charset = "utf-8";
+            script.src = "//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/weather-widget-generator.js";
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(script, s);  })();
+    </script>
+</div> */}
+
 
 
 

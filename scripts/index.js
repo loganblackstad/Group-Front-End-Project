@@ -1,6 +1,6 @@
 function renderWidgets(widget) {
   let renderedWidget = `
-    <div class="grid-stack-item border border-dark" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="3" id=${widget.divID}>
+    <div class="grid-stack-item" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="3" id=${widget.divID}>
       <div class="grid-stack-item-content">
         <div class="d-flex"><p>${widget.title}</p><span class="ml-auto ${widget.class}">✖️</span></div>
         <div id=${widget.cardID} class="card mt-1"></div>
@@ -13,7 +13,7 @@ function renderWidgets(widget) {
 
 function renderNoButton(widget) {
   let renderedWidget = `
-    <div class="grid-stack-item border border-dark" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="2" id=${widget.divID}>
+    <div class="grid-stack-item" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="2" id=${widget.divID}>
       <div class="grid-stack-item-content">
         <div class="d-flex"><p>${widget.title}</p><span class="ml-auto ${widget.class}">✖️</span></div>
         <div id=${widget.cardID}></div>
@@ -25,8 +25,8 @@ function renderNoButton(widget) {
 
 function renderRona(widget) {
   let renderedWidget = `
-    <div class="grid-stack-item border border-dark" data-gs-x="0" data-gs-y="0" data-gs-width="5" data-gs-height="5" id=${
-      widget.divID
+    <div class="grid-stack-item" data-gs-x="0" data-gs-y="0" data-gs-width="5" data-gs-height="5" id=${
+    widget.divID
     }>
       <div class="grid-stack-item-content">
         <div class="d-flex"> 
@@ -78,7 +78,7 @@ function renderNews() {
     "apiKey=bb4227ec350a41dba251dadcd757dcae";
 
   let widgetHeader = `
-  <div class="grid-stack-item border border-dark" data-gs-x="0" data-gs-y="4" data-gs-width="5" data-gs-height="4" id="newsDiv">
+  <div class="grid-stack-item" data-gs-x="0" data-gs-y="4" data-gs-width="5" data-gs-height="4" id="newsDiv">
     <div class="grid-stack-item-content">
       <div class="d-flex">
         <p><b>Top US News</b></p>
@@ -182,6 +182,7 @@ $(document).on("click", ".yeezyClose", function () {
 function getInput(e) {
   e.preventDefault();
   $("#greeting").html(`Hello, ${$("#userName").val()}`);
+  localStorage.setItem("zip", $("#userZip").val());
 }
 
 // Add event listeners to the form to call functions when form is submitted
