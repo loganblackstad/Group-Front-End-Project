@@ -39,37 +39,40 @@ function renderRona(widget) {
   let renderedWidget = `
     <div class="grid-stack-item border border-dark" data-gs-x="0" data-gs-y="0" data-gs-width="5" data-gs-height="5" id=${widget.divID}>
       <div class="grid-stack-item-content">
+        <div class="d-flex"> 
+          <p><b>COVID-19 Daily Update</b></p>
+          <span class="ml-auto ${widget.class}">✖️</span>
+        </div>
         <div><center>
-          <div class="d-flex">
-            <p>CoronaVirus</p><span class="ml-auto ${widget.class}">✖️</span>
-          </div>
-          <div>
-            <h4><em>${widget.title}</em></h4>
-          </div>
-          <div>
-            <h1><b>${widget.stats.data.country}</b></h1>
-          </div>
-          <div>
             <img src="https://corona.lmao.ninja/assets/img/flags/us.png">
-          </div>
-          <div>
-            <p><b>Cases:</b> ${widget.stats.data.cases}</p>
-          </div>
-          <div>
-            <p><b>Cases Today:</b> ${widget.stats.data.todayCases}</p>
-          </div>
-          <div>
-            <p><b>Deaths:</b> ${widget.stats.data.deaths}</p>
-          </div>
-          <div>
-            <p><b>Deaths Today:</b> ${widget.stats.data.todayDeaths}</p>
-          </div> 
-          <div>
-            <p><b>Recovered:</b> ${widget.stats.data.recovered}</p>
-          </div>
-          <div>
-            <p><b>Total Test:</b> ${widget.stats.data.tests}</p>
-          </div>
+            <table class="tg">
+            <tbody>
+            <tr>
+                <td class="tg-0lax">Cases :</td>
+                <td class="tg-lqy6">${widget.stats.data.cases.toLocaleString()}</td>
+            </tr>
+            <tr>
+                <td class="tg-0lax">Cases (today) :</td>
+                <td class="tg-lqy6">${widget.stats.data.todayCases.toLocaleString()}</td>
+            </tr>
+            <tr>
+                <td class="tg-0lax">Deaths :</td>
+                <td class="tg-lqy6">${widget.stats.data.deaths.toLocaleString()}</td>
+            </tr>
+            <tr>
+                <td class="tg-0lax">Deaths (today) :</td>
+                <td class="tg-lqy6">${widget.stats.data.todayDeaths.toLocaleString()}</td>
+            </tr>
+            <tr>
+                <td class="tg-0lax">Recovered :</td>
+                <td class="tg-lqy6">${widget.stats.data.recovered.toLocaleString()}</td>
+            </tr>
+            <tr>
+                <td class="tg-0lax">Total Tested :</td>
+                <td class="tg-lqy6">${widget.stats.data.tests.toLocaleString()}</td>
+            </tr>
+            </tbody>
+            </table>
         </center></div>
       </div>
     </div>
