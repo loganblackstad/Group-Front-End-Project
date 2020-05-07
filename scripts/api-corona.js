@@ -1,5 +1,6 @@
 //https://disease.sh/v2/states/Georgia?yesterday=true
 //countryInfo.flag
+//university.logo_.small_.vertical.white_.png
 
 axios.get("https://disease.sh/v2/countries/United%20States?yesterday=true#")
     .then(response => {
@@ -7,10 +8,10 @@ axios.get("https://disease.sh/v2/countries/United%20States?yesterday=true#")
         const coronaUSA= `
             <div><center>
                 <div>
-                    <h4><em>COVID-19 Daily News</em></h4>
+                    <h3><strong>COVID-19 Daily Data</strong></h3>
                 </div>
                 <div>
-                    <h1><b>${response.data.country}</b></h1>
+                    <h4><strong>${response.data.country}</strong></h4>
                 </div>
                 <div>
                     <img src="https://corona.lmao.ninja/assets/img/flags/us.png">
@@ -32,6 +33,9 @@ axios.get("https://disease.sh/v2/countries/United%20States?yesterday=true#")
                 </div>
                 <div>
                     <p><b>Total Test:</b> ${response.data.tests}</p>
+                </div>
+                <div class='d-flex justify-content-end'>
+                    <p><small><i>Powered by:  </i><img src="Icons/university.logo_.small_.vertical.white_.png"></small></p>
                 </div>
             </center></div>
         `
