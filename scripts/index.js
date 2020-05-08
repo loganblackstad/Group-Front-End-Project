@@ -159,7 +159,6 @@ $(document).on("click", ".yeezyClose", function () {
   grid.removeWidget($("#yeezyDiv").get(0));
 });
 
-<<<<<<< HEAD
 function saveRegWidget(widget) {
   let obj = {};
   obj['id'] = widget.id;
@@ -215,13 +214,6 @@ function saveNewsWidget(widget) {
 }
 // Save data to local storage
 $(document).on("click", "#save", function () {
-=======
-// -----------------------------------------------
-
-// -----------------------------------------------
-// Save widget location data to local storage
-$("#save").on("click", function () {
->>>>>>> master
   let nl = document.querySelectorAll('.grid-stack-item')
   var arrayOfWidgets = [];
   for (var i = 0, n; n = nl[i]; ++i) {
