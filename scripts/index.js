@@ -2,9 +2,11 @@ function renderWidgets(widget) {
   let renderedWidget = `
     <div class="grid-stack-item" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="3" id=${widget.divID}>
       <div class="grid-stack-item-content">
-        <div class="d-flex"><p>${widget.title}</p><span class="ml-auto ${widget.class}">✖️</span></div>
-        <div id=${widget.cardID} class="card mt-1"></div>
-        <div><button class="d-flex btn btn-dark mt-3" id=${widget.buttonID}>${widget.buttonText}</button></div>
+      <div class="bor">
+        <div class="d-flex widget-header m-0 p-3 align-item-center"><p><b>${widget.title}</b></p><span class="ml-auto ${widget.class}">✖️</span></div>
+        <div id=${widget.cardID} class="m-3"></div>
+        <div><button class="d-flex btn btn-dark m-3" id=${widget.buttonID}>${widget.buttonText}</button></div>
+      </div>
       </div>
     </div>
   `;
@@ -29,11 +31,12 @@ function renderRona(widget) {
     widget.divID
     }>
       <div class="grid-stack-item-content">
-        <div class="d-flex"> 
+        <div class="bor">
+          <div class="d-flex widget-header m-0 p-3 align-item-center">
           <p><b>COVID-19 Daily Update</b></p>
           <span class="ml-auto ${widget.class}">✖️</span>
         </div>
-        <div><center>
+        <div class="mb-3"><center>
             <img src="https://corona.lmao.ninja/assets/img/flags/us.png">
             <table class="tg">
             <tbody>
@@ -64,6 +67,7 @@ function renderRona(widget) {
             </tbody>
             </table>
         </center></div>
+      </div>
       </div>
     </div>
   `;
