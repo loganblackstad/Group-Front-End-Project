@@ -31,7 +31,7 @@ var weatherAPIURL = "https://www.zipcodeapi.com/rest/cwwCqhQAVldh2MPIHShpgtWh0kR
 
 //Weather Widget
 
-{/* <div>
+ <div>
     <div id="openweathermap-widget-5"></div>
     <script>
         window.myWidgetParam ? window.myWidgetParam : window.myWidgetParam = [];
@@ -50,7 +50,7 @@ var weatherAPIURL = "https://www.zipcodeapi.com/rest/cwwCqhQAVldh2MPIHShpgtWh0kR
             var s = document.getElementsByTagName('script')[0];
             s.parentNode.insertBefore(script, s);  })();
     </script>
-</div> */}
+</div> 
 
 
 
