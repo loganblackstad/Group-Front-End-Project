@@ -1,39 +1,42 @@
 function renderWidgets(widget) {
   let renderedWidget = `
-    <div class="grid-stack-item border border-dark" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="3" id=${widget.divID}>
+    <div class="grid-stack-item" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="3" id=${widget.divID}>
       <div class="grid-stack-item-content">
-        <div class="d-flex"><p>${widget.title}</p><span class="ml-auto ${widget.class}">✖️</span></div>
-        <div id=${widget.cardID} class="card mt-1"></div>
-        <div><button class="d-flex btn btn-dark mt-3" id=${widget.buttonID}>${widget.buttonText}</button></div>
+      <div class="bor">
+        <div class="d-flex widget-header m-0 p-3 align-item-center"><p class="m-0"><b>${widget.title}</b></p><span class="ml-auto ${widget.class}">✖️</span></div>
+        <div id=${widget.cardID} class="m-3"></div>
+        <div><button class="d-flex btn btn-dark m-3" id=${widget.buttonID}>${widget.buttonText}</button></div>
+      </div>
       </div>
     </div>
   `;
   return renderedWidget;
 }
 
-function renderNoButton(widget) {
-  let renderedWidget = `
-    <div class="grid-stack-item border border-dark" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="2" id=${widget.divID}>
-      <div class="grid-stack-item-content">
-        <div class="d-flex"><p>${widget.title}</p><span class="ml-auto ${widget.class}">✖️</span></div>
-        <div id=${widget.cardID}></div>
-      </div>
-    </div>
-  `;
-  return renderedWidget;
-}
+// function renderNoButton(widget) {
+//   let renderedWidget = `
+//     <div class="grid-stack-item" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="2" id=${widget.divID}>
+//       <div class="grid-stack-item-content">
+//         <div class="d-flex"><p>${widget.title}</p><span class="ml-auto ${widget.class}">✖️</span></div>
+//         <div id=${widget.cardID}></div>
+//       </div>
+//     </div>
+//   `;
+//   return renderedWidget;
+// }
 
 function renderRona(widget) {
   let renderedWidget = `
-    <div class="grid-stack-item border border-dark" data-gs-x="0" data-gs-y="0" data-gs-width="5" data-gs-height="5" id=${
-      widget.divID
+    <div class="grid-stack-item" data-gs-x="0" data-gs-y="0" data-gs-width="5" data-gs-height="5" id=${
+    widget.divID
     }>
       <div class="grid-stack-item-content">
-        <div class="d-flex"> 
-          <p><b>COVID-19 Daily Update</b></p>
+        <div class="bor">
+          <div class="d-flex widget-header m-0 p-3 align-item-center">
+          <p class="m-0"><b>COVID-19 Daily Update</b></p>
           <span class="ml-auto ${widget.class}">✖️</span>
         </div>
-        <div><center>
+        <div class="mb-3"><center>
             <img src="https://corona.lmao.ninja/assets/img/flags/us.png">
             <table class="tg">
             <tbody>
@@ -65,29 +68,31 @@ function renderRona(widget) {
             </table>
         </center></div>
       </div>
+      </div>
     </div>
   `;
   return renderedWidget;
 }
 
 function renderNews() {
-  console.log("news!");
   var url =
     "https://newsapi.org/v2/top-headlines?" +
     "country=us&" +
     "apiKey=bb4227ec350a41dba251dadcd757dcae";
 
   let widgetHeader = `
-  <div class="grid-stack-item border border-dark" data-gs-x="0" data-gs-y="4" data-gs-width="5" data-gs-height="4" id="newsDiv">
+  <div class="grid-stack-item" data-gs-x="0" data-gs-y="4" data-gs-width="5" data-gs-height="4" id="newsDiv">
     <div class="grid-stack-item-content">
-      <div class="d-flex">
-        <p><b>Top US News</b></p>
+      <div class="bor">
+          <div class="d-flex widget-header m-0 p-3 align-item-center">
+        <p class="m-0"><b>Top US News</b></p>
         <span class="ml-auto newsClose">✖️</span>
       </div>
       <div id="card-news">
       `;
   let widgetFooter = `
       </div>
+    </div>
     </div>
   </div>
   `;
@@ -112,7 +117,6 @@ function renderNews() {
             `;
         templateStr += tempStr;
       }
-      console.log(templateStr);
       grid.addWidget(widgetHeader + templateStr + widgetFooter);
     });
 }
@@ -129,9 +133,17 @@ function time() {
   var optionDateOnly = { year: "numeric", month: "long", day: "numeric" };
   var weekdayOnly = d.toLocaleDateString("en-US", optionWeekdayOnly);
   var dateOnly = d.toLocaleDateString("en-US", optionDateOnly);
-  var timeOnly = d.toLocaleString().slice(9, 14);
-  var secondsOnly = d.toLocaleString().slice(15, 17);
-  var ampmOnly = d.toLocaleString().slice(18, 20);
+
+  var dL = d.toLocaleString().length;
+  if (dL == 21) {
+    var timeOnly = d.toLocaleString().slice(dL - 11, dL - 6);
+    var secondsOnly = d.toLocaleString().slice(dL - 5, dL - 3);
+    var ampmOnly = d.toLocaleString().slice(dL - 2);
+  } else {
+    var timeOnly = d.toLocaleString().slice(dL - 10, dL - 6);
+    var secondsOnly = d.toLocaleString().slice(dL - 5, dL - 3);
+    var ampmOnly = d.toLocaleString().slice(dL - 2);
+  }
 
   dateSpan.textContent = weekdayOnly + " " + dateOnly;
   timehhmm.textContent = timeOnly;
@@ -178,10 +190,63 @@ $(document).on("click", ".yeezyClose", function () {
   grid.removeWidget($("#yeezyDiv").get(0));
 });
 
+// Save data to local storage
+$("#save").on("click", function () {
+  let nl = document.querySelectorAll('.grid-stack-item')
+  var arrayOfWidgets = [];
+  for (var i = 0, n; n = nl[i]; ++i) {
+    arrayOfWidgets.push(n);
+  }
+  console.log(arrayOfWidgets)
+  let savedWidgets = arrayOfWidgets.map(widget => {
+    let obj = {};
+    obj['id'] = widget.id;
+    obj['x'] = widget.getAttribute("data-gs-x");
+    obj['y'] = widget.getAttribute("data-gs-y");
+    obj['width'] = widget.getAttribute("data-gs-width");
+    obj['height'] = widget.getAttribute("data-gs-height");
+
+    return obj
+  })
+
+  console.log(savedWidgets);
+  let parsedWidgets = JSON.stringify(savedWidgets);
+  localStorage.setItem('widgets', parsedWidgets)
+});
+
+// This is only a test
+function test(x, y, width, height, ID) {
+  let renderedWidget = `
+    <div class="grid-stack-item" data-gs-x="${x}" data-gs-y="${y}" data-gs-width="${width}" data-gs-height="${height}" id=${ID}>
+      <div class="grid-stack-item-content">
+        <h1>${ID}</h1>
+      </div>
+    </div>
+  `;
+  return renderedWidget;
+}
+
+// Render data from local storage
+$("#restore").on("click", function () {
+  $('.grid-stack').html('');
+  let widgetListJSON = localStorage.getItem('widgets');
+  let widgetList = JSON.parse(widgetListJSON);
+  widgetList.forEach(widget => {
+    console.log(widget)
+    grid.addWidget(test(widget.x, widget.y, widget.width, widget.height, widget.id));
+    console.log(test)
+  })
+
+  widgetListLS = JSON.stringify(widgetList);
+  localStorage.setItem('widgets', widgetListLS);
+});
+
+
 // Get user input from the Modal
 function getInput(e) {
   e.preventDefault();
   $("#greeting").html(`Hello, ${$("#userName").val()}`);
+  localStorage.setItem("zip", $("#userZip").val());
 }
 
 // Add event listeners to the form to call functions when form is submitted
@@ -200,6 +265,9 @@ let span = document.getElementsByClassName("close")[0];
 
 // Get the submit button that closes the modal
 let submit = document.getElementById("subButton");
+
+// Get the restore button that closes the modal
+let restore = document.getElementById("restore");
 
 // When the user clicks on the button, open the modal
 window.onload = function () {
@@ -222,3 +290,8 @@ window.onclick = function (event) {
     modal.style.display = "none";
   }
 };
+
+// When the user clicks on the restore button, close the modal
+restore.onclick = function (event) {
+  modal.style.display = "none";
+}

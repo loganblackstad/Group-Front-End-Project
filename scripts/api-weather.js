@@ -5,6 +5,20 @@
 
 //img URL: /http://openweathermap.org/img/wn/${10d}@2x.pn
 
+//Inputs User Input to zip code location
+var zipcode = localStorage.getItem('zip');
+console.log(zipcode);
+
+$(document).on('DOMContentLoaded', function (e) {
+    e.preventDefault();
+    axios.get(`https://api.openweathermap.org/data/2.5/weather?zip=${zipcode},us&appid=1c2750404739686fb5929a48b32c2766`)
+        .then(response => {
+            console.log(response)
+            // $('.weather').html(response.data.joke);
+        });
+});
+
+//Working weather api data
 axios.get("https://api.openweathermap.org/data/2.5/weather?zip=30301,us&units=imperial&appid=1c2750404739686fb5929a48b32c2766")
     .then((response) => {
     console.log(response);
@@ -43,19 +57,30 @@ $("#card-corona").html(weatherApiData);
 });
 
 
+
 //Weather Widget
-/*      
-        <div>
-            <div id="openweathermap-widget-5"></div>
-            <script>window.myWidgetParam ? window.myWidgetParam : window.myWidgetParam = [];  window.myWidgetParam.push({id: 5,cityid: '4180439',appid: '1c2750404739686fb5929a48b32c2766',units: 'imperial',containerid: 'openweathermap-widget-5',  });  (function() {var script = document.createElement('script');script.async = true;script.charset = "utf-8";script.src = "//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/weather-widget-generator.js";var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(script, s);  })();</script>
-        </div>
+/* <div>
+    <div id="openweathermap-widget-5"></div>
+    <script>
+        window.myWidgetParam ? window.myWidgetParam : window.myWidgetParam = [];
+        window.myWidgetParam.push({
+            id: 5,
+            cityid: '420006353',
+            appid: '1c2750404739686fb5929a48b32c2766',
+            units: 'imperial',
+            containerid: 'openweathermap-widget-5',  
+            });  
+        (function() {
+            var script = document.createElement('script');
+            script.async = true;
+            script.charset = "utf-8";
+            script.src = "//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/weather-widget-generator.js";
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(script, s);  })();
+    </script>
+</div>
 */
 
-//John Hopkins
-/* 
-    <div class='d-flex justify-content-end'>
-        <p><small><i>Powered by:  </i><img src="Icons/university.logo_.small_.vertical.white_.png"></small></p>
-    </div> 
-*/
+
 
 

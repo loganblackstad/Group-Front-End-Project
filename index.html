@@ -23,17 +23,20 @@
           align-items-center">
           <span class="close">&times;</span>
           <p class="welcome mt-3">Welcome to <b>YOUi!</b></p>
+          <button class="btn btn-dark" id="restore">restore layout</button>
           <form id="theform" onsubmit="return false" class="d-flex flex-column
             justify-content-center align-items-center">
             <div id="name" class="d-flex flex-column justify-content-center
               align-items-center">
               <label for="userName">What is your name?</label>
-              <input type="text" id="userName" class="pl-2" placeholder="John Doe" />
+              <input type="text" id="userName" class="pl-2" placeholder="John
+                Doe" />
             </div>
             <div id="zip" class="d-flex flex-column justify-content-center
               align-items-center mt-3">
               <label for="userZip">What is your zip code?</label>
-              <input type="text" id="userZip" class="pl-2" placeholder="zip code" />
+              <input type="text" id="userZip" class="pl-2" placeholder="zip
+                code" />
             </div>
             <input type="submit" class="btn btn-dark mt-4" id="subButton" />
           </form>
@@ -42,13 +45,36 @@
       <main>
         <div class="grid-stack mt-2">
           <div class="grid-stack-item" data-gs-x="0" data-gs-y="0"
-            data-gs-width="5" data-gs-height="6" data-gs-locked="true"
-            data-gs-noMove="true" data-gs-noResize="true">
-            <div class="grid-stack-item-content card d-flex
-              justify-content-start align-items-start m-2 p-1 border
-              border-danger overflow-auto" id="home">
+            data-gs-width="5" data-gs-height="7" data-gs-locked="true"
+            data-gs-noMove="true" data-gs-noResize="true" id="homeWidget">
+            <div class="grid-stack-item-content d-flex flex-column m-2 p-1
+              overflow-auto" id="home">
               <!-- <h1>YOUi</h1> -->
               <p id="greeting" class="mt-1"></p>
+              <div class="main-buttons d-flex">
+                <div class="dropdown show d-flex justify-content-center">
+                  <a class="btn btn-primary dropdown-toggle" href="#"
+                    role="button" id="dropdownMenuLink" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    Add Widget
+                  </a>
+                  <div class="dropdown-menu overflow-auto scrollable-menu"
+                    aria-labelledby="dropdownMenuLink">
+                    <a href="#" class="nav-link" id="addQuotes">Quotes</a>
+                    <a href="#" class="nav-link" id="addBored">Bored</a>
+                    <a href="#" class="nav-link" id="addJoke">Jokes</a>
+                    <a href="#" class="nav-link" id="addAdvice">Advice</a>
+                    <a href="#" class="nav-link" id="addNews">News</a>
+                    <a href="#" class="nav-link" id="addAQ">Air Quality</a>
+                    <a href="#" class="nav-link" id="addCorona">Coronavirus</a>
+                    <a href="#" class="nav-link" id="addYeezy">Kanye Quotes</a>
+                  </div>
+                </div>
+                <button class="btn btn-primary ml-2" id="save">Save Layout</button>
+              </div>
+              <script async
+                src="https://cse.google.com/cse.js?cx=015973783965488086183:3k48kdj5xul"></script>
+              <div class="gcse-search" enableAutoComplete="true"></div>
               <div class="date-time m-0 mb-3">
                 <p class="m-0"><span id="date-span" class="m-0"></span></p>
                 <p class="d-flex align-content-top m-0" id="time-span">
@@ -57,121 +83,136 @@
                   <span id="ampm"></span>
                 </p>
               </div>
-              <div class="dropdown show">
-                <a class="btn btn-primary dropdown-toggle" href="#"
-                  role="button" id="dropdownMenuLink" data-toggle="dropdown"
-                  aria-haspopup="true" aria-expanded="false">
-                  Add Widget
-                </a>
-                <div class="dropdown-menu overflow-auto scrollable-menu"
-                  aria-labelledby="dropdownMenuLink">
-                  <a href="#" class="nav-link" id="addQuotes">Quotes</a>
-                  <a href="#" class="nav-link" id="addBored">Bored</a>
-                  <a href="#" class="nav-link" id="addJoke">Jokes</a>
-                  <a href="#" class="nav-link" id="addAdvice">Advice</a>
-                  <a href="#" class="nav-link" id="addNews">News</a>
-                  <a href="#" class="nav-link" id="addAQ">Air Quality</a>
-                  <a href="#" class="nav-link" id="addCorona">Coronavirus</a>
-                  <a href="#" class="nav-link" id="addYeezy">Kanye Quotes</a>
+              <div class="weatehr"><p>weather</p></div>
+              <div>
+                <div id="openweathermap-widget-5"></div>
+                <script>window.myWidgetParam ? window.myWidgetParam : window.myWidgetParam = []; window.myWidgetParam.push({ id: 5, cityid: '4180386', appid: '1c2750404739686fb5929a48b32c2766', units: 'imperial', containerid: 'openweathermap-widget-5', }); (function () { var script = document.createElement('script'); script.async = true; script.charset = "utf-8"; script.src = "//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/weather-widget-generator.js"; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s); })();</script>
+              </div>
+              <br/>
+
+              </div>
+            </div>
+            <div class="grid-stack-item" data-gs-x="0"
+              data-gs-y="8" data-gs-width="5" data-gs-height="3" id="yeezyDiv">
+              <div class="grid-stack-item-content">
+                <div class="bor">
+                  <div class="d-flex widget-header m-0 p-3 align-item-center">
+                    <p class="m-0"><b>Does Kanye love Kanye today?</b></p>
+                    <span class="ml-auto yeezyClose">✖️</span>
+                  </div>
+                  <div id="yeezy" class="m-3"></div>
+                  <div><button class="d-flex btn btn-dark m-3"
+                      id="yeezyButton">"Hit me, Yeezy"</button></div>
+                </div>
+              </div>
+            </div>
+            <div class="grid-stack-item" data-gs-x="9"
+              data-gs-y="8" data-gs-width="3" data-gs-height="3"
+              id="quoteDiv">
+              <div class="grid-stack-item-content">
+                <div class="bor">
+                  <div class="d-flex widget-header m-0 p-3 align-item-center">
+                    <p class="m-0"><b>I need some inspiration.</b></p>
+                    <span class="ml-auto quoteClose">✖️</span>
+                  </div>
+                  <div id="quote" class="m-3"></div>
+                  <div><button class="d-flex btn btn-dark m-3"
+                      id="quoteButton">Motivational quote</button></div>
+                </div>
+              </div>
+            </div>
+            <div class="grid-stack-item" data-gs-x="5"
+              data-gs-y="8" data-gs-width="4" data-gs-height="3"
+              id="boredDiv">
+              <div class="grid-stack-item-content">
+                <div class="bor">
+                  <div class="d-flex widget-header m-0 p-3 align-item-center">
+                    <p class="m-0"><b>Today
+                        is my day off
+                        and I
+                        am
+                        bored.</b></p><span
+                      class="ml-auto boredClose">✖️</span></div>
+                  <div id="bored" class="m-3"></div>
+                  <div><button class="d-flex btn btn-dark m-3"
+                      id="boredButton">Find
+                      an activity</button></div>
+                </div>
+              </div>
+            </div>
+            <div class="grid-stack-item" data-gs-x="9"
+              data-gs-y="6" data-gs-width="4" data-gs-height="5" id="newsDiv">
+              <div class="grid-stack-item-content">
+                <div class="bor">
+                  <div class="d-flex widget-header m-0 p-3 align-item-center">
+                    <p class="m-0"><b>Top US News</b></p>
+                    <span class="ml-auto newsClose">✖️</span>
+                  </div>
+                  <div id="card-news" class="m-3"></div>
+                </div>
+              </div>
+            </div>
+            <div class="grid-stack-item" data-gs-x="5"
+              data-gs-y="6" data-gs-width="3" data-gs-height="5"
+              id="coronaDiv">
+              <div class="grid-stack-item-content">
+                <div class="bor">
+                  <div class="d-flex widget-header m-0 p-3 align-item-center">
+                    <p class="m-0"><b>COVID-19 Daily Update</b></p>
+                    <span class="ml-auto coronaClose">✖️</span>
+                  </div>
+                  <div id="card-corona" class="mb-3"></div>
+                </div>
+              </div>
+            </div>
+            <div class="grid-stack-item" data-gs-x="5"
+              data-gs-y="12" data-gs-width="7" data-gs-height="2"
+              id="jokeDiv">
+              <div class="grid-stack-item-content">
+                <div class="bor">
+                  <div class="d-flex widget-header m-0 p-3 align-item-center">
+                    <p class="m-0"><b>I could use a laugh.</b></p>
+                    <span class="ml-auto jokeClose">✖️</span>
+                  </div>
+                  <div id="joke" class="m-3"></div>
+                  <div>
+                    <button class="d-flex btn btn-dark m-3"
+                      id="jokeButton">
+                      Tell me a joke.
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="grid-stack-item" data-gs-x="10"
-            data-gs-y="6" data-gs-width="2" data-gs-height="5" id="aqDiv">
-            <div class="grid-stack-item-content">
-              <div class="d-flex widget-header">
-                <p>Air Quality</p>
-                <span class="ml-auto aqClose">✖️</span>
-                <div id="airQuality" class="card mt-1"></div>
-              </div>
-            </div>
-          </div>
-          <div class="grid-stack-item" data-gs-x="9"
-            data-gs-y="8" data-gs-width="3" data-gs-height="3" id="quoteDiv">
-            <div class="grid-stack-item-content">
-              <div class="d-flex widget-header"><p>I need some inspiration.</p><span
-                  class="ml-auto quoteClose">✖️</span></div>
-              <div id="quote" class="card mt-1"></div>
-              <div><button class="d-flex btn btn-dark m-1 mt-2"
-                  id="quoteButton">Motivational quote</button></div>
-            </div>
-          </div>
-          <div class="grid-stack-item" data-gs-x="5"
-            data-gs-y="8" data-gs-width="4" data-gs-height="3" id="boredDiv">
-            <div class="grid-stack-item-content">
-              <div class="d-flex widget-header"><p>Today is my day off and I am
-                  bored.</p><span
-                  class="ml-auto boredClose">✖️</span></div>
-              <div id="bored" class="card mt-1"></div>
-              <div><button class="d-flex btn btn-dark mt-3" id="boredButton">Find
-                  an activity</button></div>
-            </div>
-          </div>
-          <div class="grid-stack-item" data-gs-x="0"
-            data-gs-y="4" data-gs-width="5" data-gs-height="4" id="newsDiv">
-            <div class="grid-stack-item-content">
-              <div class="d-flex widget-header">
-                <p><b>Top US News</b></p>
-                <span class="ml-auto newsClose">✖️</span>
-              </div>
-              <div id="card-news"></div>
-            </div>
-          </div>
-          <div class="grid-stack-item" data-gs-x="5"
-            data-gs-y="6" data-gs-width="5" data-gs-height="5" id="coronaDiv">
-            <div class="grid-stack-item-content">
-              <div class="d-flex widget-header">
-                <p><b>COVID-19 Daily Update</b></p>
-                <span class="ml-auto coronaClose">✖️</span>
-              </div>
-              <div id="card-corona"></div>
-            </div>
-          </div>
-          <div class="grid-stack-item" data-gs-x="5"
-            data-gs-y="12" data-gs-width="7" data-gs-height="2" id="jokeDiv">
-            <div class="grid-stack-item-content">
-              <div class="d-flex widget-header">
-                <p>I could use a laugh.</p>
-                <span class="ml-auto jokeClose">✖️</span>
-              </div>
-              <div id="joke" class="card mt-1"></div>
-              <div>
-                <button class="d-flex btn btn-dark m-1 mt-2" id="jokeButton">
-                  Tell me a joke.
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </main>
-    </div>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-      crossorigin="anonymous"></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-      crossorigin="anonymous"></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-      crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="scripts/index.js"></script>
-    <script src="scripts/api-bored.js"></script>
-    <script src="scripts/api-news.js"></script>
-    <script src="scripts/api-quotes.js"></script>
-    <script src="scripts/api-jokes.js"></script>
-    <script src="scripts/api-weather.js"></script>
-    <script src="scripts/api-corona.js"></script>
-    <script src="scripts/api-kanye.js"></script>
-    <script src="scripts/api-geolocation-mdn.js"></script>
-    <script src="scripts/api-search-zip-city-state.js"></script>
-    <script src="scripts/api-advice.js"></script>
-    <script src="scripts/add-widget.js"></script>
-    <script type="text/javascript">
+        </main>
+      </div>
+      <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+      <script
+        src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+      <script
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+      <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+      <script src="scripts/index.js"></script>
+      <script src="scripts/api-bored.js"></script>
+      <script src="scripts/api-news.js"></script>
+      <script src="scripts/api-quotes.js"></script>
+      <script src="scripts/api-jokes.js"></script>
+      <script src="scripts/api-weather.js"></script>
+      <script src="scripts/api-corona.js"></script>
+      <script src="scripts/api-kanye.js"></script>
+      <script src="scripts/api-geolocation-mdn.js"></script>
+      <script src="scripts/api-search-zip-city-state.js"></script>
+      <script src="scripts/api-advice.js"></script>
+      <script src="scripts/add-widget.js"></script>
+      <script type="text/javascript">
       var grid = GridStack.init();
     </script>
-  </body>
-</html>
+    </body>
+  </html>
