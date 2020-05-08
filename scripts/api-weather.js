@@ -21,8 +21,8 @@ $(document).on('DOMContentLoaded', function (e) {
 //Working weather api data
 axios.get("https://api.openweathermap.org/data/2.5/weather?zip=30301,us&units=imperial&appid=1c2750404739686fb5929a48b32c2766")
     .then((response) => {
-    console.log(response);
-    const weatherApiData= `
+        console.log(response);
+        const weatherApiData = `
     <div><center>
         <img src="http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png">
         <table class="tg">
@@ -53,8 +53,8 @@ axios.get("https://api.openweathermap.org/data/2.5/weather?zip=30301,us&units=im
         </tbody>
         </table>
     </center></div>`;
-$("#card-corona").html(weatherApiData);
-});
+        $(".weather").html(weatherApiData);
+    });
 
 
 
@@ -68,8 +68,8 @@ $("#card-corona").html(weatherApiData);
             cityid: '420006353',
             appid: '1c2750404739686fb5929a48b32c2766',
             units: 'imperial',
-            containerid: 'openweathermap-widget-5',  
-            });  
+            containerid: 'openweathermap-widget-5',
+            });
         (function() {
             var script = document.createElement('script');
             script.async = true;

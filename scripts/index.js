@@ -316,7 +316,10 @@ document.addEventListener("DOMContentLoaded", async function (e) {
     await $("#coronaDiv .bor").height(dragContainerHeight);
   } else {
     console.log(contentHeight);
-    await $("#coronaDiv").height(contentHeight);
+    await {
+      $("#coronaDiv").height(contentHeight);
+      $("#coronaDiv .bor").height(contentHeight - 50);
+    }
     // var dragContainerHeight = $("#coronaDiv").outerHeight();
     // var contentHeight = $("#coronaDiv").find(".bor").outerHeight();
     // $("#coronaDiv").outerHeight(contentHeight);
@@ -330,3 +333,33 @@ document.addEventListener("DOMContentLoaded", async function (e) {
 
 });
 
+document.addEventListener("", async function (e) {
+
+  var dragContainer = document.getElementById("coronaDiv")
+  var content = document.getElementById("coronaDiv").getElementsByClassName("bor")
+  // var innerContent = document.getElementById("#coronaDiv")
+  var dragContainerHeight = $("#coronaDiv").outerHeight();
+  var contentHeight = $("#coronaDiv").find(".bor").outerHeight();
+  console.log(dragContainerHeight);
+  console.log(contentHeight);
+
+  if (dragContainerHeight > contentHeight) {
+    await $("#coronaDiv .bor").height(dragContainerHeight);
+  } else {
+    console.log(contentHeight);
+    await {
+      $("#coronaDiv").height(contentHeight);
+      $("#coronaDiv .bor").height(contentHeight - 50);
+    }
+    // var dragContainerHeight = $("#coronaDiv").outerHeight();
+    // var contentHeight = $("#coronaDiv").find(".bor").outerHeight();
+    // $("#coronaDiv").outerHeight(contentHeight);
+  }
+
+  await {
+    dragContainerHeight = $("#coronaDiv").outerHeight();
+    contentHeight = $("#coronaDiv").find(".bor").outerHeight();
+    $("#coronaDiv .bor").height(dragContainerHeight);
+  }
+
+});
