@@ -19,8 +19,7 @@
     <div class="container">
       <!-- Modal content -->
       <div id="myModal" class="modal">
-        <div class="modal-content d-flex justify-content-center
-          align-items-center">
+        <div class="modal-content d-flex justify-content-center align-items-center">
           <span class="close">&times;</span>
           <p class="welcome mt-3">Welcome to <b>YOUi!</b></p>
           <button class="btn btn-dark mb-2" id="restore">Restore Previous Layout</button>
@@ -31,8 +30,7 @@
               <label for="userName">What is your name?</label>
               <input type="text" id="userName" class="pl-2" placeholder="John Doe" />
             </div>
-            <div id="zip" class="d-flex flex-column justify-content-center
-              align-items-center mt-3">
+            <div id="zip" class="d-flex flex-column justify-content-center align-items-center mt-3">
               <label for="userZip">What is your zip code?</label>
               <input type="text" id="userZip" class="pl-2" placeholder="30306" />
             </div>
@@ -47,7 +45,6 @@
             data-gs-noMove="true" data-gs-noResize="true" id="homeWidget">
             <div class="grid-stack-item-content d-flex flex-column m-2 p-1
               overflow-auto" id="home">
-              <!-- <h1>YOUi</h1> -->
               <p id="greeting" class="mt-1"></p>
               <div class="main-buttons d-flex">
                 <div class="dropdown show d-flex justify-content-center">
@@ -63,7 +60,7 @@
                     <a href="#" class="nav-link" id="addJoke">Jokes</a>
                     <a href="#" class="nav-link" id="addAdvice">Advice</a>
                     <a href="#" class="nav-link" id="addNews">News</a>
-                    <a href="#" class="nav-link" id="addAQ">Air Quality</a>
+                    <a href="#" class="nav-link" id="addDoggo">Doggos</a>
                     <a href="#" class="nav-link" id="addCorona">Coronavirus</a>
                     <a href="#" class="nav-link" id="addYeezy">Kanye Quotes</a>
                   </div>
@@ -93,7 +90,7 @@
                   <p class="m-0"><b>Kanye Quotes: Does Kanye love Kanye today?</b></p>
                   <span class="ml-auto yeezyClose">✖️</span>
                 </div>
-                <div id="yeezy" class="m-3"></div>
+                <div id="yeezy" class="innerDiv m-3"></div>
                 <div><button class="d-flex btn btn-dark m-3"
                     id="yeezyButton">"Hit me, Yeezy"</button></div>
               </div>
@@ -108,7 +105,7 @@
                   <p class="m-0"><b>Quotes: I need some inspiration.</b></p>
                   <span class="ml-auto quoteClose">✖️</span>
                 </div>
-                <div id="quote" class="m-3"></div>
+                <div id="quote" class="innerDiv m-3"></div>
                 <div><button class="d-flex btn btn-dark m-3"
                     id="quoteButton">Motivational quote</button></div>
               </div>
@@ -126,7 +123,7 @@
                       am
                       bored.</b></p><span
                     class="ml-auto boredClose">✖️</span></div>
-                <div id="bored" class="m-3"></div>
+                <div id="bored" class="innerDiv m-3"></div>
                 <div><button class="d-flex btn btn-dark m-3"
                     id="boredButton">Find
                     an activity</button></div>
@@ -141,7 +138,7 @@
                   <p class="m-0"><b>News: Top US News</b></p>
                   <span class="ml-auto newsClose">✖️</span>
                 </div>
-                <div id="card-news" class="m-3"></div>
+                <div id="card-news" class="innerDiv m-3"></div>
               </div>
             </div>
           </div>
@@ -154,7 +151,7 @@
                   <p class="m-0"><b>Coronavirus: COVID-19 Daily Update</b></p>
                   <span class="ml-auto coronaClose">✖️</span>
                 </div>
-                <div id="card-corona" class="mb-3"></div>
+                <div id="card-corona" class="innerDiv mb-3"></div>
               </div>
             </div>
           </div>
@@ -167,7 +164,7 @@
                   <p class="m-0"><b>Jokes: I could use a laugh.</b></p>
                   <span class="ml-auto jokeClose">✖️</span>
                 </div>
-                <div id="joke" class="m-3"></div>
+                <div id="joke" class="innerDiv m-3"></div>
                 <div>
                   <button class="d-flex btn btn-dark m-3"
                     id="jokeButton">
@@ -203,6 +200,7 @@
     <script src="scripts/api-geolocation-mdn.js"></script>
     <script src="scripts/api-search-zip-city-state.js"></script>
     <script src="scripts/api-advice.js"></script>
+    <script src="scripts/api-doggo.js"></script>
     <script src="scripts/add-widget.js"></script>
     <script src="scripts/datetime.js"></script>
     <script type="text/javascript">
