@@ -133,3 +133,22 @@ $("#addCorona").on("click", function () {
     alert("Widget already exists");
     };
 });
+
+$("#addDoggo").on("click", function () {
+  var element = document.getElementById("doggoDiv"); 
+  if (!element) { 
+    console.log("add Doggo");
+    let doggoWidget = {
+      title: "I want to see some doggos.",
+      divID: "doggoDiv",
+      cardID: "doggo",
+      buttonID: "doggoButton",
+      class: "doggoClose",
+      buttonText: "Show me Doggo",
+    };
+    let newDoggoWidget = renderWidgets(doggoWidget);
+    grid.addWidget(newDoggoWidget);
+  } else {
+    alert("Widget already exists");
+  };
+});
