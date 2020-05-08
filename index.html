@@ -23,6 +23,7 @@
           align-items-center">
           <span class="close">&times;</span>
           <p class="welcome mt-3">Welcome to <b>YOUi!</b></p>
+          <button class="btn btn-dark" id="restore">restore layout</button>
           <form id="theform" onsubmit="return false" class="d-flex flex-column
             justify-content-center align-items-center">
             <div id="name" class="d-flex flex-column justify-content-center
@@ -45,11 +46,12 @@
         <div class="grid-stack mt-2">
           <div class="grid-stack-item" data-gs-x="0" data-gs-y="0"
             data-gs-width="5" data-gs-height="7" data-gs-locked="true"
-            data-gs-noMove="true" data-gs-noResize="true">
+            data-gs-noMove="true" data-gs-noResize="true" id="homeWidget">
             <div class="grid-stack-item-content d-flex flex-column m-2 p-1
               overflow-auto" id="home">
               <!-- <h1>YOUi</h1> -->
               <p id="greeting" class="mt-1"></p>
+              <button class="btn btn-dark" id="save">save layout</button>
               <script async
                 src="https://cse.google.com/cse.js?cx=015973783965488086183:3k48kdj5xul"></script>
               <div class="gcse-search" enableAutoComplete="true"></div>
