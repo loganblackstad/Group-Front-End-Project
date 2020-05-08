@@ -3,7 +3,7 @@ function renderWidgets(widget) {
     <div class="grid-stack-item" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="3" id=${widget.divID}>
       <div class="grid-stack-item-content">
       <div class="bor">
-        <div class="d-flex widget-header m-0 p-3 align-item-center"><p><b>${widget.title}</b></p><span class="ml-auto ${widget.class}">✖️</span></div>
+        <div class="d-flex widget-header m-0 p-3 align-item-center"><p class="m-0"><b>${widget.title}</b></p><span class="ml-auto ${widget.class}">✖️</span></div>
         <div id=${widget.cardID} class="m-3"></div>
         <div><button class="d-flex btn btn-dark m-3" id=${widget.buttonID}>${widget.buttonText}</button></div>
       </div>
@@ -33,7 +33,7 @@ function renderRona(widget) {
       <div class="grid-stack-item-content">
         <div class="bor">
           <div class="d-flex widget-header m-0 p-3 align-item-center">
-          <p><b>COVID-19 Daily Update</b></p>
+          <p class="m-0"><b>COVID-19 Daily Update</b></p>
           <span class="ml-auto ${widget.class}">✖️</span>
         </div>
         <div class="mb-3"><center>
@@ -84,14 +84,16 @@ function renderNews() {
   let widgetHeader = `
   <div class="grid-stack-item" data-gs-x="0" data-gs-y="4" data-gs-width="5" data-gs-height="4" id="newsDiv">
     <div class="grid-stack-item-content">
-      <div class="d-flex">
-        <p><b>Top US News</b></p>
+      <div class="bor">
+          <div class="d-flex widget-header m-0 p-3 align-item-center">
+        <p class="m-0"><b>Top US News</b></p>
         <span class="ml-auto newsClose">✖️</span>
       </div>
       <div id="card-news">
       `;
   let widgetFooter = `
       </div>
+    </div>
     </div>
   </div>
   `;
