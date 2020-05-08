@@ -121,38 +121,8 @@ function renderNews() {
     });
 }
 
-// Date Time Generator /* ------------- */
-var dateSpan = document.getElementById("date-span");
-var timehhmm = document.getElementById("hhmm");
-var timess = document.getElementById("ss");
-var timeampm = document.getElementById("ampm");
-
-function time() {
-  var d = new Date();
-  var optionWeekdayOnly = { weekday: "long" };
-  var optionDateOnly = { year: "numeric", month: "long", day: "numeric" };
-  var weekdayOnly = d.toLocaleDateString("en-US", optionWeekdayOnly);
-  var dateOnly = d.toLocaleDateString("en-US", optionDateOnly);
-
-  var dL = d.toLocaleString().length;
-  if (dL == 21) {
-    var timeOnly = d.toLocaleString().slice(dL - 11, dL - 6);
-    var secondsOnly = d.toLocaleString().slice(dL - 5, dL - 3);
-    var ampmOnly = d.toLocaleString().slice(dL - 2);
-  } else {
-    var timeOnly = d.toLocaleString().slice(dL - 10, dL - 6);
-    var secondsOnly = d.toLocaleString().slice(dL - 5, dL - 3);
-    var ampmOnly = d.toLocaleString().slice(dL - 2);
-  }
-
-  dateSpan.textContent = weekdayOnly + " " + dateOnly;
-  timehhmm.textContent = timeOnly;
-  // timess.textContent = secondsOnly;
-  timeampm.textContent = ampmOnly.toUpperCase();
-}
-
-setInterval(time, 1000);
-/* ------------------------------------ */
+// ---------------------------------
+// remove grid widgets in the main container
 
 $(document).on("click", ".boredClose", function () {
   grid.removeWidget($("#boredDiv").get(0));
@@ -190,7 +160,10 @@ $(document).on("click", ".yeezyClose", function () {
   grid.removeWidget($("#yeezyDiv").get(0));
 });
 
-// Save data to local storage
+// -----------------------------------------------
+
+// -----------------------------------------------
+// Save widget location data to local storage
 $("#save").on("click", function () {
   let nl = document.querySelectorAll('.grid-stack-item')
   var arrayOfWidgets = [];
@@ -213,6 +186,7 @@ $("#save").on("click", function () {
   let parsedWidgets = JSON.stringify(savedWidgets);
   localStorage.setItem('widgets', parsedWidgets)
 });
+// -----------------------------------------------
 
 // This is only a test
 function test(x, y, width, height, ID) {
