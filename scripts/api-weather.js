@@ -60,8 +60,3 @@ var weatherAPIURL = "https://www.zipcodeapi.com/rest/cwwCqhQAVldh2MPIHShpgtWh0kR
 /* <div class='d-flex justify-content-end'>
 <p><small><i>Powered by:  </i><img src="Icons/university.logo_.small_.vertical.white_.png"></small></p>
 </div> */
-
-AIzaSyD0kGyH3EZaJLBhPXwZSdT-h4PvUC30Ang
-
-<script async src="https://www.googleapis.com/customsearch/v1?key=AIzaSyD0kGyH3EZaJLBhPXwZSdT-h4PvUC30Ang?cx=015973783965488086183:3k48kdj5xul"></script>
-<div class="gcse-search"></div>
