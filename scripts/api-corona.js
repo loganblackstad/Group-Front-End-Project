@@ -37,3 +37,10 @@ axios
         </center></div>`;
         $("#card-corona").html(coronaUSA);
     });
+
+//Powered By: John Hopkins Image
+/* 
+    <div class='d-flex justify-content-end'>
+        <p><small><i>Powered by:  </i><img src="Icons/university.logo_.small_.vertical.white_.png"></small></p>
+    </div> 
+*/
