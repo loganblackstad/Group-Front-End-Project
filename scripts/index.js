@@ -37,7 +37,7 @@ function renderRona(widget) {
           <span class="ml-auto ${widget.class}">✖️</span>
         </div>
         <div class="mb-3"><center>
-            <img src="https://corona.lmao.ninja/assets/img/flags/us.png">
+            <img class="flag" src="https://corona.lmao.ninja/assets/img/flags/us.png">
             <table class="tg">
             <tbody>
             <tr>
@@ -88,7 +88,7 @@ function renderNews() {
         <p class="m-0"><b>Top US News</b></p>
         <span class="ml-auto newsClose">✖️</span>
       </div>
-      <div id="card-news">
+      <div id="card-news" class="m-3">
       `;
   let widgetFooter = `
       </div>
@@ -295,3 +295,38 @@ window.onclick = function (event) {
 restore.onclick = function (event) {
   modal.style.display = "none";
 }
+
+// Update height of cards based on children height
+
+
+// Event Listener Needed
+
+
+document.addEventListener("DOMContentLoaded", async function (e) {
+
+  var dragContainer = document.getElementById("coronaDiv")
+  var content = document.getElementById("coronaDiv").getElementsByClassName("bor")
+  // var innerContent = document.getElementById("#coronaDiv")
+  var dragContainerHeight = $("#coronaDiv").outerHeight();
+  var contentHeight = $("#coronaDiv").find(".bor").outerHeight();
+  console.log(dragContainerHeight);
+  console.log(contentHeight);
+
+  if (dragContainerHeight > contentHeight) {
+    await $("#coronaDiv .bor").height(dragContainerHeight);
+  } else {
+    console.log(contentHeight);
+    await $("#coronaDiv").height(contentHeight);
+    // var dragContainerHeight = $("#coronaDiv").outerHeight();
+    // var contentHeight = $("#coronaDiv").find(".bor").outerHeight();
+    // $("#coronaDiv").outerHeight(contentHeight);
+  }
+
+  await {
+    dragContainerHeight = $("#coronaDiv").outerHeight();
+    contentHeight = $("#coronaDiv").find(".bor").outerHeight();
+    $("#coronaDiv .bor").height(dragContainerHeight);
+  }
+
+});
+
