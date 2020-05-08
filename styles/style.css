@@ -38,6 +38,7 @@ input {
 img {
   width: 185px;
   margin-bottom: 0.7em;
+  margin-top: 1em;
 }
 
 .content {
@@ -106,6 +107,10 @@ span:hover {
 /* News Article headline div spacing*/
 .headline {
   margin-bottom: 0.5em;
+}
+
+#card-news {
+  margin-top: .5em;
 }
 
 /* News Article headline div spacing*/
