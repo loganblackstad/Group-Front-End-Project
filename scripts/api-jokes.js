@@ -3,5 +3,7 @@ $(document).on('click', '#jokeButton', function (e) {
   axios.get("https://sv443.net/jokeapi/v2/joke/Programming?blacklistFlags=nsfw,racist,sexist&type=single")
     .then(response => {
       $('#joke').html(response.data.joke);
+      var contentHeight = $("#jokeDiv").find(".bor").outerHeight();
+      $("#jokeDiv").height(contentHeight);
     });
 });

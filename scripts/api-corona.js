@@ -5,7 +5,7 @@ axios
     .get("https://disease.sh/v2/countries/United%20States?yesterday=true#")
     .then((response) => {
         const coronaUSA = `<div><center>
-            <img src="https://corona.lmao.ninja/assets/img/flags/us.png">
+            <img class="flag" src="https://corona.lmao.ninja/assets/img/flags/us.png">
             <table class="tg">
             <tbody>
             <tr>
@@ -36,4 +36,13 @@ axios
             </table>
         </center></div>`;
         $("#card-corona").html(coronaUSA);
+        var contentHeight = $("#coronaDiv").find(".bor").outerHeight();
+        $("#coronaDiv").height(contentHeight);
     });
+
+//Powered By: John Hopkins Image
+/*
+    <div class='d-flex justify-content-end'>
+        <p><small><i>Powered by:  </i><img src="Icons/university.logo_.small_.vertical.white_.png"></small></p>
+    </div>
+*/

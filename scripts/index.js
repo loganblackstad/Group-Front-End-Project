@@ -1,12 +1,12 @@
 function renderWidgets(widget) {
   let renderedWidget = `
-    <div class="grid-stack-item" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="3" id=${widget.divID}>
+    <div class="grid-stack-item" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="2" id=${widget.divID}>
       <div class="grid-stack-item-content">
-        <div class="bor">
-          <div class="d-flex widget-header m-0 p-3 align-item-center"><p><b>${widget.title}</b></p><span class="ml-auto ${widget.class}">✖️</span></div>
-          <div id=${widget.cardID} class="innerDiv m-3"></div>
-          <div><button class="d-flex btn btn-dark m-3" id=${widget.buttonID}>${widget.buttonText}</button></div>
-        </div>
+      <div class="bor">
+        <div class="d-flex widget-header m-0 p-3 align-item-center"><p class="m-0"><b>${widget.title}</b></p><span class="ml-auto ${widget.class}">✖️</span></div>
+        <div id=${widget.cardID} class="innerDiv m-3"></div>
+        <div><button class="d-flex btn btn-dark m-3" id=${widget.buttonID}>${widget.buttonText}</button></div>
+      </div>
       </div>
     </div>
   `;
@@ -31,12 +31,12 @@ function renderRona(widget) {
       <div class="grid-stack-item-content">
         <div class="bor">
           <div class="d-flex widget-header m-0 p-3 align-item-center">
-          <p><b>COVID-19 Daily Update</b></p>
+          <p class="m-0"><b>COVID-19 Daily Update</b></p>
           <span class="ml-auto ${widget.class}">✖️</span>
         </div>
         <div id="card-corona" class="innerDiv mb-3"></div>
         <div class="mb-3"><center>
-            <img src="https://corona.lmao.ninja/assets/img/flags/us.png">
+            <img class="flag" src="https://corona.lmao.ninja/assets/img/flags/us.png">
             <table class="tg">
             <tbody>
             <tr>
@@ -83,14 +83,15 @@ function renderNews() {
   <div class="grid-stack-item" data-gs-x="0" data-gs-y="4" data-gs-width="5" data-gs-height="4" id="newsDiv">
     <div class="grid-stack-item-content">
       <div class="bor">
-      <div class="d-flex widget-header m-0 p-3 align-item-center">
-        <p><b>Top US News</b></p>
+          <div class="d-flex widget-header m-0 p-3 align-item-center">
+        <p class="m-0"><b>Top US News</b></p>
         <span class="ml-auto newsClose">✖️</span>
       </div>
-      <div id="card-news" class="innerDiv m-3"></div>
+      <div id="card-news" class="innerDiv m-3">
       `;
   let widgetFooter = `
       </div>
+    </div>
     </div>
   </div>
   `;
@@ -119,30 +120,8 @@ function renderNews() {
     });
 }
 
-// Date Time Generator /* ------------- */
-var dateSpan = document.getElementById("date-span");
-var timehhmm = document.getElementById("hhmm");
-var timess = document.getElementById("ss");
-var timeampm = document.getElementById("ampm");
-
-function time() {
-  var d = new Date();
-  var optionWeekdayOnly = { weekday: "long" };
-  var optionDateOnly = { year: "numeric", month: "long", day: "numeric" };
-  var weekdayOnly = d.toLocaleDateString("en-US", optionWeekdayOnly);
-  var dateOnly = d.toLocaleDateString("en-US", optionDateOnly);
-  var timeOnly = d.toLocaleString().slice(9, 14);
-  var secondsOnly = d.toLocaleString().slice(15, 17);
-  var ampmOnly = d.toLocaleString().slice(18, 20);
-
-  dateSpan.textContent = weekdayOnly + " " + dateOnly;
-  timehhmm.textContent = timeOnly;
-  // timess.textContent = secondsOnly;
-  timeampm.textContent = ampmOnly.toUpperCase();
-}
-
-setInterval(time, 1000);
-/* ------------------------------------ */
+// ---------------------------------
+// remove grid widgets in the main container
 
 $(document).on("click", ".boredClose", function () {
   grid.removeWidget($("#boredDiv").get(0));
@@ -180,6 +159,7 @@ $(document).on("click", ".yeezyClose", function () {
   grid.removeWidget($("#yeezyDiv").get(0));
 });
 
+<<<<<<< HEAD
 function saveRegWidget(widget) {
   let obj = {};
   obj['id'] = widget.id;
@@ -235,9 +215,16 @@ function saveNewsWidget(widget) {
 }
 // Save data to local storage
 $(document).on("click", "#save", function () {
+=======
+// -----------------------------------------------
+
+// -----------------------------------------------
+// Save widget location data to local storage
+$("#save").on("click", function () {
+>>>>>>> master
   let nl = document.querySelectorAll('.grid-stack-item')
   var arrayOfWidgets = [];
-  for(var i = 0, n; n = nl[i]; ++i) {
+  for (var i = 0, n; n = nl[i]; ++i) {
     arrayOfWidgets.push(n);
   }
   let savedWidgets = arrayOfWidgets.map(widget => {
@@ -260,6 +247,7 @@ $(document).on("click", "#save", function () {
   let parsedWidgets = JSON.stringify(savedWidgets);
   localStorage.setItem('widgets', parsedWidgets)
 });
+// -----------------------------------------------
 
 
 function renderHome() {
@@ -525,3 +513,48 @@ window.onclick = function (event) {
 restore.onclick = function (event) {
   modal.style.display = "none";
 }
+
+// Update height of cards based on children height
+
+
+// Resize all widgets so that border encapsulates drag arrow on page load
+document.addEventListener("DOMContentLoaded", async function (e) {
+  var contentHeight = $("#boredDiv").find(".bor").outerHeight();
+  $("#boredDiv").height(contentHeight);
+  var contentHeight = $("#quoteDiv").find(".bor").outerHeight();
+  $("#quoteDiv").height(contentHeight);
+  var contentHeight = $("#yeezyDiv").find(".bor").outerHeight();
+  $("#yeezyDiv").height(contentHeight);
+  var contentHeight = $("#coronaDiv").find(".bor").outerHeight();
+  $("#coronaDiv").height(contentHeight);
+  var contentHeight = $("#adviceDiv").find(".bor").outerHeight();
+  $("#adviceDiv").height(contentHeight);
+  var contentHeight = $("#jokeDiv").find(".bor").outerHeight();
+  $("#jokeDiv").height(contentHeight);
+
+  setTimeout(function () {
+    var contentHeight = $("#newsDiv").find(".bor").outerHeight();
+    $("#newsDiv").height(contentHeight);
+  }, 1000);
+
+});
+
+$("#dropdownMenuLink").on("click", async function () {
+  setTimeout(function () {
+    var contentHeight = $("#boredDiv").find(".bor").outerHeight();
+    $("#boredDiv").height(contentHeight);
+    var contentHeight = $("#quoteDiv").find(".bor").outerHeight();
+    $("#quoteDiv").height(contentHeight);
+    var contentHeight = $("#yeezyDiv").find(".bor").outerHeight();
+    $("#yeezyDiv").height(contentHeight);
+    var contentHeight = $("#coronaDiv").find(".bor").outerHeight();
+    $("#coronaDiv").height(contentHeight);
+    var contentHeight = $("#adviceDiv").find(".bor").outerHeight();
+    $("#adviceDiv").height(contentHeight);
+    var contentHeight = $("#jokeDiv").find(".bor").outerHeight();
+    $("#jokeDiv").height(contentHeight);
+    var contentHeight = $("#newsDiv").find(".bor").outerHeight();
+    $("#newsDiv").height(contentHeight);
+  }, 1000);
+
+});
