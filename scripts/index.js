@@ -133,9 +133,17 @@ function time() {
   var optionDateOnly = { year: "numeric", month: "long", day: "numeric" };
   var weekdayOnly = d.toLocaleDateString("en-US", optionWeekdayOnly);
   var dateOnly = d.toLocaleDateString("en-US", optionDateOnly);
-  var timeOnly = d.toLocaleString().slice(9, 14);
-  var secondsOnly = d.toLocaleString().slice(15, 17);
-  var ampmOnly = d.toLocaleString().slice(18, 20);
+
+  var dL = d.toLocaleString().length;
+  if (dL == 21) {
+    var timeOnly = d.toLocaleString().slice(dL - 11, dL - 6);
+    var secondsOnly = d.toLocaleString().slice(dL - 5, dL - 3);
+    var ampmOnly = d.toLocaleString().slice(dL - 2);
+  } else {
+    var timeOnly = d.toLocaleString().slice(dL - 10, dL - 6);
+    var secondsOnly = d.toLocaleString().slice(dL - 5, dL - 3);
+    var ampmOnly = d.toLocaleString().slice(dL - 2);
+  }
 
   dateSpan.textContent = weekdayOnly + " " + dateOnly;
   timehhmm.textContent = timeOnly;
@@ -186,7 +194,7 @@ $(document).on("click", ".yeezyClose", function () {
 $("#save").on("click", function () {
   let nl = document.querySelectorAll('.grid-stack-item')
   var arrayOfWidgets = [];
-  for(var i = 0, n; n = nl[i]; ++i) {
+  for (var i = 0, n; n = nl[i]; ++i) {
     arrayOfWidgets.push(n);
   }
   console.log(arrayOfWidgets)
