@@ -1,6 +1,6 @@
 function renderWidgets(widget) {
   let renderedWidget = `
-    <div class="grid-stack-item" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="3" id=${widget.divID}>
+    <div class="grid-stack-item" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="2" id=${widget.divID}>
       <div class="grid-stack-item-content">
       <div class="bor">
         <div class="d-flex widget-header m-0 p-3 align-item-center"><p class="m-0"><b>${widget.title}</b></p><span class="ml-auto ${widget.class}">✖️</span></div>
@@ -273,67 +273,44 @@ restore.onclick = function (event) {
 // Update height of cards based on children height
 
 
-// Event Listener Needed
-
-
+// Resize all widgets so that border encapsulates drag arrow on page load
 document.addEventListener("DOMContentLoaded", async function (e) {
-
-  var dragContainer = document.getElementById("coronaDiv")
-  var content = document.getElementById("coronaDiv").getElementsByClassName("bor")
-  // var innerContent = document.getElementById("#coronaDiv")
-  var dragContainerHeight = $("#coronaDiv").outerHeight();
+  var contentHeight = $("#boredDiv").find(".bor").outerHeight();
+  $("#boredDiv").height(contentHeight);
+  var contentHeight = $("#quoteDiv").find(".bor").outerHeight();
+  $("#quoteDiv").height(contentHeight);
+  var contentHeight = $("#yeezyDiv").find(".bor").outerHeight();
+  $("#yeezyDiv").height(contentHeight);
   var contentHeight = $("#coronaDiv").find(".bor").outerHeight();
-  console.log(dragContainerHeight);
-  console.log(contentHeight);
+  $("#coronaDiv").height(contentHeight);
+  var contentHeight = $("#adviceDiv").find(".bor").outerHeight();
+  $("#adviceDiv").height(contentHeight);
+  var contentHeight = $("#jokeDiv").find(".bor").outerHeight();
+  $("#jokeDiv").height(contentHeight);
 
-  if (dragContainerHeight > contentHeight) {
-    await $("#coronaDiv .bor").height(dragContainerHeight);
-  } else {
-    console.log(contentHeight);
-    await {
-      $("#coronaDiv").height(contentHeight);
-      $("#coronaDiv .bor").height(contentHeight - 50);
-    }
-    // var dragContainerHeight = $("#coronaDiv").outerHeight();
-    // var contentHeight = $("#coronaDiv").find(".bor").outerHeight();
-    // $("#coronaDiv").outerHeight(contentHeight);
-  }
-
-  await {
-    dragContainerHeight = $("#coronaDiv").outerHeight();
-    contentHeight = $("#coronaDiv").find(".bor").outerHeight();
-    $("#coronaDiv .bor").height(dragContainerHeight);
-  }
+  setTimeout(function () {
+    var contentHeight = $("#newsDiv").find(".bor").outerHeight();
+    $("#newsDiv").height(contentHeight);
+  }, 1000);
 
 });
 
-document.addEventListener("", async function (e) {
-
-  var dragContainer = document.getElementById("coronaDiv")
-  var content = document.getElementById("coronaDiv").getElementsByClassName("bor")
-  // var innerContent = document.getElementById("#coronaDiv")
-  var dragContainerHeight = $("#coronaDiv").outerHeight();
-  var contentHeight = $("#coronaDiv").find(".bor").outerHeight();
-  console.log(dragContainerHeight);
-  console.log(contentHeight);
-
-  if (dragContainerHeight > contentHeight) {
-    await $("#coronaDiv .bor").height(dragContainerHeight);
-  } else {
-    console.log(contentHeight);
-    await {
-      $("#coronaDiv").height(contentHeight);
-      $("#coronaDiv .bor").height(contentHeight - 50);
-    }
-    // var dragContainerHeight = $("#coronaDiv").outerHeight();
-    // var contentHeight = $("#coronaDiv").find(".bor").outerHeight();
-    // $("#coronaDiv").outerHeight(contentHeight);
-  }
-
-  await {
-    dragContainerHeight = $("#coronaDiv").outerHeight();
-    contentHeight = $("#coronaDiv").find(".bor").outerHeight();
-    $("#coronaDiv .bor").height(dragContainerHeight);
-  }
+$("#dropdownMenuLink").on("click", async function () {
+  setTimeout(function () {
+    var contentHeight = $("#boredDiv").find(".bor").outerHeight();
+    $("#boredDiv").height(contentHeight);
+    var contentHeight = $("#quoteDiv").find(".bor").outerHeight();
+    $("#quoteDiv").height(contentHeight);
+    var contentHeight = $("#yeezyDiv").find(".bor").outerHeight();
+    $("#yeezyDiv").height(contentHeight);
+    var contentHeight = $("#coronaDiv").find(".bor").outerHeight();
+    $("#coronaDiv").height(contentHeight);
+    var contentHeight = $("#adviceDiv").find(".bor").outerHeight();
+    $("#adviceDiv").height(contentHeight);
+    var contentHeight = $("#jokeDiv").find(".bor").outerHeight();
+    $("#jokeDiv").height(contentHeight);
+    var contentHeight = $("#newsDiv").find(".bor").outerHeight();
+    $("#newsDiv").height(contentHeight);
+  }, 1000);
 
 });

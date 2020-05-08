@@ -36,6 +36,8 @@ axios
             </table>
         </center></div>`;
         $("#card-corona").html(coronaUSA);
+        var contentHeight = $("#coronaDiv").find(".bor").outerHeight();
+        $("#coronaDiv").height(contentHeight);
     });
 
 //Powered By: John Hopkins Image
