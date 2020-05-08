@@ -5,7 +5,8 @@
 
 /* -take the value from user zip
     -input value into /(zipcode)/degree
-    -take value from (zipcode) pass into all needed fields
+    -take value from (zipcode) pass into all needed fields 
+*/
 
 
 

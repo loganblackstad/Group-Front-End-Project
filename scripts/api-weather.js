@@ -1,32 +1,61 @@
 //Weather API
 
 //OMW api key: 1c2750404739686fb5929a48b32c2766
-    //api.openweathermap.org/data/2.5/weather?zip={zip code},us&appid={your api key}
-    
-//Zipcode api
+//api.openweathermap.org/data/2.5/weather?zip=30301,us&units=imperial&appid=1c2750404739686fb5929a48b32c2766}
 
-//https://www.zipcodeapi.com/rest/cwwCqhQAVldh2MPIHShpgtWh0kRoiSL0fofzi1pxIsNMfdO5Zt9QdlITyADOWcTy/info.json/30542/degrees
+//img URL: /http://openweathermap.org/img/wn/${10d}@2x.pn
 
-/* -take the value from user zip
-    -input value into /(zipcode)/degree
-    -take value from (zipcode) pass into all needed fields
-
-
-
+axios.get("https://api.openweathermap.org/data/2.5/weather?zip=30301,us&units=imperial&appid=1c2750404739686fb5929a48b32c2766")
+    .then((response) => {
+    console.log(response);
+    const weatherApiData= `
+    <div><center>
+        <img src="http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png">
+        <table class="tg">
+        <tbody>
+        <tr>
+            <td class="tg-lqy6">${response.data.weather[0].description}</td>
+        </tr>
+        <tr>
+            <td class="tg-0lax">Deg F :</td>
+            <td class="tg-lqy6">${response.data.main.temp}</td>
+        </tr>
+        <tr>
+            <td class="tg-0lax">Feels like :</td>
+            <td class="tg-lqy6">${response.data.main.feels_like}</td>
+        </tr>
+        <tr>
+            <td class="tg-0lax">Humidity:</td>
+            <td class="tg-lqy6">${response.data.main.humidity}</td>
+        </tr>
+        <tr>
+            <td class="tg-0lax">Atmospheric Pressure :</td>
+            <td class="tg-lqy6">${response.data.main.pressure}</td>
+        </tr>
+        <tr>
+            <td class="tg-0lax">Wind Speed :</td>
+            <td class="tg-lqy6">${response.data.wind.speed}</td>
+        </tr>
+        </tbody>
+        </table>
+    </center></div>`;
+$("#card-corona").html(weatherApiData);
+});
 
 
 //Weather Widget
-
-/*      <div>
+/*      
+        <div>
             <div id="openweathermap-widget-5"></div>
             <script>window.myWidgetParam ? window.myWidgetParam : window.myWidgetParam = [];  window.myWidgetParam.push({id: 5,cityid: '4180439',appid: '1c2750404739686fb5929a48b32c2766',units: 'imperial',containerid: 'openweathermap-widget-5',  });  (function() {var script = document.createElement('script');script.async = true;script.charset = "utf-8";script.src = "//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/weather-widget-generator.js";var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(script, s);  })();</script>
         </div>
 */
 
-
-
-
 //John Hopkins
-/* <div class='d-flex justify-content-end'>
-<p><small><i>Powered by:  </i><img src="Icons/university.logo_.small_.vertical.white_.png"></small></p>
-</div> */
+/* 
+    <div class='d-flex justify-content-end'>
+        <p><small><i>Powered by:  </i><img src="Icons/university.logo_.small_.vertical.white_.png"></small></p>
+    </div> 
+*/
+
+
