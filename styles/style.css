@@ -159,6 +159,10 @@ span:hover {
   vertical-align: top;
 }
 
+.boldt{
+  font-weight: bold;
+}
+
 /* Widget header div spacing*/
 .widget-header {
   margin-top: 0.5em;
@@ -190,4 +194,10 @@ span:hover {
 
 .welcome {
   font-size: 20px;
+}
+
+
+.gsc-control-cse{
+  padding: 0;
+  margin-top: 1em;
 }

@@ -1,4 +1,4 @@
-$(document).on('click', '#quoteButton', function(e) {
+$(document).on('click', '#quoteButton', function (e) {
   e.preventDefault();
   axios.get("https://favqs.com/api/qotd")
     .then(response => {
@@ -6,5 +6,7 @@ $(document).on('click', '#quoteButton', function(e) {
         <div>${response.data.quote.body}</div>
         <div>-${response.data.quote.author}</div>
       `));
-  });
+      var contentHeight = $("#quoteDiv").find(".bor").outerHeight();
+      $("#quoteDiv").height(contentHeight);
+    });
 });

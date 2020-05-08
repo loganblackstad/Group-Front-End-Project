@@ -31,23 +31,23 @@ axios.get("https://api.openweathermap.org/data/2.5/weather?zip=30301,us&units=im
             <td class="tg-lqy6">${response.data.weather[0].description}</td>
         </tr>
         <tr>
-            <td class="tg-0lax">Deg F :</td>
+            <td class="tg-0lax boldt">Temp (°F) :</td>
             <td class="tg-lqy6">${response.data.main.temp}</td>
         </tr>
         <tr>
-            <td class="tg-0lax">Feels like :</td>
+            <td class="tg-0lax boldt">Feels like :</td>
             <td class="tg-lqy6">${response.data.main.feels_like}</td>
         </tr>
         <tr>
-            <td class="tg-0lax">Humidity:</td>
+            <td class="tg-0lax boldt">Humidity:</td>
             <td class="tg-lqy6">${response.data.main.humidity}</td>
         </tr>
         <tr>
-            <td class="tg-0lax">Atmospheric Pressure :</td>
+            <td class="tg-0lax boldt">Atmospheric Pressure :</td>
             <td class="tg-lqy6">${response.data.main.pressure}</td>
         </tr>
         <tr>
-            <td class="tg-0lax">Wind Speed :</td>
+            <td class="tg-0lax boldt">Wind Speed :</td>
             <td class="tg-lqy6">${response.data.wind.speed}</td>
         </tr>
         </tbody>
@@ -79,6 +79,13 @@ axios.get("https://api.openweathermap.org/data/2.5/weather?zip=30301,us&units=im
             s.parentNode.insertBefore(script, s);  })();
     </script>
 </div>
+
+<div>
+                <div id="openweathermap-widget-5"></div>
+                <script>window.myWidgetParam ? window.myWidgetParam : window.myWidgetParam = []; window.myWidgetParam.push({ id: 5, cityid: '4180386', appid: '1c2750404739686fb5929a48b32c2766', units: 'imperial', containerid: 'openweathermap-widget-5', }); (function () { var script = document.createElement('script'); script.async = true; script.charset = "utf-8"; script.src = "//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/weather-widget-generator.js"; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s); })();</script>
+              </div>
+
+
 */
 
 
