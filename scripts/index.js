@@ -159,6 +159,10 @@ $(document).on("click", ".yeezyClose", function () {
   grid.removeWidget($("#yeezyDiv").get(0));
 });
 
+$(document).on("click", ".doggoClose", function () {
+  grid.removeWidget($("#doggoDiv").get(0));
+});
+
 function saveRegWidget(widget) {
   let obj = {};
   obj['id'] = widget.id;
@@ -241,47 +245,46 @@ $(document).on("click", "#save", function () {
 });
 // -----------------------------------------------
 
-
 function renderHome() {
   let renderedWidget = `
-    <div class="grid-stack-item" data-gs-x="0" data-gs-y="0" data-gs-width="5" data-gs-height="7" data-gs-locked="true" data-gs-noMove="true" data-gs-noResize="true" id="homeWidget">
-      <div class="grid-stack-item-content d-flex flex-column m-2 p-1 overflow-auto" id="home">
+    <div class="grid-stack-item" data-gs-x="0" data-gs-y="0" data-gs-width="5" data-gs-height="8" data-gs-locked="true" data-gs-noMove="true" data-gs-noResize="true" id="homeWidget">
+      <div class="grid-stack-item-content d-flex flex-column m-2 p-1
+        overflow-auto" id="home">
         <p id="greeting" class="mt-1"></p>
-        <button class="btn btn-dark" id="save">save layout</button>
-        <script async src="https://cse.google.com/cse.js?cx=015973783965488086183:3k48kdj5xul"></script>
+        <div class="main-buttons d-flex">
+          <div class="dropdown show d-flex justify-content-center">
+            <a class="btn btn-primary dropdown-toggle" href="#"
+              role="button" id="dropdownMenuLink" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              Add Widget
+            </a>
+            <div class="dropdown-menu overflow-auto scrollable-menu"
+              aria-labelledby="dropdownMenuLink">
+              <a href="#" class="nav-link" id="addQuotes">Quotes</a>
+              <a href="#" class="nav-link" id="addBored">Bored</a>
+              <a href="#" class="nav-link" id="addJoke">Jokes</a>
+              <a href="#" class="nav-link" id="addAdvice">Advice</a>
+              <a href="#" class="nav-link" id="addNews">News</a>
+              <a href="#" class="nav-link" id="addAQ">Air Quality</a>
+              <a href="#" class="nav-link" id="addCorona">Coronavirus</a>
+              <a href="#" class="nav-link" id="addYeezy">Kanye Quotes</a>
+            </div>
+          </div>
+          <button class="btn btn-primary ml-2" id="save">Save Layout</button>
+          <button class="btn btn-dark ml-2" id="save">Restore Layout</button>
+        </div>
+        <script async
+          src="https://cse.google.com/cse.js?cx=015973783965488086183:3k48kdj5xul"></script>
         <div class="gcse-search" enableAutoComplete="true"></div>
-          <div class="date-time m-0 mb-3">
-            <p class="m-0"><span id="date-span" class="m-0"></span></p>
-            <p class="d-flex align-content-top m-0" id="time-span">
-              <span id="hhmm" class="mr-2"></span>
-              <span id="ss" class="mr-2"></span>
-              <span id="ampm"></span>
-            </p>
-          </div>
-        <div class="weatehr"><p>weather</p></div>
-        <div>
-          <div id="openweathermap-widget-5"></div>
-          <script>window.myWidgetParam ? window.myWidgetParam : window.myWidgetParam = []; window.myWidgetParam.push({ id: 5, cityid: '420006353', appid: '1c2750404739686fb5929a48b32c2766', units: 'imperial', containerid: 'openweathermap-widget-5', }); (function () { var script = document.createElement('script'); script.async = true; script.charset = "utf-8"; script.src = "//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/weather-widget-generator.js"; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s); })();</script>
+        <div class="date-time m-0 mb-3 mt-3">
+          <p class="m-0"><span id="date-span" class="m-0"></span></p>
+          <p class="d-flex align-content-top m-0" id="time-span">
+            <span id="hhmm" class="mr-2"></span>
+            <span id="ss" class="mr-2"></span>
+            <span id="ampm"></span>
+          </p>
         </div>
-        <br/>
-        <div class="dropdown show d-flex justify-content-center">
-          <a class="btn btn-primary dropdown-toggle" href="#"
-            role="button" id="dropdownMenuLink" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            Add Widget
-          </a>
-          <div class="dropdown-menu overflow-auto scrollable-menu"
-            aria-labelledby="dropdownMenuLink">
-            <a href="#" class="nav-link" id="addQuotes">Quotes</a>
-            <a href="#" class="nav-link" id="addBored">Bored</a>
-            <a href="#" class="nav-link" id="addJoke">Jokes</a>
-            <a href="#" class="nav-link" id="addAdvice">Advice</a>
-            <a href="#" class="nav-link" id="addNews">News</a>
-            <a href="#" class="nav-link" id="addAQ">Air Quality</a>
-            <a href="#" class="nav-link" id="addCorona">Coronavirus</a>
-            <a href="#" class="nav-link" id="addYeezy">Kanye Quotes</a>
-          </div>
-        </div>
+        <div class="weather"><p>weather</p></div>
       </div>
     </div>
     `;
