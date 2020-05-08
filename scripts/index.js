@@ -13,17 +13,17 @@ function renderWidgets(widget) {
   return renderedWidget;
 }
 
-function renderNoButton(widget) {
-  let renderedWidget = `
-    <div class="grid-stack-item" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="2" id=${widget.divID}>
-      <div class="grid-stack-item-content">
-        <div class="d-flex"><p>${widget.title}</p><span class="ml-auto ${widget.class}">✖️</span></div>
-        <div id=${widget.cardID}></div>
-      </div>
-    </div>
-  `;
-  return renderedWidget;
-}
+// function renderNoButton(widget) {
+//   let renderedWidget = `
+//     <div class="grid-stack-item" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="2" id=${widget.divID}>
+//       <div class="grid-stack-item-content">
+//         <div class="d-flex"><p>${widget.title}</p><span class="ml-auto ${widget.class}">✖️</span></div>
+//         <div id=${widget.cardID}></div>
+//       </div>
+//     </div>
+//   `;
+//   return renderedWidget;
+// }
 
 function renderRona(widget) {
   let renderedWidget = `
@@ -75,7 +75,6 @@ function renderRona(widget) {
 }
 
 function renderNews() {
-  console.log("news!");
   var url =
     "https://newsapi.org/v2/top-headlines?" +
     "country=us&" +
@@ -116,7 +115,6 @@ function renderNews() {
             `;
         templateStr += tempStr;
       }
-      console.log(templateStr);
       grid.addWidget(widgetHeader + templateStr + widgetFooter);
     });
 }
@@ -182,6 +180,58 @@ $(document).on("click", ".yeezyClose", function () {
   grid.removeWidget($("#yeezyDiv").get(0));
 });
 
+// Save data to local storage
+$("#save").on("click", function () {
+  let nl = document.querySelectorAll('.grid-stack-item')
+  var arrayOfWidgets = [];
+  for(var i = 0, n; n = nl[i]; ++i) {
+    arrayOfWidgets.push(n);
+  }
+  console.log(arrayOfWidgets)
+  let savedWidgets = arrayOfWidgets.map(widget => {
+    let obj = {};
+    obj['id'] = widget.id;
+    obj['x'] = widget.getAttribute("data-gs-x");
+    obj['y'] = widget.getAttribute("data-gs-y");
+    obj['width'] = widget.getAttribute("data-gs-width");
+    obj['height'] = widget.getAttribute("data-gs-height");
+
+    return obj
+  })
+
+  console.log(savedWidgets);
+  let parsedWidgets = JSON.stringify(savedWidgets);
+  localStorage.setItem('widgets', parsedWidgets)
+});
+
+// This is only a test
+function test(x, y, width, height, ID) {
+  let renderedWidget = `
+    <div class="grid-stack-item" data-gs-x="${x}" data-gs-y="${y}" data-gs-width="${width}" data-gs-height="${height}" id=${ID}>
+      <div class="grid-stack-item-content">
+        <h1>${ID}</h1>
+      </div>
+    </div>
+  `;
+  return renderedWidget;
+}
+
+// Render data from local storage
+$("#restore").on("click", function () {
+  $('.grid-stack').html('');
+  let widgetListJSON = localStorage.getItem('widgets');
+  let widgetList = JSON.parse(widgetListJSON);
+  widgetList.forEach(widget => {
+    console.log(widget)
+    grid.addWidget(test(widget.x, widget.y, widget.width, widget.height, widget.id));
+    console.log(test)
+  })
+
+  widgetListLS = JSON.stringify(widgetList);
+  localStorage.setItem('widgets', widgetListLS);
+});
+
+
 // Get user input from the Modal
 function getInput(e) {
   e.preventDefault();
@@ -206,6 +256,9 @@ let span = document.getElementsByClassName("close")[0];
 // Get the submit button that closes the modal
 let submit = document.getElementById("subButton");
 
+// Get the restore button that closes the modal
+let restore = document.getElementById("restore");
+
 // When the user clicks on the button, open the modal
 window.onload = function () {
   modal.style.display = "block";
@@ -227,3 +280,8 @@ window.onclick = function (event) {
     modal.style.display = "none";
   }
 };
+
+// When the user clicks on the restore button, close the modal
+restore.onclick = function (event) {
+  modal.style.display = "none";
+}
