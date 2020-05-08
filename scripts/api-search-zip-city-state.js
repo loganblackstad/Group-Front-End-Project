@@ -31,8 +31,8 @@ if ((city.length == 0) & (zip.length == 0)) {
     "https://public.opendatasoft.com/explore/dataset/us-zip-code-latitude-and-longitude/api/?rows=1&refine.city=New+York";
 }
 
-console.log(baseApiURL);
-fetch(apiURL).then((response) => console.log(response.json()));
+// console.log(baseApiURL);
+// fetch(apiURL).then((response) => console.log(response.json()));
 
 //   localStorage.setItem("lat", position.coords.latitude);
 //   localStorage.setItem("lon", position.coords.longitude);

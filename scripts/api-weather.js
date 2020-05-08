@@ -13,46 +13,54 @@ $(document).on('DOMContentLoaded', function (e) {
     e.preventDefault();
     axios.get(`https://api.openweathermap.org/data/2.5/weather?zip=${zipcode},us&appid=1c2750404739686fb5929a48b32c2766`)
         .then(response => {
-            console.log(response)
+            // console.log(response)
             // $('.weather').html(response.data.joke);
         });
 });
 
 //Working weather api data
-axios.get("https://api.openweathermap.org/data/2.5/weather?zip=30301,us&units=imperial&appid=1c2750404739686fb5929a48b32c2766")
+axios.get(`https://api.openweathermap.org/data/2.5/weather?zip=${zipcode}&units=imperial&appid=1c2750404739686fb5929a48b32c2766`)
     .then((response) => {
-        console.log(response);
+        console.log(response.data);
+
         const weatherApiData = `
-    <div><center>
-        <img src="http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png">
-        <table class="tg">
-        <tbody>
-        <tr>
-            <td class="tg-lqy6">${response.data.weather[0].description}</td>
-        </tr>
-        <tr>
-            <td class="tg-0lax boldt">Temp (°F) :</td>
-            <td class="tg-lqy6">${response.data.main.temp}</td>
-        </tr>
-        <tr>
-            <td class="tg-0lax boldt">Feels like :</td>
-            <td class="tg-lqy6">${response.data.main.feels_like}</td>
-        </tr>
-        <tr>
-            <td class="tg-0lax boldt">Humidity:</td>
-            <td class="tg-lqy6">${response.data.main.humidity}</td>
-        </tr>
-        <tr>
-            <td class="tg-0lax boldt">Atmospheric Pressure :</td>
-            <td class="tg-lqy6">${response.data.main.pressure}</td>
-        </tr>
-        <tr>
-            <td class="tg-0lax boldt">Wind Speed :</td>
-            <td class="tg-lqy6">${response.data.wind.speed}</td>
-        </tr>
-        </tbody>
-        </table>
-    </center></div>`;
+            <div class="weather d-flex flex-column">
+                <div class="weather-header mb-1">Weather for: <br/><b>${response.data.name} (${zipcode})</b></div>
+                <div class="main-weather d-flex flex-row justify-content-center mt-3 mb-3">
+                    <div class="weather-img d-flex flex-column mr-4">
+                        <p class="weather-description d-flex justify-content-center mb-0">${response.data.weather[0].description}</p>
+                        <img class="weather-img d-flex justify-content-center"
+                        src="http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png" alt="weather-icon">
+                    </div>
+                    <div class="temp-big d-flex flex-row justify-content-center align-content-center mb-0">
+                        <p class="d-flex flex-row justify-content-center align-content-center pl-4 pt-3 mb-0">
+                        ${Math.round(response.data.main.temp)}°F</p>
+                    </div>
+                </div>
+                <div class="weather-details">
+                    <table class="tg d-flex flex-row justify-content-center align-content-center">
+                    <tbody>
+                    <tr>
+                        <td class="tg-0lax">Feels Like:</td>
+                        <td class="tg-lqy6 ds">${Math.round(response.data.main.feels_like)}°F</td>
+                    </tr>
+                    <tr>
+                        <td class="tg-0lax">Low/High:</td>
+                        <td class="tg-lqy6 ds">${Math.round(response.data.main.temp_min)}°F / ${Math.round(response.data.main.temp_max)}°F</td>
+                    </tr>
+                    <tr>
+                        <td class="tg-0lax">Humidity:</td>
+                        <td class="tg-lqy6 ds">${Math.round(response.data.main.humidity)}%</td>
+                    </tr>
+                    <tr>
+                        <td class="tg-0lax">Wind Speed:</td>
+                        <td class="tg-lqy6 ds">${Math.round(response.data.wind.speed)}mph</td>
+                    </tr>
+                    </tbody>
+                    </table>
+                </div>
+            </div>
+              `;
         $(".weather").html(weatherApiData);
     });
 
