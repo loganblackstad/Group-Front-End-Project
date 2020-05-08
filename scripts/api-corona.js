@@ -5,7 +5,7 @@ axios
     .get("https://disease.sh/v2/countries/United%20States?yesterday=true#")
     .then((response) => {
         const coronaUSA = `<div><center>
-            <img src="https://corona.lmao.ninja/assets/img/flags/us.png">
+            <img class="flag" src="https://corona.lmao.ninja/assets/img/flags/us.png">
             <table class="tg">
             <tbody>
             <tr>

@@ -51,23 +51,7 @@
               overflow-auto" id="home">
               <!-- <h1>YOUi</h1> -->
               <p id="greeting" class="mt-1"></p>
-              <button class="btn btn-dark" id="save">save layout</button>
-              <script async src="https://cse.google.com/cse.js?cx=015973783965488086183:3k48kdj5xul"></script>
-              <div class="gcse-search" enableAutoComplete="true"></div>
-              <div class="date-time m-0 mb-3">
-                <p class="m-0"><span id="date-span" class="m-0"></span></p>
-                <p class="d-flex align-content-top m-0" id="time-span">
-                  <span id="hhmm" class="mr-2"></span>
-                  <span id="ss" class="mr-2"></span>
-                  <span id="ampm"></span>
-                </p>
-              </div>
-              <div class="weatehr"><p>weather</p></div>
-              <div>
-                <div id="openweathermap-widget-5"></div>
-                <script>window.myWidgetParam ? window.myWidgetParam : window.myWidgetParam = []; window.myWidgetParam.push({ id: 5, cityid: '420006353', appid: '1c2750404739686fb5929a48b32c2766', units: 'imperial', containerid: 'openweathermap-widget-5', }); (function () { var script = document.createElement('script'); script.async = true; script.charset = "utf-8"; script.src = "//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/weather-widget-generator.js"; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s); })();</script>
-              </div>
-              <br/>
+              <div class="main-buttons d-flex">
                 <div class="dropdown show d-flex justify-content-center">
                   <a class="btn btn-primary dropdown-toggle" href="#"
                     role="button" id="dropdownMenuLink" data-toggle="dropdown"
@@ -86,6 +70,26 @@
                     <a href="#" class="nav-link" id="addYeezy">Kanye Quotes</a>
                   </div>
                 </div>
+                <button class="btn btn-primary ml-2" id="save">Save Layout</button>
+              </div>
+              <script async
+                src="https://cse.google.com/cse.js?cx=015973783965488086183:3k48kdj5xul"></script>
+              <div class="gcse-search" enableAutoComplete="true"></div>
+              <div class="date-time m-0 mb-3">
+                <p class="m-0"><span id="date-span" class="m-0"></span></p>
+                <p class="d-flex align-content-top m-0" id="time-span">
+                  <span id="hhmm" class="mr-2"></span>
+                  <span id="ss" class="mr-2"></span>
+                  <span id="ampm"></span>
+                </p>
+              </div>
+              <div class="weatehr"><p>weather</p></div>
+              <div>
+                <div id="openweathermap-widget-5"></div>
+                <script>window.myWidgetParam ? window.myWidgetParam : window.myWidgetParam = []; window.myWidgetParam.push({ id: 5, cityid: '4180386', appid: '1c2750404739686fb5929a48b32c2766', units: 'imperial', containerid: 'openweathermap-widget-5', }); (function () { var script = document.createElement('script'); script.async = true; script.charset = "utf-8"; script.src = "//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/weather-widget-generator.js"; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s); })();</script>
+              </div>
+              <br/>
+
               </div>
             </div>
             <div class="grid-stack-item" data-gs-x="0"
@@ -108,7 +112,7 @@
               <div class="grid-stack-item-content">
                 <div class="bor">
                   <div class="d-flex widget-header m-0 p-3 align-item-center">
-                    <p><b>I need some inspiration.</b></p>
+                    <p class="m-0"><b>I need some inspiration.</b></p>
                     <span class="ml-auto quoteClose">✖️</span>
                   </div>
                   <div id="quote" class="m-3"></div>
@@ -123,7 +127,7 @@
               <div class="grid-stack-item-content">
                 <div class="bor">
                   <div class="d-flex widget-header m-0 p-3 align-item-center">
-                    <p><b>Today
+                    <p class="m-0"><b>Today
                         is my day off
                         and I
                         am
@@ -141,7 +145,7 @@
               <div class="grid-stack-item-content">
                 <div class="bor">
                   <div class="d-flex widget-header m-0 p-3 align-item-center">
-                    <p><b>Top US News</b></p>
+                    <p class="m-0"><b>Top US News</b></p>
                     <span class="ml-auto newsClose">✖️</span>
                   </div>
                   <div id="card-news" class="m-3"></div>
@@ -154,7 +158,7 @@
               <div class="grid-stack-item-content">
                 <div class="bor">
                   <div class="d-flex widget-header m-0 p-3 align-item-center">
-                    <p><b>COVID-19 Daily Update</b></p>
+                    <p class="m-0"><b>COVID-19 Daily Update</b></p>
                     <span class="ml-auto coronaClose">✖️</span>
                   </div>
                   <div id="card-corona" class="mb-3"></div>
@@ -167,7 +171,7 @@
               <div class="grid-stack-item-content">
                 <div class="bor">
                   <div class="d-flex widget-header m-0 p-3 align-item-center">
-                    <p><b>I could use a laugh.</b></p>
+                    <p class="m-0"><b>I could use a laugh.</b></p>
                     <span class="ml-auto jokeClose">✖️</span>
                   </div>
                   <div id="joke" class="m-3"></div>
