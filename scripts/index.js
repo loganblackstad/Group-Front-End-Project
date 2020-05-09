@@ -227,55 +227,55 @@ function saveRegWidget(widget) {
   obj['y'] = widget.getAttribute("data-gs-y");
   obj['width'] = widget.getAttribute("data-gs-width");
   obj['height'] = widget.getAttribute("data-gs-height");
-  obj['title'] = widget.getElementsByTagName("b")[0].innerHTML;
-  // obj['divID'] = widget.id;
-  obj['cardID'] = widget.getElementsByClassName('innerDiv')[0].id;
-  obj['buttonID'] = widget.getElementsByTagName('button')[0].id;
-  obj['class'] = widget.getElementsByTagName('span')[0].classList[1];
-  obj['buttonText'] = widget.getElementsByTagName('button')[0].innerHTML;
+  // obj['title'] = widget.getElementsByTagName("b")[0].innerHTML;
+  // // obj['divID'] = widget.id;
+  // obj['cardID'] = widget.getElementsByClassName('innerDiv')[0].id;
+  // obj['buttonID'] = widget.getElementsByTagName('button')[0].id;
+  // obj['class'] = widget.getElementsByTagName('span')[0].classList[1];
+  // obj['buttonText'] = widget.getElementsByTagName('button')[0].innerHTML;
 
   return obj
 }
 
 // save home widget to local storage
-function saveHomeWidget(widget) {
-  let obj = {};
-  obj['id'] = widget.id;
+// function saveHomeWidget(widget) {
+//   let obj = {};
+//   obj['id'] = widget.id;
 
-  return obj
-}
+//   return obj
+// }
 
 // save coronavirus widget to local storage
-function saveCoronaWidget(widget) {
-  let obj = {};
-  obj['id'] = widget.id;
-  obj['x'] = widget.getAttribute("data-gs-x");
-  obj['y'] = widget.getAttribute("data-gs-y");
-  obj['width'] = widget.getAttribute("data-gs-width");
-  obj['height'] = widget.getAttribute("data-gs-height");
-  obj['title'] = widget.getElementsByTagName("b")[0].innerHTML;
-  // obj['divID'] = widget.id;
-  obj['cardID'] = widget.getElementsByClassName('innerDiv')[0].id;
-  obj['class'] = widget.getElementsByTagName('span')[0].classList[1];
+// function saveCoronaWidget(widget) {
+//   let obj = {};
+//   obj['id'] = widget.id;
+//   obj['x'] = widget.getAttribute("data-gs-x");
+//   obj['y'] = widget.getAttribute("data-gs-y");
+//   obj['width'] = widget.getAttribute("data-gs-width");
+//   obj['height'] = widget.getAttribute("data-gs-height");
+//   obj['title'] = widget.getElementsByTagName("b")[0].innerHTML;
+//   // obj['divID'] = widget.id;
+//   obj['cardID'] = widget.getElementsByClassName('innerDiv')[0].id;
+//   obj['class'] = widget.getElementsByTagName('span')[0].classList[1];
 
-  return obj
-}
+//   return obj
+// }
 
 // save news widget to local storage
-function saveNewsWidget(widget) {
-  let obj = {};
-  obj['id'] = widget.id;
-  obj['x'] = widget.getAttribute("data-gs-x");
-  obj['y'] = widget.getAttribute("data-gs-y");
-  obj['width'] = widget.getAttribute("data-gs-width");
-  obj['height'] = widget.getAttribute("data-gs-height");
-  obj['title'] = widget.getElementsByTagName("b")[0].innerHTML;
-  // obj['divID'] = widget.id;
-  obj['cardID'] = widget.getElementsByClassName('innerDiv')[0].id;
-  obj['class'] = widget.getElementsByTagName('span')[0].classList[1];
+// function saveNewsWidget(widget) {
+//   let obj = {};
+//   obj['id'] = widget.id;
+//   obj['x'] = widget.getAttribute("data-gs-x");
+//   obj['y'] = widget.getAttribute("data-gs-y");
+//   obj['width'] = widget.getAttribute("data-gs-width");
+//   obj['height'] = widget.getAttribute("data-gs-height");
+//   obj['title'] = widget.getElementsByTagName("b")[0].innerHTML;
+//   // obj['divID'] = widget.id;
+//   obj['cardID'] = widget.getElementsByClassName('innerDiv')[0].id;
+//   obj['class'] = widget.getElementsByTagName('span')[0].classList[1];
 
-  return obj
-}
+//   return obj
+// }
 // Save data to local storage
 $(document).on("click", "#save", function () {
   let nl = document.querySelectorAll('.grid-stack-item')
@@ -284,20 +284,12 @@ $(document).on("click", "#save", function () {
     arrayOfWidgets.push(n);
   }
   let savedWidgets = arrayOfWidgets.map(widget => {
-    if (widget.id == "homeWidget") {
-      return saveHomeWidget(widget);
-    } else if (widget.id == "newsDiv") {
-      return saveNewsWidget(widget);
-    } else if (widget.id == "coronaDiv") {
-      return saveCoronaWidget(widget);
-    } else {
-      return saveRegWidget(widget);
-    }
+    return saveRegWidget(widget);
   });
 
-  savedWidgets = savedWidgets.sort((objectA, objectB) => {
-    return objectA.y - objectB.y;
-  });
+  // savedWidgets = savedWidgets.sort((objectA, objectB) => {
+  //   return objectA.y - objectB.y;
+  // });
 
   console.log(savedWidgets);
   let parsedWidgets = JSON.stringify(savedWidgets);
@@ -305,236 +297,277 @@ $(document).on("click", "#save", function () {
 });
 // -----------------------------------------------
 
-function renderHome() {
-  let renderedWidget = `
-    <div class="grid-stack-item" data-gs-x="0" data-gs-y="0" data-gs-width="5" data-gs-height="8" data-gs-locked="true" data-gs-noMove="true" data-gs-noResize="true" id="homeWidget">
-      <div class="grid-stack-item-content d-flex flex-column m-2 p-1
-        overflow-auto" id="home">
-        <p id="greeting" class="mt-1"></p>
-        <div class="main-buttons d-flex">
-          <div class="dropdown show d-flex justify-content-center">
-            <a class="btn btn-primary dropdown-toggle" href="#"
-              role="button" id="dropdownMenuLink" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              Add Widget
-            </a>
-            <div class="dropdown-menu overflow-auto scrollable-menu"
-              aria-labelledby="dropdownMenuLink">
-              <a href="#" class="nav-link" id="addQuotes">Quotes</a>
-              <a href="#" class="nav-link" id="addBored">Bored</a>
-              <a href="#" class="nav-link" id="addJoke">Jokes</a>
-              <a href="#" class="nav-link" id="addAdvice">Advice</a>
-              <a href="#" class="nav-link" id="addNews">News</a>
-              <a href="#" class="nav-link" id="addAQ">Air Quality</a>
-              <a href="#" class="nav-link" id="addCorona">Coronavirus</a>
-              <a href="#" class="nav-link" id="addYeezy">Kanye Quotes</a>
-            </div>
-          </div>
-          <button class="btn btn-primary ml-2" id="save">Save Layout</button>
-          <button class="btn btn-dark ml-2" id="save">Restore Layout</button>
-        </div>
-        <script async
-          src="https://cse.google.com/cse.js?cx=015973783965488086183:3k48kdj5xul"></script>
-        <div class="gcse-search" enableAutoComplete="true"></div>
-        <div class="date-time m-0 mb-3 mt-3">
-          <p class="m-0"><span id="date-span" class="m-0"></span></p>
-          <p class="d-flex align-content-top m-0" id="time-span">
-            <span id="hhmm" class="mr-2"></span>
-            <span id="ss" class="mr-2"></span>
-            <span id="ampm"></span>
-          </p>
-        </div>
-        <div class="weather"><p>weather</p></div>
-      </div>
-    </div>
-    `;
-  grid.addWidget(renderedWidget);
-}
+// function renderHome() {
+//   let renderedWidget = `
+//     <div class="grid-stack-item" data-gs-x="0" data-gs-y="0" data-gs-width="5" data-gs-height="8" data-gs-locked="true" data-gs-noMove="true" data-gs-noResize="true" id="homeWidget">
+//       <div class="grid-stack-item-content d-flex flex-column m-2 p-1
+//         overflow-auto" id="home">
+//         <p id="greeting" class="mt-1"></p>
+//         <div class="main-buttons d-flex">
+//           <div class="dropdown show d-flex justify-content-center">
+//             <a class="btn btn-primary dropdown-toggle" href="#"
+//               role="button" id="dropdownMenuLink" data-toggle="dropdown"
+//               aria-haspopup="true" aria-expanded="false">
+//               Add Widget
+//             </a>
+//             <div class="dropdown-menu overflow-auto scrollable-menu"
+//               aria-labelledby="dropdownMenuLink">
+//               <a href="#" class="nav-link" id="addQuotes">Quotes</a>
+//               <a href="#" class="nav-link" id="addBored">Bored</a>
+//               <a href="#" class="nav-link" id="addJoke">Jokes</a>
+//               <a href="#" class="nav-link" id="addAdvice">Advice</a>
+//               <a href="#" class="nav-link" id="addNews">News</a>
+//               <a href="#" class="nav-link" id="addAQ">Air Quality</a>
+//               <a href="#" class="nav-link" id="addCorona">Coronavirus</a>
+//               <a href="#" class="nav-link" id="addYeezy">Kanye Quotes</a>
+//             </div>
+//           </div>
+//           <button class="btn btn-primary ml-2" id="save">Save Layout</button>
+//           <button class="btn btn-dark ml-2" id="save">Restore Layout</button>
+//         </div>
+//         <script async
+//           src="https://cse.google.com/cse.js?cx=015973783965488086183:3k48kdj5xul"></script>
+//         <div class="gcse-search" enableAutoComplete="true"></div>
+//         <div class="date-time m-0 mb-3 mt-3">
+//           <p class="m-0"><span id="date-span" class="m-0"></span></p>
+//           <p class="d-flex align-content-top m-0" id="time-span">
+//             <span id="hhmm" class="mr-2"></span>
+//             <span id="ss" class="mr-2"></span>
+//             <span id="ampm"></span>
+//           </p>
+//         </div>
+//         <div class="weather"><p>weather</p></div>
+//       </div>
+//     </div>
+//     `;
+//   grid.addWidget(renderedWidget);
+// }
 
-function renderRegWidget(widget) {
-  let renderedWidget = `
-    <div class="grid-stack-item" data-gs-x=${widget.x} data-gs-y=${widget.y} data-gs-width=${widget.width} data-gs-height=${widget.height} id=${widget.id}>
-      <div class="grid-stack-item-content">
-        <div class="bor">
-          <div class="d-flex widget-header m-0 p-3 align-item-center"><p><b>${widget.title}</b></p><span class="ml-auto ${widget.class}">✖️</span></div>
-          <div id=${widget.cardID} class="innerDiv m-3"></div>
-          <div><button class="d-flex btn btn-dark m-3" id=${widget.buttonID}>${widget.buttonText}</button></div>
-        </div>
-      </div>
-    </div>
-  `;
-  grid.addWidget(renderedWidget);
-}
+// function renderRegWidget(widget) {
+//   let renderedWidget = `
+//     <div class="grid-stack-item" data-gs-x=${widget.x} data-gs-y=${widget.y} data-gs-width=${widget.width} data-gs-height=${widget.height} id=${widget.id}>
+//       <div class="grid-stack-item-content">
+//         <div class="bor">
+//           <div class="d-flex widget-header m-0 p-3 align-item-center"><p><b>${widget.title}</b></p><span class="ml-auto ${widget.class}">✖️</span></div>
+//           <div id=${widget.cardID} class="innerDiv m-3"></div>
+//           <div><button class="d-flex btn btn-dark m-3" id=${widget.buttonID}>${widget.buttonText}</button></div>
+//         </div>
+//       </div>
+//     </div>
+//   `;
+//   grid.addWidget(renderedWidget);
+// }
 
-async function renderNewsWidget(widget) {
-  var url =
-    "https://newsapi.org/v2/top-headlines?" +
-    "country=us&" +
-    "apiKey=bb4227ec350a41dba251dadcd757dcae";
+// async function renderNewsWidget(widget) {
+//   var url =
+//     "https://newsapi.org/v2/top-headlines?" +
+//     "country=us&" +
+//     "apiKey=bb4227ec350a41dba251dadcd757dcae";
 
-  let widgetHeader = `
-  <div class="grid-stack-item" data-gs-x=${widget.x} data-gs-y=${widget.y} data-gs-width=${widget.width} data-gs-height=${widget.height} id=${widget.id}>
-    <div class="grid-stack-item-content">
-      <div class="bor">
-        <div class="d-flex widget-header m-0 p-3 align-item-center">
-          <p><b>Top US News</b></p>
-          <span class="ml-auto newsClose">✖️</span>
-        </div>
-        <div id="card-news" class="innerDiv m-3"></div>
-      `;
+//   let widgetHeader = `
+//   <div class="grid-stack-item" data-gs-x=${widget.x} data-gs-y=${widget.y} data-gs-width=${widget.width} data-gs-height=${widget.height} id=${widget.id}>
+//     <div class="grid-stack-item-content">
+//       <div class="bor">
+//         <div class="d-flex widget-header m-0 p-3 align-item-center">
+//           <p><b>Top US News</b></p>
+//           <span class="ml-auto newsClose">✖️</span>
+//         </div>
+//         <div id="card-news" class="innerDiv m-3"></div>
+//       `;
 
-  let widgetFooter = `
-      </div>
-    </div>
-  </div>
-  `;
+//   let widgetFooter = `
+//       </div>
+//     </div>
+//   </div>
+//   `;
 
-  await fetch(url)
-    .then((response) => response.json())
-    .then((json) => {
-      // Render the top 3 US news stories to the <div id="card-news"> element
+//   await fetch(url)
+//     .then((response) => response.json())
+//     .then((json) => {
+//       // Render the top 3 US news stories to the <div id="card-news"> element
 
-      var numArticlesToRender = 3;
-      var templateStr = ``;
-      for (i = 0; i < numArticlesToRender; i++) {
-        var arrNewsHeadline = json.articles[i].title.split(" - ");
-        var srcNewsHeadline = arrNewsHeadline.pop();
-        var titleNewsHeadline = "".concat(arrNewsHeadline);
-        let tempStr = `
-            <div class="headline">
-              <a href="${json.articles[i].url}" target="_blank">${titleNewsHeadline}</a><br/>
-              <span class="news-source"><i>${srcNewsHeadline}</i></span>
-              <br/>  
-            </div>
-            `;
-        templateStr += tempStr;
-      }
-      grid.addWidget(widgetHeader + templateStr + widgetFooter);
-      resetGrid();
-    });
-}
+//       var numArticlesToRender = 3;
+//       var templateStr = ``;
+//       for (i = 0; i < numArticlesToRender; i++) {
+//         var arrNewsHeadline = json.articles[i].title.split(" - ");
+//         var srcNewsHeadline = arrNewsHeadline.pop();
+//         var titleNewsHeadline = "".concat(arrNewsHeadline);
+//         let tempStr = `
+//             <div class="headline">
+//               <a href="${json.articles[i].url}" target="_blank">${titleNewsHeadline}</a><br/>
+//               <span class="news-source"><i>${srcNewsHeadline}</i></span>
+//               <br/>  
+//             </div>
+//             `;
+//         templateStr += tempStr;
+//       }
+//       grid.addWidget(widgetHeader + templateStr + widgetFooter);
+//       resetGrid();
+//     });
+// }
   
-async function renderCoronaWidget(widget) {
-  await axios
-    .get("https://disease.sh/v2/countries/United%20States?yesterday=true#")
-    .then((response) => {
-      console.log(response)
-      let renderedWidget = `
-        <div class="grid-stack-item" id=${widget.id}>
-          <div class="grid-stack-item-content">
-            <div class="bor">
-              <div class="d-flex widget-header m-0 p-3 align-item-center">
-              <p><b>COVID-19 Daily Update</b></p>
-              <span class="ml-auto ${widget.class}">✖️</span>
-            </div>
-            <div id="card-corona" class="innerDiv mb-3"></div>
-            <div class="mb-3">
-              <center>
-                <img src="https://corona.lmao.ninja/assets/img/flags/us.png">
-                <table class="tg">
-                  <tbody>
-                  <tr>
-                      <td class="tg-0lax">Cases :</td>
-                      <td class="tg-lqy6">${response.data.cases.toLocaleString()}</td>
-                  </tr>
-                  <tr>
-                      <td class="tg-0lax">Cases (today) :</td>
-                      <td class="tg-lqy6">${response.data.todayCases.toLocaleString()}</td>
-                  </tr>
-                  <tr>
-                      <td class="tg-0lax">Deaths :</td>
-                      <td class="tg-lqy6">${response.data.deaths.toLocaleString()}</td>
-                  </tr>
-                  <tr>
-                      <td class="tg-0lax">Deaths (today) :</td>
-                      <td class="tg-lqy6">${response.data.todayDeaths.toLocaleString()}</td>
-                  </tr>
-                  <tr>
-                      <td class="tg-0lax">Recovered :</td>
-                      <td class="tg-lqy6">${response.data.recovered.toLocaleString()}</td>
-                  </tr>
-                  <tr>
-                      <td class="tg-0lax">Total Tested :</td>
-                      <td class="tg-lqy6">${response.data.tests.toLocaleString()}</td>
-                  </tr>
-                  </tbody>
-                </table>
-              </center>
-            </div>
-          </div>
-        </div>
-      `;
-      grid.addWidget(renderedWidget, {
-        x: widget.x, 
-        y: widget.y,
-        width: widget.width,
-        height: widget.height,
-      })
-      resetGrid();
-  });
-}
+// async function renderCoronaWidget(widget) {
+//   await axios
+//     .get("https://disease.sh/v2/countries/United%20States?yesterday=true#")
+//     .then((response) => {
+//       console.log(response)
+//       let renderedWidget = `
+//         <div class="grid-stack-item" id=${widget.id}>
+//           <div class="grid-stack-item-content">
+//             <div class="bor">
+//               <div class="d-flex widget-header m-0 p-3 align-item-center">
+//               <p><b>COVID-19 Daily Update</b></p>
+//               <span class="ml-auto ${widget.class}">✖️</span>
+//             </div>
+//             <div id="card-corona" class="innerDiv mb-3"></div>
+//             <div class="mb-3">
+//               <center>
+//                 <img src="https://corona.lmao.ninja/assets/img/flags/us.png">
+//                 <table class="tg">
+//                   <tbody>
+//                   <tr>
+//                       <td class="tg-0lax">Cases :</td>
+//                       <td class="tg-lqy6">${response.data.cases.toLocaleString()}</td>
+//                   </tr>
+//                   <tr>
+//                       <td class="tg-0lax">Cases (today) :</td>
+//                       <td class="tg-lqy6">${response.data.todayCases.toLocaleString()}</td>
+//                   </tr>
+//                   <tr>
+//                       <td class="tg-0lax">Deaths :</td>
+//                       <td class="tg-lqy6">${response.data.deaths.toLocaleString()}</td>
+//                   </tr>
+//                   <tr>
+//                       <td class="tg-0lax">Deaths (today) :</td>
+//                       <td class="tg-lqy6">${response.data.todayDeaths.toLocaleString()}</td>
+//                   </tr>
+//                   <tr>
+//                       <td class="tg-0lax">Recovered :</td>
+//                       <td class="tg-lqy6">${response.data.recovered.toLocaleString()}</td>
+//                   </tr>
+//                   <tr>
+//                       <td class="tg-0lax">Total Tested :</td>
+//                       <td class="tg-lqy6">${response.data.tests.toLocaleString()}</td>
+//                   </tr>
+//                   </tbody>
+//                 </table>
+//               </center>
+//             </div>
+//           </div>
+//         </div>
+//       `;
+//       grid.addWidget(renderedWidget, {
+//         x: widget.x, 
+//         y: widget.y,
+//         width: widget.width,
+//         height: widget.height,
+//       })
+//       resetGrid();
+//   });
+// }
 
 // Render data from local storage
 $("#restore").on("click", function () {
-  $('.grid-stack').html('');
-  let widgetListJSON = localStorage.getItem('widgets');
-  let widgetList = JSON.parse(widgetListJSON);
-  console.log(widgetList)
-  widgetList.forEach(widget => {
-    if (widget.id == "homeWidget") {
-      renderHome();
-    } else if (widget.id == "coronaDiv") {
-      renderCoronaWidget(widget);
-    } else if (widget.id == "newsDiv") {
-      renderNewsWidget(widget);
-    } else {
-      renderRegWidget(widget);
-    }
-  });
-  resetGrid();
-
-  widgetListLS = JSON.stringify(widgetList);
-  localStorage.setItem('widgets', widgetListLS);
-});
-
-$("#Restore").on("click", function () {
-  $('.grid-stack').html('');
-  let widgetListJSON = localStorage.getItem('widgets');
-  let widgetList = JSON.parse(widgetListJSON);
-  console.log(widgetList)
-  widgetList.forEach(widget => {
-    if (widget.id == "homeWidget") {
-      renderHome();
-    } else if (widget.id == "coronaDiv") {
-      renderCoronaWidget(widget);
-    } else if (widget.id == "newsDiv") {
-      renderNewsWidget(widget);
-    } else {
-      renderRegWidget(widget);
-    }
-  });
-  resetGrid();
-
-  widgetListLS = JSON.stringify(widgetList);
-  localStorage.setItem('widgets', widgetListLS);
-});
-
-function resetGrid() {
   let widgetListJSON = localStorage.getItem('widgets');
   let widgetList = JSON.parse(widgetListJSON);
   let nl = document.querySelectorAll('.grid-stack-item')
   var arrayOfWidgets = [];
-  for(var i = 0, n; n = nl[i]; ++i) {
-    arrayOfWidgets.push(n);
+  for (var i = 0, n; n = nl[i]; ++i) {
+    let obj = {}
+    obj['id'] = n
+    arrayOfWidgets.push(obj);
   }
 
+  console.log(widgetList)
+  console.log(arrayOfWidgets)
+
   arrayOfWidgets.forEach(widget => {
-    let widgetObject = widgetList.find(object => {
-      return object.id === widget.id;
-    });
-    grid.update(widget, widgetObject.x, widgetObject.y);
-  });
-}
+    widgetList.forEach(item => {
+      if (item.id === widget.id.id) {
+        console.log(widget.id.id, parseInt(item.x, 10), parseInt(item.y, 10))
+        grid.update(widget.id.id, parseInt(item.x, 10), parseInt(item.y, 10), parseInt(item.width, 10), parseInt(item.height, 10));
+      }
+    })
+    // console.log(widget.id.id)
+  })
+  // savedWidget = [];
+  // widgetList.forEach(item => savedWidget.push(item.id));
+  // console.log(savedWidget);
+
+  // let onpageWidgets = [];
+  // let offpageWidgets = []
+
+  // arrayOfWidgets.forEach(widget => {
+  //   savedWidget.forEach(item => {
+  //     if (widget.id === item) {
+  //       onpageWidgets.push(widget.id)
+  //     } else {
+  //       offpageWidgets.push(widget.id)
+  //     }
+  //   })
+  // });
+
+  // console.log(onpageWidgets)
+  // console.log(offpageWidgets)
+
+  // onpageWidgets.forEach(item => {
+  //   console.log(item)   
+  //   widgetList.forEach(widget => {
+  //     console.log(item.id)
+  //     console.log(widget.id)
+  //     if (item.id === widget.id) {
+  //       console.log("match!")
+  //       grid.update(widget.id, widget.x, widget.y, widget.width, widget.height)
+  //       console.log(widget)
+  //     } else {
+  //       console.log("no match!")
+  //       // grid.removeWidget(widget.id)
+  //       console.log(widget)
+  //     }
+  //   });
+  // })
+  widgetListLS = JSON.stringify(widgetList);
+  localStorage.setItem('widgets', widgetListLS);
+});
+
+// $("#Restore").on("click", function () {
+//   $('.grid-stack').html('');
+//   let widgetListJSON = localStorage.getItem('widgets');
+//   let widgetList = JSON.parse(widgetListJSON);
+//   console.log(widgetList)
+//   widgetList.forEach(widget => {
+//     if (widget.id == "homeWidget") {
+//       renderHome();
+//     } else if (widget.id == "coronaDiv") {
+//       renderCoronaWidget(widget);
+//     } else if (widget.id == "newsDiv") {
+//       renderNewsWidget(widget);
+//     } else {
+//       renderRegWidget(widget);
+//     }
+//   });
+//   resetGrid();
+
+//   widgetListLS = JSON.stringify(widgetList);
+//   localStorage.setItem('widgets', widgetListLS);
+// });
+
+// function resetGrid() {
+//   let widgetListJSON = localStorage.getItem('widgets');
+//   let widgetList = JSON.parse(widgetListJSON);
+//   let nl = document.querySelectorAll('.grid-stack-item')
+//   var arrayOfWidgets = [];
+//   for(var i = 0, n; n = nl[i]; ++i) {
+//     arrayOfWidgets.push(n);
+//   }
+
+//   arrayOfWidgets.forEach(widget => {
+//     let widgetObject = widgetList.find(object => {
+//       return object.id === widget.id;
+//     });
+//     grid.update(widget, widgetObject.x, widgetObject.y);
+//   });
+// }
 
 // Modal
 // Get the modal

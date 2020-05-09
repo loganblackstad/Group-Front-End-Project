@@ -1,7 +1,6 @@
 $("#addQuotes").on("click", function () {
   var element = document.getElementById("quoteDiv"); 
   if (!element) { 
-    console.log("add Quotes");
     let quoteWidget = {
       title: "I need some inspiration.",
       divID: "quoteDiv",
@@ -13,14 +12,13 @@ $("#addQuotes").on("click", function () {
     let newQuoteWidget = renderWidgets(quoteWidget);
     grid.addWidget(newQuoteWidget);
   } else {
-    alert("Widget already exists");
+    alert("Quotes Widget already exists");
   };
 });
 
 $("#addBored").on("click", function () {
   var element = document.getElementById("boredDiv");
   if (!element) { 
-    console.log("add Bored");
     let boredWidget = {
       title: "Today is my day off and I am bored.",
       divID: "boredDiv",
@@ -32,14 +30,13 @@ $("#addBored").on("click", function () {
     let newBoredWidget = renderWidgets(boredWidget);
     grid.addWidget(newBoredWidget);
   } else {
-    alert("Widget already exists");
+    alert("Bored Widget already exists!");
   };
 });
 
 $("#addYeezy").on("click", function () {
   var element = document.getElementById("yeezyDiv");
   if (!element) { 
-    console.log("add Ye");
     let yeezyWidget = {
       title: "I need Yeezus in my life.",
       divID: "yeezyDiv",
@@ -51,14 +48,13 @@ $("#addYeezy").on("click", function () {
     let newYeezyWidget = renderWidgets(yeezyWidget);
     grid.addWidget(newYeezyWidget);
   } else {
-  alert("Widget already exists");
+  alert("Yeezy Widget already exists!");
   };
 });
 
 $("#addJoke").on("click", function () {
   var element = document.getElementById("jokeDiv");
   if (!element) { 
-    console.log("add Jokes");
     let jokeWidget = {
       title: "I could use a laugh.",
       divID: "jokeDiv",
@@ -70,14 +66,13 @@ $("#addJoke").on("click", function () {
     let newJokeWidget = renderWidgets(jokeWidget);
     grid.addWidget(newJokeWidget);
   } else {
-    alert("Widget already exists");
+    alert("Jokes Widget already exists!");
     };
 });
 
 $("#addAdvice").on("click", function () {
   var element = document.getElementById("adviceDiv");
   if (!element) { 
-    console.log("add Advice");
     let adviceWidget = {
       title: "I really need some life advice.",
       divID: "adviceDiv",
@@ -89,33 +84,22 @@ $("#addAdvice").on("click", function () {
     let newAdviceWidget = renderWidgets(adviceWidget);
     grid.addWidget(newAdviceWidget);
   } else {
-    alert("Widget already exists");
+    alert("Advice Widget already exists!");
     };
 });
 
 $("#addNews").on("click", function () {
   var element = document.getElementById("newsDiv");
   if (!element) { 
-    console.log("add News");
     renderNews();
   } else {
-    alert("Widget already exists");
+    alert("News Widget already exists!");
     };
 });
-
-// $('#addAQ').on('click', function() {
-//   let newsWidget = {
-//     "title": "Local Air Quality.",
-//     "divID": "aqDiv",
-//     "cardID": "airQuality",
-//     "class": "aqClose",
-//   };
-// });
 
 $("#addCorona").on("click", function () {
   var element = document.getElementById("coronaDiv");
   if (!element) { 
-    console.log("add Rona");
     axios
       .get("https://disease.sh/v2/countries/United%20States?yesterday=true#")
       .then((response) => {
@@ -130,14 +114,13 @@ $("#addCorona").on("click", function () {
         grid.addWidget(newCoronaWidget);
       });
   } else {
-    alert("Widget already exists");
+    alert("CoronaVirus Widget already exists!");
     };
 });
 
 $("#addDoggo").on("click", function () {
   var element = document.getElementById("doggoDiv"); 
   if (!element) { 
-    console.log("add Doggo");
     let doggoWidget = {
       title: "I want to see some doggos.",
       divID: "doggoDiv",
@@ -149,6 +132,24 @@ $("#addDoggo").on("click", function () {
     let newDoggoWidget = renderWidgets(doggoWidget);
     grid.addWidget(newDoggoWidget);
   } else {
-    alert("Widget already exists");
+    alert("Doggo Widget already exists!");
+  };
+});
+
+$("#addCats").on("click", function () {
+  var element = document.getElementById("catsDiv"); 
+  if (!element) { 
+    let catWidget = {
+      title: "Tell me all about cats!",
+      divID: "catDiv",
+      cardID: "cat",
+      buttonID: "catButton",
+      class: "catClose",
+      buttonText: "😸",
+    };
+    let newCatWidget = renderWidgets(catWidget);
+    grid.addWidget(newCatWidget);
+  } else {
+    alert("Cat Widget already exists!");
   };
 });
