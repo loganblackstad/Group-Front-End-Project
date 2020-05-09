@@ -137,7 +137,7 @@ $("#addDoggo").on("click", function () {
 });
 
 $("#addCats").on("click", function () {
-  var element = document.getElementById("catsDiv"); 
+  var element = document.getElementById("catDiv"); 
   if (!element) { 
     let catWidget = {
       title: "Tell me all about cats!",
