@@ -5,7 +5,8 @@ var zipcode = localStorage.getItem('zip');
 
 $(document).on('DOMContentLoaded', function (e) {
     e.preventDefault();
-    axios.get(`https://api.openweathermap.org/data/2.5/weather?zip=${zipcode}&units=imperial&appid=1c2750404739686fb5929a48b32c2766`)    .then((response) => {
+    axios.get(`https://api.openweathermap.org/data/2.5/weather?zip=${zipcode}&units=imperial&appid=1c2750404739686fb5929a48b32c2766`)    
+      .then((response) => {
         const weatherApiData = `
           <div class="weather d-flex flex-column">
             <div class="weather-header mb-1">Weather for: <br/><b>${response.data.name} (${zipcode})</b></div>
