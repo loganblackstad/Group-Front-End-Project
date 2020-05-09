@@ -151,6 +151,10 @@ $(document).on("click", ".doggoClose", function () {
   grid.removeWidget($("#doggoDiv").get(0));
 });
 
+$(document).on("click", ".catClose", function () {
+  grid.removeWidget($("#catDiv").get(0));
+});
+
 // Modal and modal validation
 
 // Get user input from the Modal
