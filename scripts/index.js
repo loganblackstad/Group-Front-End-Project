@@ -458,7 +458,7 @@ function resetGrid() {
 // Get user input from the Modal
 function getInput(e) {
   e.preventDefault();
-  $("#greeting").html(`Hello, ${$("#userName").val()}`);
+  $("#greeting").html(`Hello, <b>${$("#userName").val()}</b>!`);
   localStorage.setItem("zip", $("#userZip").val());
 }
 
@@ -527,10 +527,10 @@ document.addEventListener("DOMContentLoaded", async function (e) {
   var contentHeight = $("#jokeDiv").find(".bor").outerHeight();
   $("#jokeDiv").height(contentHeight);
 
-  setTimeout(function () {
-    var contentHeight = $("#newsDiv").find(".bor").outerHeight();
-    $("#newsDiv").height(contentHeight);
-  }, 1000);
+  // setTimeout(function () {
+  //   var contentHeight = $("#newsDiv").find(".bor").outerHeight();
+  //   $("#newsDiv").height(contentHeight);
+  // }, 1000);
 
 });
 
@@ -548,8 +548,8 @@ $("#dropdownMenuLink").on("click", async function () {
     $("#adviceDiv").height(contentHeight);
     var contentHeight = $("#jokeDiv").find(".bor").outerHeight();
     $("#jokeDiv").height(contentHeight);
-    var contentHeight = $("#newsDiv").find(".bor").outerHeight();
-    $("#newsDiv").height(contentHeight);
+    // var contentHeight = $("#newsDiv").find(".bor").outerHeight();
+    // $("#newsDiv").height(contentHeight);
   }, 1000);
 
 });

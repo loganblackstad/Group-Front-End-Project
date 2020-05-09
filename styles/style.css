@@ -138,7 +138,7 @@ span:hover {
   font-family: Arial, sans-serif;
   font-size: 14px;
   overflow: hidden;
-  padding: 3px 10px;
+  padding: 1px 5px;
   word-break: normal;
 }
 .tg th {
@@ -148,7 +148,7 @@ span:hover {
   font-size: 14px;
   font-weight: normal;
   overflow: hidden;
-  padding: 3px 10px;
+  padding: 1px 5px;
   word-break: normal;
 }
 .tg .tg-lqy6 {
@@ -159,6 +159,7 @@ span:hover {
   text-align: left;
   vertical-align: top;
 }
+
 
 .boldt{
   font-weight: bold;
@@ -200,5 +201,40 @@ span:hover {
 
 .gsc-control-cse{
   padding: 0;
-  margin-top: 1em;
+  margin-top: 0;
+  margin-right: 0;
+}
+
+.divider {
+  font-size: x-large;
+}
+
+.temp-big {
+  font-size: 60px;
+  border-left: 2px solid darkgrey;
+}
+
+.weather-description {
+  font-size: 18px;
+  text-transform: capitalize;
+}
+
+.weather-img {
+  /* width: 150px;
+  height: 150px; */
+}
+
+.weather-details{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.ds {
+  text-align: center;
+}
+
+.weather-header {
+  align-content: center;
+  text-align: center;
 }

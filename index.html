@@ -43,10 +43,10 @@
           <div class="grid-stack-item" data-gs-x="0" data-gs-y="0"
             data-gs-width="5" data-gs-height="8" data-gs-locked="true"
             data-gs-noMove="true" data-gs-noResize="true" id="homeWidget">
-            <div class="grid-stack-item-content d-flex flex-column m-2 p-1
+            <div class="grid-stack-item-content d-flex flex-column m-0 p-0
               overflow-auto" id="home">
-              <p id="greeting" class="mt-1"></p>
-              <div class="main-buttons d-flex">
+              <!-- <h1>YOUi</h1> -->
+              <div class="main-buttons d-flex justify-content-center">
                 <div class="dropdown show d-flex justify-content-center">
                   <a class="btn btn-primary dropdown-toggle" href="#"
                     role="button" id="dropdownMenuLink" data-toggle="dropdown"
@@ -68,18 +68,38 @@
                 <button class="btn btn-primary ml-2" id="save">Save Layout</button>
                 <button class="btn btn-dark ml-2" id="save">Restore Layout</button>
               </div>
+              <p id="greeting" class="mt-2 ml-1"></p>
               <script async
                 src="https://cse.google.com/cse.js?cx=015973783965488086183:3k48kdj5xul"></script>
               <div class="gcse-search" enableAutoComplete="true"></div>
               <div class="date-time m-0 mb-3 mt-3">
-                <p class="m-0"><span id="date-span" class="m-0"></span></p>
-                <p class="d-flex align-content-top m-0" id="time-span">
+                <p class="m-0 d-flex justify-content-center"><span id="date-span" class="d-flex justify-content-center
+                    m-0"></span></p>
+                <p class="d-flex justify-content-center align-content-top m-0" id="time-span">
                   <span id="hhmm" class="mr-2"></span>
                   <span id="ss" class="mr-2"></span>
                   <span id="ampm"></span>
                 </p>
               </div>
-              <div class="weather"><p>weather</p></div>
+              <div class="weather d-flex flex-column">
+                <div class="main-weather d-flex flex-row justify-content-center mt-3 mb-3">
+                  <div class="weather-img d-flex flex-column mr-4">
+                    <p class="weather-description d-flex justify-content-center mb-0">${response.data.weather[0].description}</p>
+                    <img class="weather-img d-flex justify-content-center"
+                      src="http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png" alt="weather-icon">
+                  </div>
+                  <div class="temp-big d-flex flex-row justify-content-center align-content-center mb-0">
+                    <p class="d-flex flex-row justify-content-center align-content-center pl-4 mb-0">
+                      ${response.data.main.temp.splice(1, 3)}°F</p>
+                  </div>
+                </div>
+                <div class="weather-details d-flex flex-column justify-content-center align-content-center">
+                  <p class="low-high">low/high: ${response.data.main.temp_min}°F / ${response.data.main.temp_max}°F</p>
+                  <p class="feels-like">Feels like ${response.data.main.feels_like}</p>
+                  <p class="hum">Humidity: ${response.data.main.humidity} %</p>
+                  <p class="hum">Wind Speed: ${response.data.wind.speed}</p>
+                </div>
+              </div>
             </div>
           </div>
           <div class="grid-stack-item" data-gs-x="0"
