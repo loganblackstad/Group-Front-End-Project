@@ -13,18 +13,6 @@ function renderWidgets(widget) {
   return renderedWidget;
 }
 
-// function renderNoButton(widget) {
-//   let renderedWidget = `
-//     <div class="grid-stack-item" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="2" id=${widget.divID}>
-//       <div class="grid-stack-item-content">
-//         <div class="d-flex"><p>${widget.title}</p><span class="ml-auto ${widget.class}">✖️</span></div>
-//         <div id=${widget.cardID}></div>
-//       </div>
-//     </div>
-//   `;
-//   return renderedWidget;
-// }
-
 function renderRona(widget) {
   let renderedWidget = `
     <div class="grid-stack-item" data-gs-x="0" data-gs-y="0" data-gs-width="5" data-gs-height="5" id=${widget.divID}>
@@ -163,6 +151,75 @@ $(document).on("click", ".doggoClose", function () {
   grid.removeWidget($("#doggoDiv").get(0));
 });
 
+// Modal and modal validation
+
+// Get user input from the Modal
+function getInput(e) {
+  e.preventDefault();
+  $("#greeting").html(`Hello, <b>${$("#userName").val()}</b>!`);
+  localStorage.setItem("zip", $("#userZip").val());
+}
+
+// Add event listeners to the form to call functions when form is submitted
+const form = document.querySelector("#theform");
+form.addEventListener("submit", getInput);
+
+// Validate user input for name and zip and render weather if zip code is valid
+function validateUser(){
+  var name = document.getElementById('userName').value;
+  var re = /[A-Z][a-z]*/;
+  var zip = document.getElementById('userZip').value;
+  var RE = /[0-9]{5}/;
+  if(re.test(name) && RE.test(zip)){
+    var zipcode = $("#userZip").val();
+    modal.style.display = "none";
+    axios.get(`https://api.openweathermap.org/data/2.5/weather?zip=${zipcode}&units=imperial&appid=1c2750404739686fb5929a48b32c2766`)
+      .then((response) => {
+        const weatherApiData = `
+          <div class="weather d-flex flex-column">
+            <div class="weather-header mb-1">Weather for: <br/><b>${response.data.name} (${zipcode})</b></div>
+            <div class="main-weather d-flex flex-row justify-content-center mt-3 mb-3">
+                <div class="weather-img d-flex flex-column mr-4">
+                  <p class="weather-description d-flex justify-content-center mb-0">${response.data.weather[0].description}</p>
+                  <img class="weather-img d-flex justify-content-center"
+                  src="http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png" alt="weather-icon">
+                </div>
+                <div class="temp-big d-flex flex-row justify-content-center align-content-center mb-0">
+                  <p class="d-flex flex-row justify-content-center align-content-center pl-4 pt-3 mb-0">
+                  ${Math.round(response.data.main.temp)}°F</p>
+                </div>
+              </div>
+              <div class="weather-details">
+                <table class="tg d-flex flex-row justify-content-center align-content-center">
+                <tbody>
+                <tr>
+                  <td class="tg-0lax">Feels Like:</td>
+                  <td class="tg-lqy6 ds">${Math.round(response.data.main.feels_like)}°F</td>
+                </tr>
+                <tr>
+                  <td class="tg-0lax">Low/High:</td>
+                  <td class="tg-lqy6 ds">${Math.round(response.data.main.temp_min)}°F / ${Math.round(response.data.main.temp_max)}°F</td>
+                </tr>
+                <tr>
+                  <td class="tg-0lax">Humidity:</td>
+                  <td class="tg-lqy6 ds">${Math.round(response.data.main.humidity)}%</td>
+                </tr>
+                <tr>
+                  <td class="tg-0lax">Wind Speed:</td>
+                  <td class="tg-lqy6 ds">${Math.round(response.data.wind.speed)}mph</td>
+                </tr>
+                </tbody>
+                </table>
+              </div>
+            </div>`;
+        $(".weather").html(weatherApiData);
+      });
+  } else{
+      alert("Enter a valid name and zip!")
+  };
+};
+
+// save a widget to local storage
 function saveRegWidget(widget) {
   let obj = {};
   obj['id'] = widget.id;
@@ -180,6 +237,7 @@ function saveRegWidget(widget) {
   return obj
 }
 
+// save home widget to local storage
 function saveHomeWidget(widget) {
   let obj = {};
   obj['id'] = widget.id;
@@ -187,6 +245,7 @@ function saveHomeWidget(widget) {
   return obj
 }
 
+// save coronavirus widget to local storage
 function saveCoronaWidget(widget) {
   let obj = {};
   obj['id'] = widget.id;
@@ -202,6 +261,7 @@ function saveCoronaWidget(widget) {
   return obj
 }
 
+// save news widget to local storage
 function saveNewsWidget(widget) {
   let obj = {};
   obj['id'] = widget.id;
@@ -437,6 +497,28 @@ $("#restore").on("click", function () {
   localStorage.setItem('widgets', widgetListLS);
 });
 
+$("#Restore").on("click", function () {
+  $('.grid-stack').html('');
+  let widgetListJSON = localStorage.getItem('widgets');
+  let widgetList = JSON.parse(widgetListJSON);
+  console.log(widgetList)
+  widgetList.forEach(widget => {
+    if (widget.id == "homeWidget") {
+      renderHome();
+    } else if (widget.id == "coronaDiv") {
+      renderCoronaWidget(widget);
+    } else if (widget.id == "newsDiv") {
+      renderNewsWidget(widget);
+    } else {
+      renderRegWidget(widget);
+    }
+  });
+  resetGrid();
+
+  widgetListLS = JSON.stringify(widgetList);
+  localStorage.setItem('widgets', widgetListLS);
+});
+
 function resetGrid() {
   let widgetListJSON = localStorage.getItem('widgets');
   let widgetList = JSON.parse(widgetListJSON);
@@ -453,18 +535,6 @@ function resetGrid() {
     grid.update(widget, widgetObject.x, widgetObject.y);
   });
 }
-
-
-// Get user input from the Modal
-function getInput(e) {
-  e.preventDefault();
-  $("#greeting").html(`Hello, <b>${$("#userName").val()}</b>!`);
-  localStorage.setItem("zip", $("#userZip").val());
-}
-
-// Add event listeners to the form to call functions when form is submitted
-const form = document.querySelector("#theform");
-form.addEventListener("submit", getInput);
 
 // Modal
 // Get the modal
@@ -497,20 +567,12 @@ submit.onclick = function () {
   modal.style.display = "none";
 };
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function (event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-};
-
 // When the user clicks on the restore button, close the modal
 restore.onclick = function (event) {
   modal.style.display = "none";
 }
 
 // Update height of cards based on children height
-
 
 // Resize all widgets so that border encapsulates drag arrow on page load
 document.addEventListener("DOMContentLoaded", async function (e) {

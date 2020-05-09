@@ -28,11 +28,11 @@
             <div id="name" class="d-flex flex-column justify-content-center
               align-items-center">
               <label for="userName">What is your name?</label>
-              <input type="text" id="userName" class="pl-2" placeholder="John Doe" />
+              <input type="text" id="userName" class="pl-2" placeholder="John Doe" required />
             </div>
             <div id="zip" class="d-flex flex-column justify-content-center align-items-center mt-3">
               <label for="userZip">What is your zip code?</label>
-              <input type="text" id="userZip" class="pl-2" placeholder="30306" />
+              <input type="text" id="userZip" class="pl-2" placeholder="30306" required />
             </div>
             <input type="submit" class="btn btn-dark mt-4" id="subButton" />
           </form>
@@ -40,7 +40,7 @@
       </div>
       <main>
         <div class="grid-stack mt-2">
-          <div class="grid-stack-item" data-gs-x="0" data-gs-y="0"
+          <div class="grid-stack-item col-lg-12" data-gs-x="0" data-gs-y="0"
             data-gs-width="5" data-gs-height="8" data-gs-locked="true"
             data-gs-noMove="true" data-gs-noResize="true" id="homeWidget">
             <div class="grid-stack-item-content d-flex flex-column m-0 p-0
@@ -66,7 +66,7 @@
                   </div>
                 </div>
                 <button class="btn btn-primary ml-2" id="save">Save Layout</button>
-                <button class="btn btn-dark ml-2" id="save">Restore Layout</button>
+                <button class="btn btn-dark ml-2" id="Restore">Restore Layout</button>
               </div>
               <p id="greeting" class="mt-2 ml-1"></p>
               <script async
