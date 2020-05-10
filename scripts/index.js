@@ -13,18 +13,6 @@ function renderWidgets(widget) {
   return renderedWidget;
 }
 
-// function renderNoButton(widget) {
-//   let renderedWidget = `
-//     <div class="grid-stack-item" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="2" id=${widget.divID}>
-//       <div class="grid-stack-item-content">
-//         <div class="d-flex"><p>${widget.title}</p><span class="ml-auto ${widget.class}">✖️</span></div>
-//         <div id=${widget.cardID}></div>
-//       </div>
-//     </div>
-//   `;
-//   return renderedWidget;
-// }
-
 function renderRona(widget) {
   let renderedWidget = `
     <div class="grid-stack-item" data-gs-x="0" data-gs-y="0" data-gs-width="5" data-gs-height="5" id=${widget.divID}>
@@ -163,6 +151,79 @@ $(document).on("click", ".doggoClose", function () {
   grid.removeWidget($("#doggoDiv").get(0));
 });
 
+$(document).on("click", ".catClose", function () {
+  grid.removeWidget($("#catDiv").get(0));
+});
+
+// Modal and modal validation
+
+// Get user input from the Modal
+function getInput(e) {
+  e.preventDefault();
+  $("#greeting").html(`Hello, <b>${$("#userName").val()}</b>!`);
+  localStorage.setItem("zip", $("#userZip").val());
+}
+
+// Add event listeners to the form to call functions when form is submitted
+const form = document.querySelector("#theform");
+form.addEventListener("submit", getInput);
+
+// Validate user input for name and zip and render weather if zip code is valid
+function validateUser() {
+  var name = document.getElementById('userName').value;
+  var re = /[A-Z][a-z]*/;
+  var zip = document.getElementById('userZip').value;
+  var RE = /[0-9]{5}/;
+  if(re.test(name) && RE.test(zip)){
+    var zipcode = $("#userZip").val();
+    modal.style.display = "none";
+    axios.get(`https://api.openweathermap.org/data/2.5/weather?zip=${zipcode}&units=imperial&appid=1c2750404739686fb5929a48b32c2766`)
+      .then((response) => {
+        const weatherApiData = `
+          <div class="weather d-flex flex-column">
+            <div class="weather-header mb-1">Weather for: <br/><b>${response.data.name} (${zipcode})</b></div>
+            <div class="main-weather d-flex flex-row justify-content-center mt-3 mb-3">
+                <div class="weather-img d-flex flex-column mr-4">
+                  <p class="weather-description d-flex justify-content-center mb-0">${response.data.weather[0].description}</p>
+                  <img class="weather-img d-flex justify-content-center"
+                  src="http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png" alt="weather-icon">
+                </div>
+                <div class="temp-big d-flex flex-row justify-content-center align-content-center mb-0">
+                  <p class="d-flex flex-row justify-content-center align-content-center pl-4 pt-3 mb-0">
+                  ${Math.round(response.data.main.temp)}°F</p>
+                </div>
+              </div>
+              <div class="weather-details">
+                <table class="tg d-flex flex-row justify-content-center align-content-center">
+                <tbody>
+                <tr>
+                  <td class="tg-0lax">Feels Like:</td>
+                  <td class="tg-lqy6 ds">${Math.round(response.data.main.feels_like)}°F</td>
+                </tr>
+                <tr>
+                  <td class="tg-0lax">Low/High:</td>
+                  <td class="tg-lqy6 ds">${Math.round(response.data.main.temp_min)}°F / ${Math.round(response.data.main.temp_max)}°F</td>
+                </tr>
+                <tr>
+                  <td class="tg-0lax">Humidity:</td>
+                  <td class="tg-lqy6 ds">${Math.round(response.data.main.humidity)}%</td>
+                </tr>
+                <tr>
+                  <td class="tg-0lax">Wind Speed:</td>
+                  <td class="tg-lqy6 ds">${Math.round(response.data.wind.speed)}mph</td>
+                </tr>
+                </tbody>
+                </table>
+              </div>
+            </div>`;
+        $(".weather").html(weatherApiData);
+      });
+  } else{
+      alert("Enter a valid name and zip!")
+  };
+};
+
+// save a widget to local storage
 function saveRegWidget(widget) {
   let obj = {};
   obj['id'] = widget.id;
@@ -180,6 +241,7 @@ function saveRegWidget(widget) {
   return obj
 }
 
+// save home widget to local storage
 function saveHomeWidget(widget) {
   let obj = {};
   obj['id'] = widget.id;
@@ -187,6 +249,7 @@ function saveHomeWidget(widget) {
   return obj
 }
 
+// save coronavirus widget to local storage
 function saveCoronaWidget(widget) {
   let obj = {};
   obj['id'] = widget.id;
@@ -202,6 +265,7 @@ function saveCoronaWidget(widget) {
   return obj
 }
 
+// save news widget to local storage
 function saveNewsWidget(widget) {
   let obj = {};
   obj['id'] = widget.id;
@@ -217,6 +281,25 @@ function saveNewsWidget(widget) {
   return obj
 }
 // Save data to local storage
+// $(document).on("click", "#save", function () {
+//   let nl = document.querySelectorAll('.grid-stack-item')
+//   var arrayOfWidgets = [];
+//   for (var i = 0, n; n = nl[i]; ++i) {
+//     arrayOfWidgets.push(n);
+//   }
+//   let savedWidgets = arrayOfWidgets.map(widget => {
+//     return saveRegWidget(widget);
+//   });
+
+//   // savedWidgets = savedWidgets.sort((objectA, objectB) => {
+//   //   return objectA.y - objectB.y;
+//   // });
+
+//   console.log(savedWidgets);
+//   let parsedWidgets = JSON.stringify(savedWidgets);
+//   localStorage.setItem('widgets', parsedWidgets)
+// });
+
 $(document).on("click", "#save", function () {
   let nl = document.querySelectorAll('.grid-stack-item')
   var arrayOfWidgets = [];
@@ -247,11 +330,10 @@ $(document).on("click", "#save", function () {
 
 function renderHome() {
   let renderedWidget = `
-    <div class="grid-stack-item" data-gs-x="0" data-gs-y="0" data-gs-width="5" data-gs-height="8" data-gs-locked="true" data-gs-noMove="true" data-gs-noResize="true" id="homeWidget">
-      <div class="grid-stack-item-content d-flex flex-column m-2 p-1
-        overflow-auto" id="home">
-        <p id="greeting" class="mt-1"></p>
-        <div class="main-buttons d-flex">
+    <div class="grid-stack-item col-lg-12" data-gs-x="0" data-gs-y="0" data-gs-width="5" data-gs-height="8" data-gs-locked="true" data-gs-noMove="true" data-gs-noResize="true" id="homeWidget">
+      <div class="grid-stack-item-content d-flex flex-column m-0 p-0 overflow-auto" id="home">
+        <!-- <h1>YOUi</h1> -->
+        <div class="main-buttons d-flex justify-content-center">
           <div class="dropdown show d-flex justify-content-center">
             <a class="btn btn-primary dropdown-toggle" href="#"
               role="button" id="dropdownMenuLink" data-toggle="dropdown"
@@ -265,30 +347,77 @@ function renderHome() {
               <a href="#" class="nav-link" id="addJoke">Jokes</a>
               <a href="#" class="nav-link" id="addAdvice">Advice</a>
               <a href="#" class="nav-link" id="addNews">News</a>
-              <a href="#" class="nav-link" id="addAQ">Air Quality</a>
+              <a href="#" class="nav-link" id="addDoggo">Doggos</a>
+              <a href="#" class="nav-link" id="addCats">Cats</a>
               <a href="#" class="nav-link" id="addCorona">Coronavirus</a>
               <a href="#" class="nav-link" id="addYeezy">Kanye Quotes</a>
             </div>
           </div>
           <button class="btn btn-primary ml-2" id="save">Save Layout</button>
-          <button class="btn btn-dark ml-2" id="save">Restore Layout</button>
+          <button class="btn btn-dark ml-2" id="Restore">Restore Layout</button>
         </div>
+        <p id="greeting" class="mt-2 ml-1"></p>
         <script async
           src="https://cse.google.com/cse.js?cx=015973783965488086183:3k48kdj5xul"></script>
         <div class="gcse-search" enableAutoComplete="true"></div>
         <div class="date-time m-0 mb-3 mt-3">
-          <p class="m-0"><span id="date-span" class="m-0"></span></p>
-          <p class="d-flex align-content-top m-0" id="time-span">
+          <p class="m-0 d-flex justify-content-center"><span id="date-span" class="d-flex justify-content-center
+              m-0"></span></p>
+          <p class="d-flex justify-content-center align-content-top m-0" id="time-span">
             <span id="hhmm" class="mr-2"></span>
             <span id="ss" class="mr-2"></span>
             <span id="ampm"></span>
           </p>
         </div>
-        <div class="weather"><p>weather</p></div>
+        <div class="weather d-flex flex-column">
+        </div>
       </div>
     </div>
     `;
+    
   grid.addWidget(renderedWidget);
+
+  axios.get(`https://api.openweathermap.org/data/2.5/weather?zip=${zipcode}&units=imperial&appid=1c2750404739686fb5929a48b32c2766`)    
+      .then((response) => {
+        const weatherApiData = `
+          <div class="weather d-flex flex-column">
+            <div class="weather-header mb-1">Weather for: <br/><b>${response.data.name} (${zipcode})</b></div>
+            <div class="main-weather d-flex flex-row justify-content-center mt-3 mb-3">
+                <div class="weather-img d-flex flex-column mr-4">
+                  <p class="weather-description d-flex justify-content-center mb-0">${response.data.weather[0].description}</p>
+                  <img class="weather-img d-flex justify-content-center"
+                  src="http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png" alt="weather-icon">
+                </div>
+                <div class="temp-big d-flex flex-row justify-content-center align-content-center mb-0">
+                  <p class="d-flex flex-row justify-content-center align-content-center pl-4 pt-3 mb-0">
+                  ${Math.round(response.data.main.temp)}°F</p>
+                </div>
+              </div>
+              <div class="weather-details">
+                <table class="tg d-flex flex-row justify-content-center align-content-center">
+                <tbody>
+                <tr>
+                  <td class="tg-0lax">Feels Like:</td>
+                  <td class="tg-lqy6 ds">${Math.round(response.data.main.feels_like)}°F</td>
+                </tr>
+                <tr>
+                  <td class="tg-0lax">Low/High:</td>
+                  <td class="tg-lqy6 ds">${Math.round(response.data.main.temp_min)}°F / ${Math.round(response.data.main.temp_max)}°F</td>
+                </tr>
+                <tr>
+                  <td class="tg-0lax">Humidity:</td>
+                  <td class="tg-lqy6 ds">${Math.round(response.data.main.humidity)}%</td>
+                </tr>
+                <tr>
+                  <td class="tg-0lax">Wind Speed:</td>
+                  <td class="tg-lqy6 ds">${Math.round(response.data.wind.speed)}mph</td>
+                </tr>
+                </tbody>
+                </table>
+              </div>
+            </div>`;
+        $(".weather").html(weatherApiData);
+      });
 }
 
 function renderRegWidget(widget) {
@@ -415,6 +544,108 @@ async function renderCoronaWidget(widget) {
 }
 
 // Render data from local storage
+// $("#restore").on("click", function () {
+//   let widgetListJSON = localStorage.getItem('widgets');
+//   let widgetList = JSON.parse(widgetListJSON);
+//   let nl = document.querySelectorAll('.grid-stack-item')
+//   var arrayOfWidgets = [];
+//   for (var i = 0, n; n = nl[i]; ++i) {
+//     let obj = {}
+//     obj['id'] = n
+//     arrayOfWidgets.push(obj);
+//   }
+
+//   console.log(widgetList)
+//   console.log(arrayOfWidgets)
+
+//   arrayOfWidgets.forEach(widget => {
+//     widgetList.forEach(item => {
+//       if (item.id === widget.id.id) {
+//         console.log(document.getElementById(item.id), parseInt(item.x, 10), parseInt(item.y, 10))
+//         grid.update(document.getElementById(item.id), parseInt(item.x, 10), parseInt(item.y, 10), parseInt(item.width, 10), parseInt(item.height, 10));
+//       } 
+//       // else {
+//       //   grid.removeWidget(document.getElementById(widget.id.id))
+//       // }
+//     })
+
+//   })
+//   widgetListLS = JSON.stringify(widgetList);
+//   localStorage.setItem('widgets', widgetListLS);
+// });
+
+// $("#Restore").on("click", function () {
+//   let widgetListJSON = localStorage.getItem('widgets');
+//   let widgetList = JSON.parse(widgetListJSON);
+//   let nl = document.querySelectorAll('.grid-stack-item')
+//   var arrayOfWidgets = [];
+//   for (var i = 0, n; n = nl[i]; ++i) {
+//     let obj = {}
+//     obj['id'] = n
+//     arrayOfWidgets.push(obj);
+//   }
+
+//   console.log(widgetList)
+//   console.log(arrayOfWidgets)
+
+//   arrayOfWidgets.forEach(widget => {
+//     widgetList.forEach(item => {
+//       if (item.id === widget.id.id) {
+//         console.log(document.getElementById(item.id), parseInt(item.x, 10), parseInt(item.y, 10))
+//         grid.update(document.getElementById(item.id), parseInt(item.x, 10), parseInt(item.y, 10), parseInt(item.width, 10), parseInt(item.height, 10));
+//       } 
+//       // else {
+//       //   grid.removeWidget(document.getElementById(widget.id.id))
+//       // }
+//     })
+
+//   })
+//   widgetListLS = JSON.stringify(widgetList);
+//   localStorage.setItem('widgets', widgetListLS);
+// });
+
+$("#Restore").on("click", function () {
+  $('.grid-stack').html('');
+  let widgetListJSON = localStorage.getItem('widgets');
+  let widgetList = JSON.parse(widgetListJSON);
+  console.log(widgetList)
+  widgetList.forEach(widget => {
+    if (widget.id == "homeWidget") {
+      renderHome();
+    } else if (widget.id == "coronaDiv") {
+      renderCoronaWidget(widget);
+    } else if (widget.id == "newsDiv") {
+      renderNewsWidget(widget);
+    } else {
+      renderRegWidget(widget);
+    }
+  });
+  resetGrid();
+
+  widgetListLS = JSON.stringify(widgetList);
+  localStorage.setItem('widgets', widgetListLS);
+});
+
+function resetGrid() {
+  let widgetListJSON = localStorage.getItem('widgets');
+  let widgetList = JSON.parse(widgetListJSON);
+  let nl = document.querySelectorAll('.grid-stack-item')
+  var arrayOfWidgets = [];
+  for(var i = 0, n; n = nl[i]; ++i) {
+    arrayOfWidgets.push(n);
+  }
+
+  arrayOfWidgets.forEach(widget => {
+    let widgetObject = widgetList.find(object => {
+      return object.id === widget.id;
+    });
+    console.log(widgetObject.id)
+    console.log(widgetObject.x)
+    console.log(widgetObject.y)
+    grid.update(document.getElementById(widgetObject.id), parseInt(widgetObject.x, 10), parseInt(widgetObject.y, 10));
+  });
+}
+
 $("#restore").on("click", function () {
   $('.grid-stack').html('');
   let widgetListJSON = localStorage.getItem('widgets');
@@ -450,21 +681,9 @@ function resetGrid() {
     let widgetObject = widgetList.find(object => {
       return object.id === widget.id;
     });
-    grid.update(widget, widgetObject.x, widgetObject.y);
+    grid.update(document.getElementById(widgetObject.id), parseInt(widgetObject.x, 10), parseInt(widgetObject.y, 10));
   });
 }
-
-
-// Get user input from the Modal
-function getInput(e) {
-  e.preventDefault();
-  $("#greeting").html(`Hello, <b>${$("#userName").val()}</b>!`);
-  localStorage.setItem("zip", $("#userZip").val());
-}
-
-// Add event listeners to the form to call functions when form is submitted
-const form = document.querySelector("#theform");
-form.addEventListener("submit", getInput);
 
 // Modal
 // Get the modal
@@ -497,20 +716,12 @@ submit.onclick = function () {
   modal.style.display = "none";
 };
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function (event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-};
-
 // When the user clicks on the restore button, close the modal
 restore.onclick = function (event) {
   modal.style.display = "none";
 }
 
 // Update height of cards based on children height
-
 
 // Resize all widgets so that border encapsulates drag arrow on page load
 document.addEventListener("DOMContentLoaded", async function (e) {
