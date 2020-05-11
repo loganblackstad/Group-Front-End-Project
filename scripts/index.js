@@ -175,7 +175,7 @@ function validateUser() {
   var re = /[A-Z][a-z]*/;
   var zip = document.getElementById('userZip').value;
   var RE = /[0-9]{5}/;
-  if(re.test(name) && RE.test(zip)){
+  if (re.test(name) && RE.test(zip)) {
     var zipcode = $("#userZip").val();
     modal.style.display = "none";
     axios.get(`https://api.openweathermap.org/data/2.5/weather?zip=${zipcode}&units=imperial&appid=1c2750404739686fb5929a48b32c2766`)
@@ -219,8 +219,8 @@ function validateUser() {
             </div>`;
         $(".weather").html(weatherApiData);
       });
-  } else{
-      alert("Enter a valid name and zip!")
+  } else {
+    alert("Enter a valid name and zip!")
   };
 };
 
@@ -356,12 +356,12 @@ function renderHome() {
       </div>
     </div>
     `;
-    
+
   grid.addWidget(renderedWidget);
 
-  axios.get(`https://api.openweathermap.org/data/2.5/weather?zip=${zipcode}&units=imperial&appid=1c2750404739686fb5929a48b32c2766`)    
-      .then((response) => {
-        const weatherApiData = `
+  axios.get(`https://api.openweathermap.org/data/2.5/weather?zip=${zipcode}&units=imperial&appid=1c2750404739686fb5929a48b32c2766`)
+    .then((response) => {
+      const weatherApiData = `
           <div class="weather d-flex flex-column">
             <div class="weather-header mb-1">Weather for: <br/><b>${response.data.name} (${zipcode})</b></div>
             <div class="main-weather d-flex flex-row justify-content-center mt-3 mb-3">
@@ -398,8 +398,8 @@ function renderHome() {
                 </table>
               </div>
             </div>`;
-        $(".weather").html(weatherApiData);
-      });
+      $(".weather").html(weatherApiData);
+    });
 }
 
 // render basic widgets from local storage on page restore
@@ -481,10 +481,11 @@ async function renderCoronaWidget(widget) {
               <span class="ml-auto ${widget.class}">✖️</span>
             </div>
             <div id="card-corona" class="innerDiv mb-3"></div>
-            <div class="mb-3"><center>
-            <img class="flag" src="https://corona.lmao.ninja/assets/img/flags/us.png">
-              <table class="tg">
-                <tbody>
+            <div class="mb-3">
+              <center>
+                <img class="flag" src="https://corona.lmao.ninja/assets/img/flags/us.png">
+                <table class="tg">
+                  <tbody>
                   <tr>
                       <td class="tg-0lax">Cases :</td>
                       <td class="tg-lqy6">${response.data.cases.toLocaleString()}</td>
@@ -517,13 +518,13 @@ async function renderCoronaWidget(widget) {
         </div>
       `;
       grid.addWidget(renderedWidget, {
-        x: widget.x, 
+        x: widget.x,
         y: widget.y,
         width: widget.width,
         height: widget.height,
       })
       resetGrid();
-  });
+    });
 }
 
 // Render data from local storage when restore button is clicked
@@ -580,7 +581,7 @@ function resetGrid() {
   let widgetList = JSON.parse(widgetListJSON);
   let nl = document.querySelectorAll('.grid-stack-item')
   var arrayOfWidgets = [];
-  for(var i = 0, n; n = nl[i]; ++i) {
+  for (var i = 0, n; n = nl[i]; ++i) {
     arrayOfWidgets.push(n);
   }
 
