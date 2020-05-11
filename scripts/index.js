@@ -530,7 +530,7 @@ async function renderCoronaWidget(widget) {
 }
 
 // Render data from local storage when restore button is clicked
-$("#Restore").on("click", function () {
+$(document).on("click", "#Restore", function () {
   $('.grid-stack').html('');
   let widgetListJSON = localStorage.getItem('widgets');
   let widgetList = JSON.parse(widgetListJSON);
@@ -547,10 +547,10 @@ $("#Restore").on("click", function () {
     }
   });
   resetGrid();
-  // var dateSpan = document.getElementById("date-span");
-  // var timehhmm = document.getElementById("hhmm");
-  // var timess = document.getElementById("ss");
-  // var timeampm = document.getElementById("ampm");  
+  var dateSpan = document.getElementById("date-span");
+  var timehhmm = document.getElementById("hhmm");
+  var timess = document.getElementById("ss");
+  var timeampm = document.getElementById("ampm");  
   time();
 
   widgetListLS = JSON.stringify(widgetList);
@@ -558,7 +558,7 @@ $("#Restore").on("click", function () {
 });
 
 // Render data from local storage when restore button is clicked
-$("#restore").on("click", function () {
+$(document).on("click", "#restore", function () {
   $('.grid-stack').html('');
   let widgetListJSON = localStorage.getItem('widgets');
   let widgetList = JSON.parse(widgetListJSON);
@@ -575,10 +575,10 @@ $("#restore").on("click", function () {
     }
   });
   resetGrid();
-  // var dateSpan = document.getElementById("date-span");
-  // var timehhmm = document.getElementById("hhmm");
-  // var timess = document.getElementById("ss");
-  // var timeampm = document.getElementById("ampm");  
+  var dateSpan = document.getElementById("date-span");
+  var timehhmm = document.getElementById("hhmm");
+  var timess = document.getElementById("ss");
+  var timeampm = document.getElementById("ampm");  
   time();
 
   widgetListLS = JSON.stringify(widgetList);
