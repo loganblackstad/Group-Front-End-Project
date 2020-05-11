@@ -2,12 +2,16 @@
 
 // Load weather from local storage if a new zip code is not passed in from the modal
 var zipcode = localStorage.getItem('zip');
+if (zipcode === undefined || zipcode == null || zipcode.length <= 0) {
+  zipcode = 30306;
+}
+
 
 $(document).on('DOMContentLoaded', function (e) {
-    e.preventDefault();
-    axios.get(`https://api.openweathermap.org/data/2.5/weather?zip=${zipcode}&units=imperial&appid=1c2750404739686fb5929a48b32c2766`)    
-      .then((response) => {
-        const weatherApiData = `
+  e.preventDefault();
+  axios.get(`https://api.openweathermap.org/data/2.5/weather?zip=${zipcode}&units=imperial&appid=1c2750404739686fb5929a48b32c2766`)
+    .then((response) => {
+      const weatherApiData = `
           <div class="weather d-flex flex-column">
             <div class="weather-header mb-1">Weather for: <br/><b>${response.data.name} (${zipcode})</b></div>
             <div class="main-weather d-flex flex-row justify-content-center mt-3 mb-3">
@@ -44,11 +48,11 @@ $(document).on('DOMContentLoaded', function (e) {
                 </table>
               </div>
             </div>`;
-        $(".weather").html(weatherApiData);
-      });
+      $(".weather").html(weatherApiData);
+    });
 });
 
 // When the submit button on the modal is clicked, check for valid zipcode and pass the zipcode to the weather API call
 submit.onclick = function () {
-    validateUser()
+  validateUser()
 };
