@@ -17,20 +17,14 @@ function time() {
     var weekdayOnly = d.toLocaleDateString("en-US", optionWeekdayOnly);
     var dateOnly = d.toLocaleDateString("en-US", optionDateOnly);
 
-    // d.toLocaleString() generates a string as:
-    // "M/D/YYYY, H:MM:SS AM" OR "M/D/YYYY, HH:MM:SS AM"
+    // d.toLocaleString() generates a string as M/D/YYYY, HH:MM:SS AM
     // the code below handles the difference in return between H and HH by slicing the string based on string length
 
     var dL = d.toLocaleString().length;
-    if (dL == 21) {
-        var timeOnly = d.toLocaleString().slice(dL - 11, dL - 6);
-        var secondsOnly = d.toLocaleString().slice(dL - 5, dL - 3);
-        var ampmOnly = d.toLocaleString().slice(dL - 2);
-    } else {
-        var timeOnly = d.toLocaleString().slice(dL - 10, dL - 6);
-        var secondsOnly = d.toLocaleString().slice(dL - 5, dL - 3);
-        var ampmOnly = d.toLocaleString().slice(dL - 2);
-    }
+    var timeOnly = d.toLocaleString().slice(dL - 11, dL - 6);
+    var secondsOnly = d.toLocaleString().slice(dL - 5, dL - 3);
+    var ampmOnly = d.toLocaleString().slice(dL - 2);
+
 
     /* 
     assigns the date time string variables created in the lines above to the 
