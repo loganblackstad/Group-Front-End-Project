@@ -20,12 +20,12 @@ When the user loads the webpage, he/she can enter their name and location (zip c
 
 ## List of the APIs Used:
 
-This web application employs 10 APIs:
-Weather     [openweathermap.org](openweathermap.org)
-News        [newsapi.org](newsapi.org)
-.
-.
-.
+This web application employs 10 APIs:<br>
+Weather     [openweathermap.org](openweathermap.org) <br>
+News        [newsapi.org](newsapi.org)<br>
+.<br>
+.<br>
+.<br>
 
 ## What Features You Would Add Next?
 
@@ -46,7 +46,7 @@ Read more about Responsive Layouts using [Grid Stack](https://github.com/gridsta
 ...
 
 ## Contributors:
-Tracy Sykes Jr.
-Logan Blackstad
-Gerrit Van Leeuwen
+Tracy Sykes Jr.<br>
+Logan Blackstad<br>
+Gerrit Van Leeuwen<br>
 
