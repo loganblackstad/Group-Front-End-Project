@@ -1,3 +1,4 @@
+// Add widget when specific button is clicked; check to make sure widget is not already on the page
 $("#addQuotes").on("click", function () {
   var element = document.getElementById("quoteDiv"); 
   if (!element) { 
@@ -18,6 +19,7 @@ $("#addQuotes").on("click", function () {
 
 $("#addBored").on("click", function () {
   var element = document.getElementById("boredDiv");
+  console.log('bored')
   if (!element) { 
     let boredWidget = {
       title: "Today is my day off and I am bored.",

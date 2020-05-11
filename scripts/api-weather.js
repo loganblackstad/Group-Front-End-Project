@@ -1,6 +1,6 @@
 // Weather API
 
-// Load weather from local storage until submit button on modal is clicked
+// Load weather from local storage if a new zip code is not passed in from the modal
 var zipcode = localStorage.getItem('zip');
 
 $(document).on('DOMContentLoaded', function (e) {
@@ -48,7 +48,7 @@ $(document).on('DOMContentLoaded', function (e) {
       });
 });
 
-// When the submit button on the modal is clicked, check for valid zipcode and pass the zipcode to the API call
+// When the submit button on the modal is clicked, check for valid zipcode and pass the zipcode to the weather API call
 submit.onclick = function () {
     validateUser()
 };
