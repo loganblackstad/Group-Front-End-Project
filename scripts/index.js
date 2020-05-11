@@ -1,3 +1,4 @@
+// render basic widgets
 function renderWidgets(widget) {
   let renderedWidget = `
     <div class="grid-stack-item" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="2" id=${widget.divID}>
@@ -13,6 +14,7 @@ function renderWidgets(widget) {
   return renderedWidget;
 }
 
+// render the CoronaVirus widget
 function renderRona(widget) {
   let renderedWidget = `
     <div class="grid-stack-item" data-gs-x="0" data-gs-y="0" data-gs-width="5" data-gs-height="5" id=${widget.divID}>
@@ -61,6 +63,7 @@ function renderRona(widget) {
   return renderedWidget;
 }
 
+// render the News widget
 function renderNews() {
   var url =
     "https://newsapi.org/v2/top-headlines?" +
@@ -108,9 +111,7 @@ function renderNews() {
     });
 }
 
-// ---------------------------------
 // remove grid widgets in the main container
-
 $(document).on("click", ".boredClose", function () {
   grid.removeWidget($("#boredDiv").get(0));
 });
@@ -155,7 +156,7 @@ $(document).on("click", ".catClose", function () {
   grid.removeWidget($("#catDiv").get(0));
 });
 
-// Modal and modal validation
+// Modal and user input validation
 
 // Get user input from the Modal
 function getInput(e) {
@@ -249,7 +250,7 @@ function saveHomeWidget(widget) {
   return obj
 }
 
-// save coronavirus widget to local storage
+// save CoronaVirus widget to local storage
 function saveCoronaWidget(widget) {
   let obj = {};
   obj['id'] = widget.id;
@@ -265,7 +266,7 @@ function saveCoronaWidget(widget) {
   return obj
 }
 
-// save news widget to local storage
+// save News widget to local storage
 function saveNewsWidget(widget) {
   let obj = {};
   obj['id'] = widget.id;
@@ -280,26 +281,8 @@ function saveNewsWidget(widget) {
 
   return obj
 }
+
 // Save data to local storage
-// $(document).on("click", "#save", function () {
-//   let nl = document.querySelectorAll('.grid-stack-item')
-//   var arrayOfWidgets = [];
-//   for (var i = 0, n; n = nl[i]; ++i) {
-//     arrayOfWidgets.push(n);
-//   }
-//   let savedWidgets = arrayOfWidgets.map(widget => {
-//     return saveRegWidget(widget);
-//   });
-
-//   // savedWidgets = savedWidgets.sort((objectA, objectB) => {
-//   //   return objectA.y - objectB.y;
-//   // });
-
-//   console.log(savedWidgets);
-//   let parsedWidgets = JSON.stringify(savedWidgets);
-//   localStorage.setItem('widgets', parsedWidgets)
-// });
-
 $(document).on("click", "#save", function () {
   let nl = document.querySelectorAll('.grid-stack-item')
   var arrayOfWidgets = [];
@@ -326,8 +309,8 @@ $(document).on("click", "#save", function () {
   let parsedWidgets = JSON.stringify(savedWidgets);
   localStorage.setItem('widgets', parsedWidgets)
 });
-// -----------------------------------------------
 
+// render Home widget from local storage on page restore
 function renderHome() {
   let renderedWidget = `
     <div class="grid-stack-item col-lg-12" data-gs-x="0" data-gs-y="0" data-gs-width="5" data-gs-height="8" data-gs-locked="true" data-gs-noMove="true" data-gs-noResize="true" id="homeWidget">
@@ -420,6 +403,7 @@ function renderHome() {
       });
 }
 
+// render basic widgets from local storage on page restore
 function renderRegWidget(widget) {
   let renderedWidget = `
     <div class="grid-stack-item" data-gs-x=${widget.x} data-gs-y=${widget.y} data-gs-width=${widget.width} data-gs-height=${widget.height} id=${widget.id}>
@@ -435,6 +419,7 @@ function renderRegWidget(widget) {
   grid.addWidget(renderedWidget);
 }
 
+// render News widget from local storage on page restore
 async function renderNewsWidget(widget) {
   var url =
     "https://newsapi.org/v2/top-headlines?" +
@@ -482,7 +467,8 @@ async function renderNewsWidget(widget) {
       resetGrid();
     });
 }
-  
+
+// render CoronaVirus widget from local storage on page restore
 async function renderCoronaWidget(widget) {
   await axios
     .get("https://disease.sh/v2/countries/United%20States?yesterday=true#")
@@ -543,68 +529,8 @@ async function renderCoronaWidget(widget) {
   });
 }
 
-// Render data from local storage
-// $("#restore").on("click", function () {
-//   let widgetListJSON = localStorage.getItem('widgets');
-//   let widgetList = JSON.parse(widgetListJSON);
-//   let nl = document.querySelectorAll('.grid-stack-item')
-//   var arrayOfWidgets = [];
-//   for (var i = 0, n; n = nl[i]; ++i) {
-//     let obj = {}
-//     obj['id'] = n
-//     arrayOfWidgets.push(obj);
-//   }
-
-//   console.log(widgetList)
-//   console.log(arrayOfWidgets)
-
-//   arrayOfWidgets.forEach(widget => {
-//     widgetList.forEach(item => {
-//       if (item.id === widget.id.id) {
-//         console.log(document.getElementById(item.id), parseInt(item.x, 10), parseInt(item.y, 10))
-//         grid.update(document.getElementById(item.id), parseInt(item.x, 10), parseInt(item.y, 10), parseInt(item.width, 10), parseInt(item.height, 10));
-//       } 
-//       // else {
-//       //   grid.removeWidget(document.getElementById(widget.id.id))
-//       // }
-//     })
-
-//   })
-//   widgetListLS = JSON.stringify(widgetList);
-//   localStorage.setItem('widgets', widgetListLS);
-// });
-
-// $("#Restore").on("click", function () {
-//   let widgetListJSON = localStorage.getItem('widgets');
-//   let widgetList = JSON.parse(widgetListJSON);
-//   let nl = document.querySelectorAll('.grid-stack-item')
-//   var arrayOfWidgets = [];
-//   for (var i = 0, n; n = nl[i]; ++i) {
-//     let obj = {}
-//     obj['id'] = n
-//     arrayOfWidgets.push(obj);
-//   }
-
-//   console.log(widgetList)
-//   console.log(arrayOfWidgets)
-
-//   arrayOfWidgets.forEach(widget => {
-//     widgetList.forEach(item => {
-//       if (item.id === widget.id.id) {
-//         console.log(document.getElementById(item.id), parseInt(item.x, 10), parseInt(item.y, 10))
-//         grid.update(document.getElementById(item.id), parseInt(item.x, 10), parseInt(item.y, 10), parseInt(item.width, 10), parseInt(item.height, 10));
-//       } 
-//       // else {
-//       //   grid.removeWidget(document.getElementById(widget.id.id))
-//       // }
-//     })
-
-//   })
-//   widgetListLS = JSON.stringify(widgetList);
-//   localStorage.setItem('widgets', widgetListLS);
-// });
-
-$("#Restore").on("click", function () {
+// Render data from local storage when restore button is clicked
+$(document).on("click", "#Restore", function () {
   $('.grid-stack').html('');
   let widgetListJSON = localStorage.getItem('widgets');
   let widgetList = JSON.parse(widgetListJSON);
@@ -621,32 +547,18 @@ $("#Restore").on("click", function () {
     }
   });
   resetGrid();
+  var dateSpan = document.getElementById("date-span");
+  var timehhmm = document.getElementById("hhmm");
+  var timess = document.getElementById("ss");
+  var timeampm = document.getElementById("ampm");  
+  time();
 
   widgetListLS = JSON.stringify(widgetList);
   localStorage.setItem('widgets', widgetListLS);
 });
 
-function resetGrid() {
-  let widgetListJSON = localStorage.getItem('widgets');
-  let widgetList = JSON.parse(widgetListJSON);
-  let nl = document.querySelectorAll('.grid-stack-item')
-  var arrayOfWidgets = [];
-  for(var i = 0, n; n = nl[i]; ++i) {
-    arrayOfWidgets.push(n);
-  }
-
-  arrayOfWidgets.forEach(widget => {
-    let widgetObject = widgetList.find(object => {
-      return object.id === widget.id;
-    });
-    console.log(widgetObject.id)
-    console.log(widgetObject.x)
-    console.log(widgetObject.y)
-    grid.update(document.getElementById(widgetObject.id), parseInt(widgetObject.x, 10), parseInt(widgetObject.y, 10));
-  });
-}
-
-$("#restore").on("click", function () {
+// Render data from local storage when restore button is clicked
+$(document).on("click", "#restore", function () {
   $('.grid-stack').html('');
   let widgetListJSON = localStorage.getItem('widgets');
   let widgetList = JSON.parse(widgetListJSON);
@@ -663,11 +575,17 @@ $("#restore").on("click", function () {
     }
   });
   resetGrid();
+  var dateSpan = document.getElementById("date-span");
+  var timehhmm = document.getElementById("hhmm");
+  var timess = document.getElementById("ss");
+  var timeampm = document.getElementById("ampm");  
+  time();
 
   widgetListLS = JSON.stringify(widgetList);
   localStorage.setItem('widgets', widgetListLS);
 });
 
+// Use grid.update function to move widgets to the correct location when restored
 function resetGrid() {
   let widgetListJSON = localStorage.getItem('widgets');
   let widgetList = JSON.parse(widgetListJSON);

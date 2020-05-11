@@ -1,4 +1,5 @@
-$("#addQuotes").on("click", function () {
+// Add widget when specific button is clicked; check to make sure widget is not already on the page
+$(document).on("click", "#addQuotes", function () {
   var element = document.getElementById("quoteDiv"); 
   if (!element) { 
     let quoteWidget = {
@@ -16,7 +17,7 @@ $("#addQuotes").on("click", function () {
   };
 });
 
-$("#addBored").on("click", function () {
+$(document).on("click", "#addBored", function () {
   var element = document.getElementById("boredDiv");
   if (!element) { 
     let boredWidget = {
@@ -34,7 +35,7 @@ $("#addBored").on("click", function () {
   };
 });
 
-$("#addYeezy").on("click", function () {
+$(document).on("click", "#addYeezy", function () {
   var element = document.getElementById("yeezyDiv");
   if (!element) { 
     let yeezyWidget = {
@@ -52,7 +53,7 @@ $("#addYeezy").on("click", function () {
   };
 });
 
-$("#addJoke").on("click", function () {
+$(document).on("click", "#addJoke", function () {
   var element = document.getElementById("jokeDiv");
   if (!element) { 
     let jokeWidget = {
@@ -70,7 +71,7 @@ $("#addJoke").on("click", function () {
     };
 });
 
-$("#addAdvice").on("click", function () {
+$(document).on("click", "#addAdvice", function () {
   var element = document.getElementById("adviceDiv");
   if (!element) { 
     let adviceWidget = {
@@ -88,7 +89,7 @@ $("#addAdvice").on("click", function () {
     };
 });
 
-$("#addNews").on("click", function () {
+$(document).on("click", "#addNews", function () {
   var element = document.getElementById("newsDiv");
   if (!element) { 
     renderNews();
@@ -97,7 +98,7 @@ $("#addNews").on("click", function () {
     };
 });
 
-$("#addCorona").on("click", function () {
+$(document).on("click", "#addCorona", function () {
   var element = document.getElementById("coronaDiv");
   if (!element) { 
     axios
@@ -118,7 +119,7 @@ $("#addCorona").on("click", function () {
     };
 });
 
-$("#addDoggo").on("click", function () {
+$(document).on("click", "#addDoggo", function () {
   var element = document.getElementById("doggoDiv"); 
   if (!element) { 
     let doggoWidget = {
@@ -136,7 +137,7 @@ $("#addDoggo").on("click", function () {
   };
 });
 
-$("#addCats").on("click", function () {
+$(document).on("click", "#addCats", function () {
   var element = document.getElementById("catDiv"); 
   if (!element) { 
     let catWidget = {

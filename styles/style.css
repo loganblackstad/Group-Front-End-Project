@@ -219,10 +219,10 @@ span:hover {
   text-transform: capitalize;
 }
 
-.weather-img {
-  /* width: 150px;
-  height: 150px; */
-}
+/* .weather-img {
+  width: 150px;
+  height: 150px;
+} */
 
 .weather-details{
   display: flex;
@@ -237,4 +237,30 @@ span:hover {
 .weather-header {
   align-content: center;
   text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+  .modal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 40%; /* Could be more or less, depending on screen size */
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .modal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 70%; /* Could be more or less, depending on screen size */
+  }
 }
