@@ -161,8 +161,9 @@ $(document).on("click", ".catClose", function () {
 // Get user input from the Modal
 function getInput(e) {
   e.preventDefault();
-  $("#greeting").html(`Hello, <b>${$("#userName").val()}</b>!`);
+  $("#greeting").text(`Hello, ${$("#userName").val()}!`);
   localStorage.setItem("zip", $("#userZip").val());
+  localStorage.setItem("name", $("#userName").val());
 }
 
 // Add event listeners to the form to call functions when form is submitted
@@ -312,6 +313,7 @@ $(document).on("click", "#save", function () {
 
 // render Home widget from local storage on page restore
 function renderHome() {
+  var name = localStorage.getItem('name');
   let renderedWidget = `
     <div class="grid-stack-item col-lg-12" data-gs-x="0" data-gs-y="0" data-gs-width="5" data-gs-height="8" data-gs-locked="true" data-gs-noMove="true" data-gs-noResize="true" id="homeWidget">
       <div class="grid-stack-item-content d-flex flex-column m-0 p-0 overflow-auto" id="home">
@@ -339,7 +341,7 @@ function renderHome() {
           <button class="btn btn-primary ml-2" id="save">Save Layout</button>
           <button class="btn btn-dark ml-2" id="Restore">Restore Layout</button>
         </div>
-        <p id="greeting" class="mt-2 ml-1"></p>
+        <p id="greeting" class="d-flex justify-content-center mt-4 ml-1">Hello, ${name}!</p>
         <script async
           src="https://cse.google.com/cse.js?cx=015973783965488086183:3k48kdj5xul"></script>
         <div class="gcse-search" enableAutoComplete="true"></div>
