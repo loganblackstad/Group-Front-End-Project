@@ -344,8 +344,7 @@ function renderHome() {
           src="https://cse.google.com/cse.js?cx=015973783965488086183:3k48kdj5xul"></script>
         <div class="gcse-search" enableAutoComplete="true"></div>
         <div class="date-time m-0 mb-3 mt-3">
-          <p class="m-0 d-flex justify-content-center"><span id="date-span" class="d-flex justify-content-center
-              m-0"></span></p>
+          <p class="m-0 d-flex justify-content-center"><span id="date-span" class="d-flex justify-content-center m-0"></span></p>
           <p class="d-flex justify-content-center align-content-top m-0" id="time-span">
             <span id="hhmm" class="mr-2"></span>
             <span id="ss" class="mr-2"></span>
@@ -431,10 +430,10 @@ async function renderNewsWidget(widget) {
     <div class="grid-stack-item-content">
       <div class="bor">
         <div class="d-flex widget-header m-0 p-3 align-item-center">
-          <p><b>Top US News</b></p>
+          <p class="m-0"><b>Top US News</b></p>
           <span class="ml-auto newsClose">✖️</span>
         </div>
-        <div id="card-news" class="innerDiv m-3"></div>
+      <div id="card-news" class="innerDiv m-3">
       `;
 
   let widgetFooter = `
@@ -473,7 +472,6 @@ async function renderCoronaWidget(widget) {
   await axios
     .get("https://disease.sh/v2/countries/United%20States?yesterday=true#")
     .then((response) => {
-      console.log(response)
       let renderedWidget = `
         <div class="grid-stack-item" id=${widget.id}>
           <div class="grid-stack-item-content">
@@ -547,11 +545,7 @@ $(document).on("click", "#Restore", function () {
     }
   });
   resetGrid();
-  var dateSpan = document.getElementById("date-span");
-  var timehhmm = document.getElementById("hhmm");
-  var timess = document.getElementById("ss");
-  var timeampm = document.getElementById("ampm");
-  time();
+  setInterval(time, 1000);
 
   widgetListLS = JSON.stringify(widgetList);
   localStorage.setItem('widgets', widgetListLS);
@@ -574,12 +568,8 @@ $(document).on("click", "#restore", function () {
       renderRegWidget(widget);
     }
   });
-  resetGrid();
-  var dateSpan = document.getElementById("date-span");
-  var timehhmm = document.getElementById("hhmm");
-  var timess = document.getElementById("ss");
-  var timeampm = document.getElementById("ampm");
-  time();
+  resetGrid(); 
+  setInterval(time, 1000);
 
   widgetListLS = JSON.stringify(widgetList);
   localStorage.setItem('widgets', widgetListLS);
