@@ -1,14 +1,14 @@
 // -----------  Date Time Generator ------------- 
 
-// Declare javascript pointers to the date time elements in index.HTML
-var dateSpan = document.getElementById("date-span");
-var timehhmm = document.getElementById("hhmm");
-var timess = document.getElementById("ss");
-var timeampm = document.getElementById("ampm");
-
 // the function below will be called every 1 Second with the setInterval 
 // function at the bottom of the page
 function time() {
+    // Declare javascript pointers to the date time elements in index.HTML
+    var dateSpan = document.getElementById("date-span");
+    var timehhmm = document.getElementById("hhmm");
+    var timess = document.getElementById("ss");
+    var timeampm = document.getElementById("ampm");
+
     var d = new Date(); // declare a new date object
 
     // Generate the Date in the format: "{WEEKDAY} {MMM DD, 2020}"

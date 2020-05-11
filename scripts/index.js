@@ -430,10 +430,10 @@ async function renderNewsWidget(widget) {
     <div class="grid-stack-item-content">
       <div class="bor">
         <div class="d-flex widget-header m-0 p-3 align-item-center">
-          <p><b>Top US News</b></p>
+          <p class="m-0"><b>Top US News</b></p>
           <span class="ml-auto newsClose">✖️</span>
         </div>
-        <div id="card-news" class="innerDiv m-3"></div>
+      <div id="card-news" class="innerDiv m-3">
       `;
 
   let widgetFooter = `
@@ -472,7 +472,6 @@ async function renderCoronaWidget(widget) {
   await axios
     .get("https://disease.sh/v2/countries/United%20States?yesterday=true#")
     .then((response) => {
-      console.log(response)
       let renderedWidget = `
         <div class="grid-stack-item" id=${widget.id}>
           <div class="grid-stack-item-content">
@@ -482,11 +481,10 @@ async function renderCoronaWidget(widget) {
               <span class="ml-auto ${widget.class}">✖️</span>
             </div>
             <div id="card-corona" class="innerDiv mb-3"></div>
-            <div class="mb-3">
-              <center>
-                <img src="https://corona.lmao.ninja/assets/img/flags/us.png">
-                <table class="tg">
-                  <tbody>
+            <div class="mb-3"><center>
+            <img class="flag" src="https://corona.lmao.ninja/assets/img/flags/us.png">
+              <table class="tg">
+                <tbody>
                   <tr>
                       <td class="tg-0lax">Cases :</td>
                       <td class="tg-lqy6">${response.data.cases.toLocaleString()}</td>
@@ -537,11 +535,6 @@ $(document).on("click", "#Restore", function () {
   widgetList.forEach(widget => {
     if (widget.id == "homeWidget") {
       renderHome();
-      var dateSpan = document.getElementById("date-span");
-      var timehhmm = document.getElementById("hhmm");
-      var timess = document.getElementById("ss");
-      var timeampm = document.getElementById("ampm");  
-      time();
     } else if (widget.id == "coronaDiv") {
       renderCoronaWidget(widget);
     } else if (widget.id == "newsDiv") {
@@ -551,6 +544,7 @@ $(document).on("click", "#Restore", function () {
     }
   });
   resetGrid();
+  setInterval(time, 1000);
 
   widgetListLS = JSON.stringify(widgetList);
   localStorage.setItem('widgets', widgetListLS);
@@ -565,11 +559,6 @@ $(document).on("click", "#restore", function () {
   widgetList.forEach(widget => {
     if (widget.id == "homeWidget") {
       renderHome();
-      var dateSpan = document.getElementById("date-span");
-      var timehhmm = document.getElementById("hhmm");
-      var timess = document.getElementById("ss");
-      var timeampm = document.getElementById("ampm");  
-      time();
     } else if (widget.id == "coronaDiv") {
       renderCoronaWidget(widget);
     } else if (widget.id == "newsDiv") {
@@ -578,7 +567,8 @@ $(document).on("click", "#restore", function () {
       renderRegWidget(widget);
     }
   });
-  resetGrid();
+  resetGrid(); 
+  setInterval(time, 1000);
 
   widgetListLS = JSON.stringify(widgetList);
   localStorage.setItem('widgets', widgetListLS);
