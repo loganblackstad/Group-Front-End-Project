@@ -161,7 +161,7 @@ $(document).on("click", ".catClose", function () {
 // Get user input from the Modal
 function getInput(e) {
   e.preventDefault();
-  $("#greeting").html(`Hello, <b>${$("#userName").val()}</b>!`);
+  $("#greeting").text(`Hello, ${$("#userName").val()}!`);
   localStorage.setItem("zip", $("#userZip").val());
   localStorage.setItem("name", $("#userName").val());
 }
@@ -341,7 +341,7 @@ function renderHome() {
           <button class="btn btn-primary ml-2" id="save">Save Layout</button>
           <button class="btn btn-dark ml-2" id="Restore">Restore Layout</button>
         </div>
-        <p id="greeting" class="d-flex justify-content-center mt-4 ml-1">Hello, <b>${name}</b>!</p>
+        <p id="greeting" class="d-flex justify-content-center mt-4 ml-1">Hello, ${name}!</p>
         <script async
           src="https://cse.google.com/cse.js?cx=015973783965488086183:3k48kdj5xul"></script>
         <div class="gcse-search" enableAutoComplete="true"></div>
