@@ -219,10 +219,10 @@ span:hover {
   text-transform: capitalize;
 }
 
-.weather-img {
-  /* width: 150px;
-  height: 150px; */
-}
+/* .weather-img {
+  width: 150px;
+  height: 150px;
+} */
 
 .weather-details{
   display: flex;

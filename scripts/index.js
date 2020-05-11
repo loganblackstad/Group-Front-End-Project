@@ -547,10 +547,10 @@ $("#Restore").on("click", function () {
     }
   });
   resetGrid();
-  var dateSpan = document.getElementById("date-span");
-  var timehhmm = document.getElementById("hhmm");
-  var timess = document.getElementById("ss");
-  var timeampm = document.getElementById("ampm");  
+  // var dateSpan = document.getElementById("date-span");
+  // var timehhmm = document.getElementById("hhmm");
+  // var timess = document.getElementById("ss");
+  // var timeampm = document.getElementById("ampm");  
   time();
 
   widgetListLS = JSON.stringify(widgetList);
@@ -575,6 +575,11 @@ $("#restore").on("click", function () {
     }
   });
   resetGrid();
+  // var dateSpan = document.getElementById("date-span");
+  // var timehhmm = document.getElementById("hhmm");
+  // var timess = document.getElementById("ss");
+  // var timeampm = document.getElementById("ampm");  
+  time();
 
   widgetListLS = JSON.stringify(widgetList);
   localStorage.setItem('widgets', widgetListLS);
