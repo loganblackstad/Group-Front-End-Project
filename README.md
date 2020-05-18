@@ -1,4 +1,4 @@
-# YOUi Widget Dashboard
+# YOUi Widget Dashboard [https://grrtvnlw.github.io/Group-Front-End-Project/](https://grrtvnlw.github.io/Group-Front-End-Project/) 
 
 ![Home Page](images/screenshot.png)
 
@@ -21,11 +21,15 @@ When the user loads the webpage, he/she can enter their name and location (zip c
 ## List of the APIs Used:
 
 This web application employs 10 APIs:<br>
-Weather     [openweathermap.org](openweathermap.org) <br>
-News        [newsapi.org](newsapi.org)<br>
-.<br>
-.<br>
-.<br>
+Weather [openweathermap.org](openweathermap.org) <br>
+News [newsapi.org](newsapi.org)<br>
+COVID Updates [https://disease.sh/](disease.sh)
+Kanye Quotes [api.kanye.rest](api.kanye.rest)<br>
+Dog Images [https://dog.ceo/dog-api/](https://dog.ceo/dog-api/)<br>
+Cat Facts [cat-fact.herokuapp.com](cat-fact.herokuapp.com)<br>
+Inspirational Quotes [favqs.com](favqs.com)<br>
+Bored Advice [boredapi.com](boredapi.com)<br>
+Jokes [https://sv443.net/jokeapi/v2](https://sv443.net/jokeapi/v2)<br>
 
 ## What Features You Would Add Next?
 
