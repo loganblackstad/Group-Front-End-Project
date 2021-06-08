@@ -1,4 +1,4 @@
-# YOUi Widget Dashboard [https://loganblackstad.github.io/Group-Front-End-Project/](https://loganblakcstad.github.io/Group-Front-End-Project/) 
+# YOUi Widget Dashboard [https://loganblackstad.github.io/YOUi--Front-End-Project/](https://loganblackstad.github.io/YOUi--Front-End-Project/) 
 
 ![Home Page](images/screenshot.png)
 
